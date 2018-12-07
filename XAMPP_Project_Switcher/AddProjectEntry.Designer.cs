@@ -81,6 +81,11 @@
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             // 
+            // fdbFolderBrowser
+            // 
+            resources.ApplyResources(this.fdbFolderBrowser, "fdbFolderBrowser");
+            this.fdbFolderBrowser.ShowNewFolderButton = false;
+            // 
             // AddProjectEntry
             // 
             resources.ApplyResources(this, "$this");

@@ -30,8 +30,6 @@ namespace XAMPP_Project_Switcher
                 Properties.Settings.Default.Save();
 
                 txbXAMPPDirectory.Text = Properties.Settings.Default.xamppPath;
-
-                
             }
         }
 
@@ -40,11 +38,13 @@ namespace XAMPP_Project_Switcher
             AddProjectEntry addPE = new AddProjectEntry();
             addPE.ShowDialog();
 
-            Properties.Settings.Default.Projects += Properties.Settings.Default.NewProjectName + "|||" + Properties.Settings.Default.NewProjectFolder + "#!!#";
-            Properties.Settings.Default.NewProjectFolder = "";
-            Properties.Settings.Default.NewProjectName = "";
-            Properties.Settings.Default.Save();
-
+            if (Properties.Settings.Default.NewProjectFolder != "")
+            {
+                Properties.Settings.Default.Projects += Properties.Settings.Default.NewProjectName + "|||" + Properties.Settings.Default.NewProjectFolder + "#!!#";
+                Properties.Settings.Default.NewProjectFolder = "";
+                Properties.Settings.Default.NewProjectName = "";
+                Properties.Settings.Default.Save();
+            }
             ReloadProjectList();
         }
 
@@ -80,41 +80,52 @@ namespace XAMPP_Project_Switcher
         private void btnDeleteProject_Click(object sender, EventArgs e)
         {
             string projectName = cbxEntries.GetItemText(cbxEntries.SelectedItem);
-            string projectFolder = cbxEntries.SelectedValue.ToString();
 
-            Properties.Settings.Default.Projects = Properties.Settings.Default.Projects.Replace(projectName + "|||" + projectFolder + "#!!#","");
-            Properties.Settings.Default.Save();
+            if (projectName != "")
+            {
+                string projectFolder = cbxEntries.SelectedValue.ToString();
+
+                Properties.Settings.Default.Projects = Properties.Settings.Default.Projects.Replace(projectName + "|||" + projectFolder + "#!!#", "");
+                Properties.Settings.Default.Save();
+
+                cbxEntries.SelectedIndex = 0;
+            }
+            else MessageBox.Show("No Project Selected.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
             ReloadProjectList();
         }
 
         private void btnSetProject_Click(object sender, EventArgs e)
         {
-            string httpdConfPath = Properties.Settings.Default.xamppPath + @"\apache\conf\httpd.conf";
-            string projectPath = Properties.Settings.Default.xamppPath + @"\htdocs\" + cbxEntries.SelectedValue.ToString();
-            string line;
-
-            StreamReader sr = new StreamReader(httpdConfPath);
-            StreamWriter sw = new StreamWriter(httpdConfPath + "temp");
-
-            while((line = sr.ReadLine())!=null)
+            if (cbxEntries.SelectedValue != null)
             {
-                if(line.StartsWith("DocumentRoot"))
+                string httpdConfPath = Properties.Settings.Default.xamppPath + @"\apache\conf\httpd.conf";
+                string projectPath = Properties.Settings.Default.xamppPath + @"\htdocs\" + cbxEntries.SelectedValue.ToString();
+                string line;
+
+                StreamReader sr = new StreamReader(httpdConfPath);
+                StreamWriter sw = new StreamWriter(httpdConfPath + "temp");
+
+                while ((line = sr.ReadLine()) != null)
                 {
-                    sw.WriteLine("DocumentRoot \"{0}\"", projectPath.Replace('\\','/'));
-                    sw.WriteLine("<Directory \"{0}\">", projectPath.Replace('\\', '/'));
-                    sr.ReadLine();
+                    if (line.StartsWith("DocumentRoot"))
+                    {
+                        sw.WriteLine("DocumentRoot \"{0}\"", projectPath.Replace('\\', '/'));
+                        sw.WriteLine("<Directory \"{0}\">", projectPath.Replace('\\', '/'));
+                        sr.ReadLine();
+                    }
+                    else sw.WriteLine(line);
                 }
-                else sw.WriteLine(line);
+
+                sw.Close();
+                sr.Close();
+
+                File.Delete(httpdConfPath);
+                File.Move(httpdConfPath + "temp", httpdConfPath);
+
+                MessageBox.Show("Project selection successful!\r\n\r\nPlease restart Apache in the XAMPP Controll Panel.", "Success", MessageBoxButtons.OK,MessageBoxIcon.Asterisk);
             }
-
-            sw.Close();
-            sr.Close();
-
-            File.Delete(httpdConfPath);
-            File.Move(httpdConfPath+"temp", httpdConfPath);
-
-            MessageBox.Show("Project selection successful!\r\n\r\nPlease restart Apache in the XAMPP Controll Panel.","Success",MessageBoxButtons.OK);
+            else MessageBox.Show("Please select a Project", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
         }
     }
 }

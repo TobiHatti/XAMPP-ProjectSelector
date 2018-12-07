@@ -24,11 +24,16 @@ namespace XAMPP_Project_Switcher
             Properties.Settings.Default.NewProjectName = txbProjectName.Text;
             Properties.Settings.Default.NewProjectFolder = txbProjectFolder.Text;
 
-            this.Close();
+            if (Properties.Settings.Default.NewProjectName != "" && Properties.Settings.Default.NewProjectFolder != "")
+            {
+                this.Close();
+            }
+            else MessageBox.Show("Please fill out all fields", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
         }
 
         private void btnSelectProjectFolder_Click(object sender, EventArgs e)
         {
+            fdbFolderBrowser.SelectedPath = Properties.Settings.Default.xamppPath + @"\htdocs\";
             DialogResult result = fdbFolderBrowser.ShowDialog();
 
             if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(fdbFolderBrowser.SelectedPath))
