@@ -130,6 +130,7 @@
             this.Controls.Add(this.btnSetProject);
             this.Controls.Add(this.btnNewEntry);
             this.Controls.Add(this.cbxEntries);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "XAMPP Project Selector";
