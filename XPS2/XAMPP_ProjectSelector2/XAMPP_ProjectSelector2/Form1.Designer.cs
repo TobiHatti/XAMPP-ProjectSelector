@@ -222,6 +222,7 @@
             this.btnHotSwitchP5.Text = "Project 5";
             this.btnHotSwitchP5.TextAlign = System.Drawing.ContentAlignment.BottomRight;
             this.btnHotSwitchP5.UseSelectable = true;
+            this.btnHotSwitchP5.Click += new System.EventHandler(this.BtnHotSwitchP5_Click);
             // 
             // btnHotSwitchP4
             // 
@@ -237,6 +238,7 @@
             this.btnHotSwitchP4.Text = "Project 4";
             this.btnHotSwitchP4.TextAlign = System.Drawing.ContentAlignment.BottomRight;
             this.btnHotSwitchP4.UseSelectable = true;
+            this.btnHotSwitchP4.Click += new System.EventHandler(this.BtnHotSwitchP4_Click);
             // 
             // btnHotSwitchP3
             // 
@@ -251,6 +253,7 @@
             this.btnHotSwitchP3.TabIndex = 5;
             this.btnHotSwitchP3.Text = "Project 3";
             this.btnHotSwitchP3.UseSelectable = true;
+            this.btnHotSwitchP3.Click += new System.EventHandler(this.BtnHotSwitchP3_Click);
             // 
             // btnHotSwitchP2
             // 
@@ -265,6 +268,7 @@
             this.btnHotSwitchP2.TabIndex = 5;
             this.btnHotSwitchP2.Text = "Project 2";
             this.btnHotSwitchP2.UseSelectable = true;
+            this.btnHotSwitchP2.Click += new System.EventHandler(this.BtnHotSwitchP2_Click);
             // 
             // btnHotSwitchP1
             // 

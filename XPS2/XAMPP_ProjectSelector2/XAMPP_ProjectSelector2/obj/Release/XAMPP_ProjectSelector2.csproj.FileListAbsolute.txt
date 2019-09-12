@@ -29,3 +29,34 @@ C:\Users\zivi\Desktop\Projekte\XAMPP_ProjectSelector2\XAMPP_ProjectSelector2\obj
 C:\Users\zivi\Desktop\Projekte\XAMPP_ProjectSelector2\XAMPP_ProjectSelector2\obj\Release\XAMPP_ProjectSelector2.csproj.CopyComplete
 C:\Users\zivi\Desktop\Projekte\XAMPP_ProjectSelector2\XAMPP_ProjectSelector2\obj\Release\XAMPP_ProjectSelector2.exe
 C:\Users\zivi\Desktop\Projekte\XAMPP_ProjectSelector2\XAMPP_ProjectSelector2\obj\Release\XAMPP_ProjectSelector2.pdb
+C:\Users\zivi\Desktop\Projekte (GIT)\XAMPP_ProjectSelector\XPS2\XAMPP_ProjectSelector2\XAMPP_ProjectSelector2\bin\Release\XAMPP_ProjectSelector2.exe.config
+C:\Users\zivi\Desktop\Projekte (GIT)\XAMPP_ProjectSelector\XPS2\XAMPP_ProjectSelector2\XAMPP_ProjectSelector2\bin\Release\XAMPP_ProjectSelector2.exe
+C:\Users\zivi\Desktop\Projekte (GIT)\XAMPP_ProjectSelector\XPS2\XAMPP_ProjectSelector2\XAMPP_ProjectSelector2\bin\Release\XAMPP_ProjectSelector2.pdb
+C:\Users\zivi\Desktop\Projekte (GIT)\XAMPP_ProjectSelector\XPS2\XAMPP_ProjectSelector2\XAMPP_ProjectSelector2\bin\Release\MetroFramework.Design.dll
+C:\Users\zivi\Desktop\Projekte (GIT)\XAMPP_ProjectSelector\XPS2\XAMPP_ProjectSelector2\XAMPP_ProjectSelector2\bin\Release\MetroFramework.dll
+C:\Users\zivi\Desktop\Projekte (GIT)\XAMPP_ProjectSelector\XPS2\XAMPP_ProjectSelector2\XAMPP_ProjectSelector2\bin\Release\MetroFramework.Fonts.dll
+C:\Users\zivi\Desktop\Projekte (GIT)\XAMPP_ProjectSelector\XPS2\XAMPP_ProjectSelector2\XAMPP_ProjectSelector2\bin\Release\Syncfusion.Core.WinForms.dll
+C:\Users\zivi\Desktop\Projekte (GIT)\XAMPP_ProjectSelector\XPS2\XAMPP_ProjectSelector2\XAMPP_ProjectSelector2\bin\Release\Syncfusion.Grid.Base.dll
+C:\Users\zivi\Desktop\Projekte (GIT)\XAMPP_ProjectSelector\XPS2\XAMPP_ProjectSelector2\XAMPP_ProjectSelector2\bin\Release\Syncfusion.Grid.Windows.dll
+C:\Users\zivi\Desktop\Projekte (GIT)\XAMPP_ProjectSelector\XPS2\XAMPP_ProjectSelector2\XAMPP_ProjectSelector2\bin\Release\Syncfusion.Shared.Base.dll
+C:\Users\zivi\Desktop\Projekte (GIT)\XAMPP_ProjectSelector\XPS2\XAMPP_ProjectSelector2\XAMPP_ProjectSelector2\bin\Release\Syncfusion.Shared.Windows.dll
+C:\Users\zivi\Desktop\Projekte (GIT)\XAMPP_ProjectSelector\XPS2\XAMPP_ProjectSelector2\XAMPP_ProjectSelector2\bin\Release\Syncfusion.SpellChecker.Base.dll
+C:\Users\zivi\Desktop\Projekte (GIT)\XAMPP_ProjectSelector\XPS2\XAMPP_ProjectSelector2\XAMPP_ProjectSelector2\bin\Release\Syncfusion.Tools.Base.dll
+C:\Users\zivi\Desktop\Projekte (GIT)\XAMPP_ProjectSelector\XPS2\XAMPP_ProjectSelector2\XAMPP_ProjectSelector2\bin\Release\Syncfusion.Tools.Windows.dll
+C:\Users\zivi\Desktop\Projekte (GIT)\XAMPP_ProjectSelector\XPS2\XAMPP_ProjectSelector2\XAMPP_ProjectSelector2\bin\Release\Syncfusion.Core.WinForms.xml
+C:\Users\zivi\Desktop\Projekte (GIT)\XAMPP_ProjectSelector\XPS2\XAMPP_ProjectSelector2\XAMPP_ProjectSelector2\bin\Release\Syncfusion.Grid.Base.xml
+C:\Users\zivi\Desktop\Projekte (GIT)\XAMPP_ProjectSelector\XPS2\XAMPP_ProjectSelector2\XAMPP_ProjectSelector2\bin\Release\Syncfusion.Grid.Windows.xml
+C:\Users\zivi\Desktop\Projekte (GIT)\XAMPP_ProjectSelector\XPS2\XAMPP_ProjectSelector2\XAMPP_ProjectSelector2\bin\Release\Syncfusion.Shared.Base.xml
+C:\Users\zivi\Desktop\Projekte (GIT)\XAMPP_ProjectSelector\XPS2\XAMPP_ProjectSelector2\XAMPP_ProjectSelector2\bin\Release\Syncfusion.Shared.Windows.xml
+C:\Users\zivi\Desktop\Projekte (GIT)\XAMPP_ProjectSelector\XPS2\XAMPP_ProjectSelector2\XAMPP_ProjectSelector2\bin\Release\Syncfusion.SpellChecker.Base.xml
+C:\Users\zivi\Desktop\Projekte (GIT)\XAMPP_ProjectSelector\XPS2\XAMPP_ProjectSelector2\XAMPP_ProjectSelector2\bin\Release\Syncfusion.Tools.Base.xml
+C:\Users\zivi\Desktop\Projekte (GIT)\XAMPP_ProjectSelector\XPS2\XAMPP_ProjectSelector2\XAMPP_ProjectSelector2\bin\Release\Syncfusion.Tools.Windows.xml
+C:\Users\zivi\Desktop\Projekte (GIT)\XAMPP_ProjectSelector\XPS2\XAMPP_ProjectSelector2\XAMPP_ProjectSelector2\bin\Release\Syncfusion.Grid.Windows.XmlSerializers.dll
+C:\Users\zivi\Desktop\Projekte (GIT)\XAMPP_ProjectSelector\XPS2\XAMPP_ProjectSelector2\XAMPP_ProjectSelector2\obj\Release\XAMPP_ProjectSelector2.csprojAssemblyReference.cache
+C:\Users\zivi\Desktop\Projekte (GIT)\XAMPP_ProjectSelector\XPS2\XAMPP_ProjectSelector2\XAMPP_ProjectSelector2\obj\Release\XAMPP_ProjectSelector2.Form1.resources
+C:\Users\zivi\Desktop\Projekte (GIT)\XAMPP_ProjectSelector\XPS2\XAMPP_ProjectSelector2\XAMPP_ProjectSelector2\obj\Release\XAMPP_ProjectSelector2.Properties.Resources.resources
+C:\Users\zivi\Desktop\Projekte (GIT)\XAMPP_ProjectSelector\XPS2\XAMPP_ProjectSelector2\XAMPP_ProjectSelector2\obj\Release\XAMPP_ProjectSelector2.csproj.GenerateResource.cache
+C:\Users\zivi\Desktop\Projekte (GIT)\XAMPP_ProjectSelector\XPS2\XAMPP_ProjectSelector2\XAMPP_ProjectSelector2\obj\Release\XAMPP_ProjectSelector2.csproj.CoreCompileInputs.cache
+C:\Users\zivi\Desktop\Projekte (GIT)\XAMPP_ProjectSelector\XPS2\XAMPP_ProjectSelector2\XAMPP_ProjectSelector2\obj\Release\XAMPP_ProjectSelector2.csproj.CopyComplete
+C:\Users\zivi\Desktop\Projekte (GIT)\XAMPP_ProjectSelector\XPS2\XAMPP_ProjectSelector2\XAMPP_ProjectSelector2\obj\Release\XAMPP_ProjectSelector2.exe
+C:\Users\zivi\Desktop\Projekte (GIT)\XAMPP_ProjectSelector\XPS2\XAMPP_ProjectSelector2\XAMPP_ProjectSelector2\obj\Release\XAMPP_ProjectSelector2.pdb
