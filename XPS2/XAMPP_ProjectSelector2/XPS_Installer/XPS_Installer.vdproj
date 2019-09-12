@@ -123,6 +123,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_6692373C833647F3AD068F685B0FB4D7"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_76597EF45F4E416A869538A15134C4B6"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -913,6 +919,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_6692373C833647F3AD068F685B0FB4D7"
+            {
+            "SourcePath" = "8:..\\XAMPP_ProjectSelector2\\Resources\\xamppPS.ico"
+            "TargetName" = "8:xamppPS.ico"
+            "Tag" = "8:"
+            "Folder" = "8:_54E453BD3A0442B2A2544E17C66DB235"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_76597EF45F4E416A869538A15134C4B6"
             {
             "AssemblyRegister" = "3:1"
@@ -1523,15 +1549,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:XAMPP Project Selector"
-        "ProductCode" = "8:{FF828081-2E0C-4B3A-943F-22804E2D8655}"
-        "PackageCode" = "8:{2B0254CF-F506-4F9F-839E-DDFB65420374}"
+        "ProductCode" = "8:{6A25A910-04E0-474F-8CC1-A1C4B1D79807}"
+        "PackageCode" = "8:{25ABFA6D-EE17-4F4C-878E-F1CACFDD5A66}"
         "UpgradeCode" = "8:{D4D715A7-3143-4B06-9679-97F887408639}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:FALSE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.0.0"
+        "ProductVersion" = "8:2.0"
         "Manufacturer" = "8:Endix Development"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
@@ -1655,7 +1681,7 @@
             "Target" = "8:_36E5D4484A2844BA9D8407CC9F18A7DB"
             "Folder" = "8:_3AFCFFE8948B4886B1C6B6BBC2D1F92D"
             "WorkingFolder" = "8:_54E453BD3A0442B2A2544E17C66DB235"
-            "Icon" = "8:"
+            "Icon" = "8:_6692373C833647F3AD068F685B0FB4D7"
             "Feature" = "8:"
             }
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_EE3BDBD454EE41788352CBA426290A46"
@@ -1669,7 +1695,7 @@
             "Target" = "8:_36E5D4484A2844BA9D8407CC9F18A7DB"
             "Folder" = "8:_D16ADDEEB8864A1CB099328CD46A1B2C"
             "WorkingFolder" = "8:_54E453BD3A0442B2A2544E17C66DB235"
-            "Icon" = "8:"
+            "Icon" = "8:_6692373C833647F3AD068F685B0FB4D7"
             "Feature" = "8:"
             }
         }
