@@ -126,61 +126,76 @@ namespace XAMPP_ProjectSelector2
             {
                 serviceCtr++;
 
-                processInfo = new ProcessStartInfo(Path.Combine(lblXamppInstallPath.Text, "apache_start.bat"));
-                processInfo.UseShellExecute = false;
+                processInfo = new ProcessStartInfo(Path.Combine(lblXamppInstallPath.Text, "apache_start.bat"))
+                {
+                    UseShellExecute = false,
+                    WindowStyle = ProcessWindowStyle.Hidden,
+                    RedirectStandardOutput = false,
+                    RedirectStandardError = true,
+                };
                 processInfo.WindowStyle = ProcessWindowStyle.Hidden;
-
-                batchProcess = new Process();
-                batchProcess.StartInfo = processInfo;
-                batchProcess.Start();
+                processInfo.CreateNoWindow = true;
+                batchProcess = Process.Start(processInfo);
             }
             if (chbServiceMySQL.Checked)
             {
                 serviceCtr++;
 
-                processInfo = new ProcessStartInfo(Path.Combine(lblXamppInstallPath.Text, "mysql_start.bat"));
-                processInfo.UseShellExecute = false;
+                processInfo = new ProcessStartInfo(Path.Combine(lblXamppInstallPath.Text, "mysql_start.bat"))
+                {
+                    UseShellExecute = false,
+                    WindowStyle = ProcessWindowStyle.Hidden,
+                    RedirectStandardOutput = false,
+                    RedirectStandardError = true,
+                };
                 processInfo.WindowStyle = ProcessWindowStyle.Hidden;
-
-                batchProcess = new Process();
-                batchProcess.StartInfo = processInfo;
-                batchProcess.Start();
+                processInfo.CreateNoWindow = true;
+                batchProcess = Process.Start(processInfo);
             }
             if(chbServiceTomcat.Checked)
             {
                 serviceCtr++;
 
-                processInfo = new ProcessStartInfo(Path.Combine(lblXamppInstallPath.Text, "catalina_start.bat"));
-                processInfo.UseShellExecute = false;
+                processInfo = new ProcessStartInfo(Path.Combine(lblXamppInstallPath.Text, "catalina_start.bat"))
+                {
+                    UseShellExecute = false,
+                    WindowStyle = ProcessWindowStyle.Hidden,
+                    RedirectStandardOutput = false,
+                    RedirectStandardError = true,
+                };
                 processInfo.WindowStyle = ProcessWindowStyle.Hidden;
-
-                batchProcess = new Process();
-                batchProcess.StartInfo = processInfo;
-                batchProcess.Start();
+                processInfo.CreateNoWindow = true;
+                batchProcess = Process.Start(processInfo);
             }
             if(chbServiceMercury.Checked)
             {
                 serviceCtr++;
 
-                processInfo = new ProcessStartInfo(Path.Combine(lblXamppInstallPath.Text, "mercury_start.bat"));
-                processInfo.UseShellExecute = false;
+                processInfo = new ProcessStartInfo(Path.Combine(lblXamppInstallPath.Text, "mercury_start.bat"))
+                {
+                    UseShellExecute = false,
+                    WindowStyle = ProcessWindowStyle.Hidden,
+                    RedirectStandardOutput = false,
+                    RedirectStandardError = true,
+                };
                 processInfo.WindowStyle = ProcessWindowStyle.Hidden;
-
-                batchProcess = new Process();
-                batchProcess.StartInfo = processInfo;
-                batchProcess.Start();
+                processInfo.CreateNoWindow = true;
+                batchProcess = Process.Start(processInfo);
             }
             if(chbServiceFileZilla.Checked)
             {
                 serviceCtr++;
 
-                processInfo = new ProcessStartInfo(Path.Combine(lblXamppInstallPath.Text, "filezilla_start.bat"));
-                processInfo.UseShellExecute = false;
+                processInfo = new ProcessStartInfo(Path.Combine(lblXamppInstallPath.Text, "filezilla_start.bat"))
+                {
+                    UseShellExecute = false,
+                    WindowStyle = ProcessWindowStyle.Hidden,
+                    RedirectStandardOutput = false,
+                    RedirectStandardError = true,
+                };
                 processInfo.WindowStyle = ProcessWindowStyle.Hidden;
-
-                batchProcess = new Process();
-                batchProcess.StartInfo = processInfo;
-                batchProcess.Start();
+                processInfo.CreateNoWindow = true;
+                batchProcess = Process.Start(processInfo);
             }
 
 
@@ -204,61 +219,76 @@ namespace XAMPP_ProjectSelector2
             {
                 serviceCtr++;
 
-                processInfo = new ProcessStartInfo(Path.Combine(lblXamppInstallPath.Text, "apache_stop.bat"));
-                processInfo.UseShellExecute = false;
+                processInfo = new ProcessStartInfo(Path.Combine(lblXamppInstallPath.Text, "apache_stop.bat"))
+                {
+                    UseShellExecute = false,
+                    WindowStyle = ProcessWindowStyle.Hidden,
+                    RedirectStandardOutput = false,
+                    RedirectStandardError = true,
+                };
                 processInfo.WindowStyle = ProcessWindowStyle.Hidden;
-
-                batchProcess = new Process();
-                batchProcess.StartInfo = processInfo;
-                batchProcess.Start();
+                processInfo.CreateNoWindow = true;
+                batchProcess = Process.Start(processInfo);
             }
             if (chbServiceMySQL.Checked)
             {
                 serviceCtr++;
 
-                processInfo = new ProcessStartInfo(Path.Combine(lblXamppInstallPath.Text, "mysql_stop.bat"));
-                processInfo.UseShellExecute = false;
+                processInfo = new ProcessStartInfo(Path.Combine(lblXamppInstallPath.Text, "mysql_stop.bat"))
+                {
+                    UseShellExecute = false,
+                    WindowStyle = ProcessWindowStyle.Hidden,
+                    RedirectStandardOutput = false,
+                    RedirectStandardError = true,
+                };
                 processInfo.WindowStyle = ProcessWindowStyle.Hidden;
-
-                batchProcess = new Process();
-                batchProcess.StartInfo = processInfo;
-                batchProcess.Start();
+                processInfo.CreateNoWindow = true;
+                batchProcess = Process.Start(processInfo);
             }
             if (chbServiceTomcat.Checked)
             {
                 serviceCtr++;
 
-                processInfo = new ProcessStartInfo(Path.Combine(lblXamppInstallPath.Text, "catalina_stop.bat"));
-                processInfo.UseShellExecute = false;
+                processInfo = new ProcessStartInfo(Path.Combine(lblXamppInstallPath.Text, "catalina_stop.bat"))
+                {
+                    UseShellExecute = false,
+                    WindowStyle = ProcessWindowStyle.Hidden,
+                    RedirectStandardOutput = false,
+                    RedirectStandardError = true,
+                };
                 processInfo.WindowStyle = ProcessWindowStyle.Hidden;
-
-                batchProcess = new Process();
-                batchProcess.StartInfo = processInfo;
-                batchProcess.Start();
+                processInfo.CreateNoWindow = true;
+                batchProcess = Process.Start(processInfo);
             }
             if (chbServiceMercury.Checked)
             {
                 serviceCtr++;
 
-                processInfo = new ProcessStartInfo(Path.Combine(lblXamppInstallPath.Text, "mercury_stop.bat"));
-                processInfo.UseShellExecute = false;
+                processInfo = new ProcessStartInfo(Path.Combine(lblXamppInstallPath.Text, "mercury_stop.bat"))
+                {
+                    UseShellExecute = false,
+                    WindowStyle = ProcessWindowStyle.Hidden,
+                    RedirectStandardOutput = false,
+                    RedirectStandardError = true,
+                };
                 processInfo.WindowStyle = ProcessWindowStyle.Hidden;
-
-                batchProcess = new Process();
-                batchProcess.StartInfo = processInfo;
-                batchProcess.Start();
+                processInfo.CreateNoWindow = true;
+                batchProcess = Process.Start(processInfo);
             }
             if (chbServiceFileZilla.Checked)
             {
                 serviceCtr++;
 
-                processInfo = new ProcessStartInfo(Path.Combine(lblXamppInstallPath.Text, "filezilla_stop.bat"));
-                processInfo.UseShellExecute = false;
+                processInfo = new ProcessStartInfo(Path.Combine(lblXamppInstallPath.Text, "filezilla_stop.bat"))
+                {
+                    UseShellExecute = false,
+                    WindowStyle = ProcessWindowStyle.Hidden,
+                    RedirectStandardOutput = false,
+                    RedirectStandardError = true,
+                };
                 processInfo.WindowStyle = ProcessWindowStyle.Hidden;
-
-                batchProcess = new Process();
-                batchProcess.StartInfo = processInfo;
-                batchProcess.Start();
+                processInfo.CreateNoWindow = true;
+                batchProcess = Process.Start(processInfo);
             }
 
             nicNotify.Icon = Properties.Resources.xamppPS;
@@ -461,6 +491,11 @@ namespace XAMPP_ProjectSelector2
         private void ChbServiceTomcat_Click(object sender, EventArgs e)
         {
             SaveData();
+        }
+
+        private void BtnHotSwitchP1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

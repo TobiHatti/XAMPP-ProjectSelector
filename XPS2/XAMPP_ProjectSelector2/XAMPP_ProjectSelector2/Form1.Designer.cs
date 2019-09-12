@@ -97,7 +97,7 @@
             this.tabMain.Controls.Add(this.metroTabPage4);
             this.tabMain.Location = new System.Drawing.Point(1, 22);
             this.tabMain.Name = "tabMain";
-            this.tabMain.SelectedIndex = 1;
+            this.tabMain.SelectedIndex = 0;
             this.tabMain.Size = new System.Drawing.Size(400, 370);
             this.tabMain.TabIndex = 4;
             this.tabMain.UseSelectable = true;
@@ -280,6 +280,7 @@
             this.btnHotSwitchP1.Text = "Project 1";
             this.btnHotSwitchP1.TextAlign = System.Drawing.ContentAlignment.BottomRight;
             this.btnHotSwitchP1.UseSelectable = true;
+            this.btnHotSwitchP1.Click += new System.EventHandler(this.BtnHotSwitchP1_Click);
             // 
             // metroTabPage3
             // 
