@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -117,9 +118,70 @@ namespace XAMPP_ProjectSelector2
 
         private void BtnStartServices_Click(object sender, EventArgs e)
         {
+            int serviceCtr = 0;
+            ProcessStartInfo processInfo;
+            Process batchProcess;
+
+            if (chbServiceApache.Checked)
+            {
+                serviceCtr++;
+
+                processInfo = new ProcessStartInfo(Path.Combine(lblXamppInstallPath.Text, "apache_start.bat"));
+                processInfo.UseShellExecute = false;
+
+                batchProcess = new Process();
+                batchProcess.StartInfo = processInfo;
+                batchProcess.Start();
+            }
+            if (chbServiceMySQL.Checked)
+            {
+                serviceCtr++;
+
+                processInfo = new ProcessStartInfo(Path.Combine(lblXamppInstallPath.Text, "mysql_start.bat"));
+                processInfo.UseShellExecute = false;
+
+                batchProcess = new Process();
+                batchProcess.StartInfo = processInfo;
+                batchProcess.Start();
+            }
+            if(chbServiceTomcat.Checked)
+            {
+                serviceCtr++;
+
+                processInfo = new ProcessStartInfo(Path.Combine(lblXamppInstallPath.Text, "catalina_start.bat"));
+                processInfo.UseShellExecute = false;
+
+                batchProcess = new Process();
+                batchProcess.StartInfo = processInfo;
+                batchProcess.Start();
+            }
+            if(chbServiceMercury.Checked)
+            {
+                serviceCtr++;
+
+                processInfo = new ProcessStartInfo(Path.Combine(lblXamppInstallPath.Text, "mercury_start.bat"));
+                processInfo.UseShellExecute = false;
+
+                batchProcess = new Process();
+                batchProcess.StartInfo = processInfo;
+                batchProcess.Start();
+            }
+            if(chbServiceFileZilla.Checked)
+            {
+                serviceCtr++;
+
+                processInfo = new ProcessStartInfo(Path.Combine(lblXamppInstallPath.Text, "filezilla_start.bat"));
+                processInfo.UseShellExecute = false;
+
+                batchProcess = new Process();
+                batchProcess.StartInfo = processInfo;
+                batchProcess.Start();
+            }
+
+
             nicNotify.Icon = Properties.Resources.xamppPS;
             nicNotify.BalloonTipTitle = "Services started";
-            nicNotify.BalloonTipText = "Successfully started X services.\r\nClick here to open the control-panel.";
+            nicNotify.BalloonTipText = $"Successfully started {serviceCtr} services.\r\nClick here to open the control-panel.";
             nicNotify.BalloonTipIcon = ToolTipIcon.Info;
 
             nicNotify.Visible = true;
@@ -129,9 +191,69 @@ namespace XAMPP_ProjectSelector2
 
         private void BtnStopServices_Click(object sender, EventArgs e)
         {
+            int serviceCtr = 0;
+            ProcessStartInfo processInfo;
+            Process batchProcess;
+
+            if (chbServiceApache.Checked)
+            {
+                serviceCtr++;
+
+                processInfo = new ProcessStartInfo(Path.Combine(lblXamppInstallPath.Text, "apache_stop.bat"));
+                processInfo.UseShellExecute = false;
+
+                batchProcess = new Process();
+                batchProcess.StartInfo = processInfo;
+                batchProcess.Start();
+            }
+            if (chbServiceMySQL.Checked)
+            {
+                serviceCtr++;
+
+                processInfo = new ProcessStartInfo(Path.Combine(lblXamppInstallPath.Text, "mysql_stop.bat"));
+                processInfo.UseShellExecute = false;
+
+                batchProcess = new Process();
+                batchProcess.StartInfo = processInfo;
+                batchProcess.Start();
+            }
+            if (chbServiceTomcat.Checked)
+            {
+                serviceCtr++;
+
+                processInfo = new ProcessStartInfo(Path.Combine(lblXamppInstallPath.Text, "catalina_stop.bat"));
+                processInfo.UseShellExecute = false;
+
+                batchProcess = new Process();
+                batchProcess.StartInfo = processInfo;
+                batchProcess.Start();
+            }
+            if (chbServiceMercury.Checked)
+            {
+                serviceCtr++;
+
+                processInfo = new ProcessStartInfo(Path.Combine(lblXamppInstallPath.Text, "mercury_stop.bat"));
+                processInfo.UseShellExecute = false;
+
+                batchProcess = new Process();
+                batchProcess.StartInfo = processInfo;
+                batchProcess.Start();
+            }
+            if (chbServiceFileZilla.Checked)
+            {
+                serviceCtr++;
+
+                processInfo = new ProcessStartInfo(Path.Combine(lblXamppInstallPath.Text, "filezilla_stop.bat"));
+                processInfo.UseShellExecute = false;
+
+                batchProcess = new Process();
+                batchProcess.StartInfo = processInfo;
+                batchProcess.Start();
+            }
+
             nicNotify.Icon = Properties.Resources.xamppPS;
             nicNotify.BalloonTipTitle = "Services stopped";
-            nicNotify.BalloonTipText = "Successfully stopped X services.\r\nClick here to open the control-panel.";
+            nicNotify.BalloonTipText = $"Successfully stopped {serviceCtr} services.\r\nClick here to open the control-panel.";
             nicNotify.BalloonTipIcon = ToolTipIcon.Info;
 
             nicNotify.Visible = true;
@@ -254,7 +376,7 @@ namespace XAMPP_ProjectSelector2
         {
             selectedProject = projectInfos[cbxSavedProjects.SelectedIndex];
 
-            string httpdConfPath = Path.Combine(lblXamppInstallPath.Text.ToString(), @"apache\conf\httpd.conf");
+            string httpdConfPath = Path.Combine(lblXamppInstallPath.Text, @"apache\conf\httpd.conf");
 
             string projectPath = selectedProject.ProjectRoot;
 
