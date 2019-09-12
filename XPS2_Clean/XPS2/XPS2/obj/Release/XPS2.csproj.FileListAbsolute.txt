@@ -1,0 +1,13 @@
+C:\Users\zivi\Desktop\Projekte (GIT)\XAMPP_ProjectSelector\XPS2_Clean\XPS2\XPS2\bin\Release\XPS2.exe.config
+C:\Users\zivi\Desktop\Projekte (GIT)\XAMPP_ProjectSelector\XPS2_Clean\XPS2\XPS2\bin\Release\XPS2.exe
+C:\Users\zivi\Desktop\Projekte (GIT)\XAMPP_ProjectSelector\XPS2_Clean\XPS2\XPS2\bin\Release\XPS2.pdb
+C:\Users\zivi\Desktop\Projekte (GIT)\XAMPP_ProjectSelector\XPS2_Clean\XPS2\XPS2\bin\Release\MetroFramework.Design.dll
+C:\Users\zivi\Desktop\Projekte (GIT)\XAMPP_ProjectSelector\XPS2_Clean\XPS2\XPS2\bin\Release\MetroFramework.dll
+C:\Users\zivi\Desktop\Projekte (GIT)\XAMPP_ProjectSelector\XPS2_Clean\XPS2\XPS2\bin\Release\MetroFramework.Fonts.dll
+C:\Users\zivi\Desktop\Projekte (GIT)\XAMPP_ProjectSelector\XPS2_Clean\XPS2\XPS2\obj\Release\XPS2.Form1.resources
+C:\Users\zivi\Desktop\Projekte (GIT)\XAMPP_ProjectSelector\XPS2_Clean\XPS2\XPS2\obj\Release\XPS2.Properties.Resources.resources
+C:\Users\zivi\Desktop\Projekte (GIT)\XAMPP_ProjectSelector\XPS2_Clean\XPS2\XPS2\obj\Release\XPS2.csproj.GenerateResource.cache
+C:\Users\zivi\Desktop\Projekte (GIT)\XAMPP_ProjectSelector\XPS2_Clean\XPS2\XPS2\obj\Release\XPS2.csproj.CoreCompileInputs.cache
+C:\Users\zivi\Desktop\Projekte (GIT)\XAMPP_ProjectSelector\XPS2_Clean\XPS2\XPS2\obj\Release\XPS2.csproj.CopyComplete
+C:\Users\zivi\Desktop\Projekte (GIT)\XAMPP_ProjectSelector\XPS2_Clean\XPS2\XPS2\obj\Release\XPS2.exe
+C:\Users\zivi\Desktop\Projekte (GIT)\XAMPP_ProjectSelector\XPS2_Clean\XPS2\XPS2\obj\Release\XPS2.pdb
