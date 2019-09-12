@@ -545,7 +545,7 @@ namespace XAMPP_ProjectSelector2
                 {
                     try
                     {
-                        if (hotList[i].ToString() == projectInfos[cbxSavedProjects.SelectedIndex].ToString())
+                        if (hotList[i].ToString() == pIngo.ToString())
                         {
                             projectInHotList = true;
                             projectIndex = i;
@@ -554,7 +554,7 @@ namespace XAMPP_ProjectSelector2
                     catch { }
                 }
 
-                if (!projectInHotList) hotList.GetList.Insert(0, projectInfos[cbxSavedProjects.SelectedIndex]);
+                if (!projectInHotList) hotList.GetList.Insert(0, pIngo);
                 if (projectInHotList)
                 {
                     piTmp = hotList[projectIndex];
