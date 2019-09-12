@@ -23,9 +23,9 @@ namespace XAMPP_ProjectSelector2
         private bool nextSaveIsEdit = false;
 
         private ProjectList projectInfos = new ProjectList();
-        private ProjectInfo selectedProject;
-
         private ProjectList hotList = new ProjectList();
+
+        private ProjectInfo selectedProject;
 
         public Form1()
         {
@@ -67,6 +67,9 @@ namespace XAMPP_ProjectSelector2
             // Fill hotlist
             if (hotList.Count >= 1)
             {
+                selectedProject = hotList[0];
+                lblSelectedProject.Text = "Selected Project: " + selectedProject.ProjectName;
+
                 btnHotSwitchP1.Enabled = true;
                 btnHotSwitchP1.Text = hotList[0].ProjectName;
             }
@@ -592,6 +595,9 @@ namespace XAMPP_ProjectSelector2
 
                 File.Delete(httpdConfPath);
                 File.Move(httpdConfPath + "temp", httpdConfPath);
+
+
+                lblSelectedProject.Text = "Selected Project: " + selectedProject.ProjectName;
 
                 MessageBox.Show($"Project {selectedProject.ProjectName} selected!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }

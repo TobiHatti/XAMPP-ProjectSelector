@@ -32,7 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.tabMain = new MetroFramework.Controls.MetroTabControl();
             this.metroTabPage1 = new MetroFramework.Controls.MetroTabPage();
-            this.metroLabel15 = new MetroFramework.Controls.MetroLabel();
+            this.lblSelectedProject = new MetroFramework.Controls.MetroLabel();
             this.cbxSavedProjects = new MetroFramework.Controls.MetroComboBox();
             this.metroLabel11 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel10 = new MetroFramework.Controls.MetroLabel();
@@ -104,7 +104,7 @@
             // 
             // metroTabPage1
             // 
-            this.metroTabPage1.Controls.Add(this.metroLabel15);
+            this.metroTabPage1.Controls.Add(this.lblSelectedProject);
             this.metroTabPage1.Controls.Add(this.cbxSavedProjects);
             this.metroTabPage1.Controls.Add(this.metroLabel11);
             this.metroTabPage1.Controls.Add(this.metroLabel10);
@@ -128,14 +128,14 @@
             this.metroTabPage1.VerticalScrollbarHighlightOnWheel = false;
             this.metroTabPage1.VerticalScrollbarSize = 10;
             // 
-            // metroLabel15
+            // lblSelectedProject
             // 
-            this.metroLabel15.AutoSize = true;
-            this.metroLabel15.Location = new System.Drawing.Point(5, 17);
-            this.metroLabel15.Name = "metroLabel15";
-            this.metroLabel15.Size = new System.Drawing.Size(142, 19);
-            this.metroLabel15.TabIndex = 7;
-            this.metroLabel15.Text = "Selected Project: None";
+            this.lblSelectedProject.AutoSize = true;
+            this.lblSelectedProject.Location = new System.Drawing.Point(5, 17);
+            this.lblSelectedProject.Name = "lblSelectedProject";
+            this.lblSelectedProject.Size = new System.Drawing.Size(142, 19);
+            this.lblSelectedProject.TabIndex = 7;
+            this.lblSelectedProject.Text = "Selected Project: None";
             // 
             // cbxSavedProjects
             // 
@@ -842,7 +842,7 @@
         private MetroFramework.Controls.MetroTile btnSaveProject;
         private MetroFramework.Controls.MetroTile btnCancel;
         private System.Windows.Forms.FolderBrowserDialog fbdRootPath;
-        private MetroFramework.Controls.MetroLabel metroLabel15;
+        private MetroFramework.Controls.MetroLabel lblSelectedProject;
         private System.Windows.Forms.NotifyIcon nicNotify;
     }
 }
