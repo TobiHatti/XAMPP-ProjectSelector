@@ -19,10 +19,13 @@ namespace XAMPP_ProjectSelector2
         private BindingManager bm = new BindingManager();
         private string iniFile = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), @"XAMPP Project Selector\xamppPS.ini");
         private string projectsFile = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), @"XAMPP Project Selector\projects.ini");
+        private string hotListFile = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), @"XAMPP Project Selector\hotlist.ini");
         private bool nextSaveIsEdit = false;
 
         private ProjectList projectInfos = new ProjectList();
         private ProjectInfo selectedProject;
+
+        private ProjectList hotList = new ProjectList();
 
         public Form1()
         {
@@ -55,10 +58,47 @@ namespace XAMPP_ProjectSelector2
             if (btnHotSwitchP5.Text == "") btnHotSwitchP5.Text = "Project 5";
 
             projectInfos.LoadFromFile(projectsFile);
+            hotList.LoadFromFile(hotListFile);
 
             cbxSavedProjects.DisplayMember = "ProjectName";
             cbxSavedProjects.ValueMember = "ProjectRoot";
             cbxSavedProjects.DataSource = projectInfos.GetList;
+
+            // Fill hotlist
+            if (hotList.Count >= 1)
+            {
+                btnHotSwitchP1.Enabled = true;
+                btnHotSwitchP1.Text = hotList[0].ProjectName;
+            }
+            else btnHotSwitchP1.Enabled = false;
+
+            if (hotList.Count >= 2)
+            {
+                btnHotSwitchP2.Enabled = true;
+                btnHotSwitchP2.Text = hotList[1].ProjectName;
+            }
+            else btnHotSwitchP2.Enabled = false;
+
+            if (hotList.Count >= 3)
+            {
+                btnHotSwitchP3.Enabled = true;
+                btnHotSwitchP3.Text = hotList[2].ProjectName;
+            }
+            else btnHotSwitchP3.Enabled = false;
+
+            if (hotList.Count >= 4)
+            {
+                btnHotSwitchP4.Enabled = true;
+                btnHotSwitchP4.Text = hotList[3].ProjectName;
+            }
+            else btnHotSwitchP4.Enabled = false;
+
+            if (hotList.Count >= 5)
+            {
+                btnHotSwitchP5.Enabled = true;
+                btnHotSwitchP5.Text = hotList[4].ProjectName;
+            }
+            else btnHotSwitchP5.Enabled = false;
 
         }
 
@@ -66,6 +106,7 @@ namespace XAMPP_ProjectSelector2
         {
             bm.SaveBindings(iniFile);
             projectInfos.SaveToFile(projectsFile);
+            hotList.SaveToFile(hotListFile);
         }
 
         private void LblClose_Click(object sender, EventArgs e)
@@ -480,37 +521,87 @@ namespace XAMPP_ProjectSelector2
 
         private void BtnSelectProject_Click(object sender, EventArgs e)
         {
-            selectedProject = projectInfos[cbxSavedProjects.SelectedIndex];
-
-            string httpdConfPath = Path.Combine(lblXamppInstallPath.Text, @"apache\conf\httpd.conf");
-
-            string projectPath = selectedProject.ProjectRoot;
-
-            string line;
-
-            StreamReader sr = new StreamReader(httpdConfPath);
-            StreamWriter sw = new StreamWriter(httpdConfPath + "temp");
-
-            while ((line = sr.ReadLine()) != null)
+            try
             {
-                if (line.StartsWith("DocumentRoot"))
-                {
-                    sw.WriteLine("DocumentRoot \"{0}\"", projectPath.Replace('\\', '/'));
-                    sw.WriteLine("<Directory \"{0}\">", projectPath.Replace('\\', '/'));
-                    sr.ReadLine();
-                }
-                else sw.WriteLine(line);
+
+                SelectProject(projectInfos[cbxSavedProjects.SelectedIndex]);
+                SaveData();
             }
-
-            sw.Close();
-            sr.Close();
-
-            File.Delete(httpdConfPath);
-            File.Move(httpdConfPath + "temp", httpdConfPath);
-
-
-            MessageBox.Show($"Project {selectedProject.ProjectName} selected!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            catch
+            {
+                MessageBox.Show($"An error occured whilst trying to select the project!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
+
+        private void SelectProject(ProjectInfo pIngo)
+        {
+            try
+            {
+
+                bool projectInHotList = false;
+                int projectIndex = -1;
+                ProjectInfo piTmp;
+                for (int i = 0; i < 5; i++)
+                {
+                    try
+                    {
+                        if (hotList[i].ToString() == projectInfos[cbxSavedProjects.SelectedIndex].ToString())
+                        {
+                            projectInHotList = true;
+                            projectIndex = i;
+                        }
+                    }
+                    catch { }
+                }
+
+                if (!projectInHotList) hotList.GetList.Insert(0, projectInfos[cbxSavedProjects.SelectedIndex]);
+                if (projectInHotList)
+                {
+                    piTmp = hotList[projectIndex];
+                    hotList.RemoveAt(projectIndex);
+                    hotList.GetList.Insert(0, piTmp);
+                }
+
+
+
+
+                //selectedProject = projectInfos[cbxSavedProjects.SelectedIndex];
+                selectedProject = pIngo;
+
+                string httpdConfPath = Path.Combine(lblXamppInstallPath.Text, @"apache\conf\httpd.conf");
+
+                string projectPath = selectedProject.ProjectRoot;
+
+                string line;
+
+                StreamReader sr = new StreamReader(httpdConfPath);
+                StreamWriter sw = new StreamWriter(httpdConfPath + "temp");
+
+                while ((line = sr.ReadLine()) != null)
+                {
+                    if (line.StartsWith("DocumentRoot"))
+                    {
+                        sw.WriteLine("DocumentRoot \"{0}\"", projectPath.Replace('\\', '/'));
+                        sw.WriteLine("<Directory \"{0}\">", projectPath.Replace('\\', '/'));
+                        sr.ReadLine();
+                    }
+                    else sw.WriteLine(line);
+                }
+
+                sw.Close();
+                sr.Close();
+
+                File.Delete(httpdConfPath);
+                File.Move(httpdConfPath + "temp", httpdConfPath);
+
+                MessageBox.Show($"Project {selectedProject.ProjectName} selected!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch
+            {
+                MessageBox.Show($"Could not select Project! Check your Project root path and make sure the XAMPP install path is correct!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
 
         private void BtnToggleAllServicesOn_Click(object sender, EventArgs e)
         {
@@ -562,27 +653,63 @@ namespace XAMPP_ProjectSelector2
 
         private void BtnHotSwitchP1_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                SelectProject(hotList[0]);
+            }
+            catch
+            {
+                MessageBox.Show($"An error occured whilst trying to select the project!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void BtnHotSwitchP2_Click(object sender, EventArgs e)
         {
+            try
+            {
+                SelectProject(hotList[1]);
+            }
+            catch
+            {
+                MessageBox.Show($"An error occured whilst trying to select the project!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
         }
 
         private void BtnHotSwitchP3_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                SelectProject(hotList[2]);
+            }
+            catch
+            {
+                MessageBox.Show($"An error occured whilst trying to select the project!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void BtnHotSwitchP4_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                SelectProject(hotList[3]);
+            }
+            catch
+            {
+                MessageBox.Show($"An error occured whilst trying to select the project!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void BtnHotSwitchP5_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                SelectProject(hotList[4]);
+            }
+            catch
+            {
+                MessageBox.Show($"An error occured whilst trying to select the project!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
