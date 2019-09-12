@@ -254,7 +254,7 @@ namespace XAMPP_ProjectSelector2
         {
             selectedProject = projectInfos[cbxSavedProjects.SelectedIndex];
 
-            string httpdConfPath = Path.Combine(lblXamppInstallPath.Text, @"\apache\conf\httpd.conf");
+            string httpdConfPath = Path.Combine(lblXamppInstallPath.Text.ToString(), @"apache\conf\httpd.conf");
 
             string projectPath = selectedProject.ProjectRoot;
 
