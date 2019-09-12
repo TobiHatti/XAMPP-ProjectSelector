@@ -523,7 +523,6 @@ namespace XAMPP_ProjectSelector2
         {
             try
             {
-
                 SelectProject(projectInfos[cbxSavedProjects.SelectedIndex]);
                 SaveData();
             }
@@ -656,6 +655,7 @@ namespace XAMPP_ProjectSelector2
             try
             {
                 SelectProject(hotList[0]);
+                SaveData();
             }
             catch
             {
@@ -668,6 +668,7 @@ namespace XAMPP_ProjectSelector2
             try
             {
                 SelectProject(hotList[1]);
+                SaveData();
             }
             catch
             {
@@ -681,6 +682,7 @@ namespace XAMPP_ProjectSelector2
             try
             {
                 SelectProject(hotList[2]);
+                SaveData();
             }
             catch
             {
@@ -693,6 +695,7 @@ namespace XAMPP_ProjectSelector2
             try
             {
                 SelectProject(hotList[3]);
+                SaveData();
             }
             catch
             {
@@ -705,6 +708,7 @@ namespace XAMPP_ProjectSelector2
             try
             {
                 SelectProject(hotList[4]);
+                SaveData();
             }
             catch
             {
