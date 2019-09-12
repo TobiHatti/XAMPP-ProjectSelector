@@ -128,6 +128,7 @@ namespace XAMPP_ProjectSelector2
 
                 processInfo = new ProcessStartInfo(Path.Combine(lblXamppInstallPath.Text, "apache_start.bat"));
                 processInfo.UseShellExecute = false;
+                processInfo.WindowStyle = ProcessWindowStyle.Hidden;
 
                 batchProcess = new Process();
                 batchProcess.StartInfo = processInfo;
@@ -139,6 +140,7 @@ namespace XAMPP_ProjectSelector2
 
                 processInfo = new ProcessStartInfo(Path.Combine(lblXamppInstallPath.Text, "mysql_start.bat"));
                 processInfo.UseShellExecute = false;
+                processInfo.WindowStyle = ProcessWindowStyle.Hidden;
 
                 batchProcess = new Process();
                 batchProcess.StartInfo = processInfo;
@@ -150,6 +152,7 @@ namespace XAMPP_ProjectSelector2
 
                 processInfo = new ProcessStartInfo(Path.Combine(lblXamppInstallPath.Text, "catalina_start.bat"));
                 processInfo.UseShellExecute = false;
+                processInfo.WindowStyle = ProcessWindowStyle.Hidden;
 
                 batchProcess = new Process();
                 batchProcess.StartInfo = processInfo;
@@ -161,6 +164,7 @@ namespace XAMPP_ProjectSelector2
 
                 processInfo = new ProcessStartInfo(Path.Combine(lblXamppInstallPath.Text, "mercury_start.bat"));
                 processInfo.UseShellExecute = false;
+                processInfo.WindowStyle = ProcessWindowStyle.Hidden;
 
                 batchProcess = new Process();
                 batchProcess.StartInfo = processInfo;
@@ -172,6 +176,7 @@ namespace XAMPP_ProjectSelector2
 
                 processInfo = new ProcessStartInfo(Path.Combine(lblXamppInstallPath.Text, "filezilla_start.bat"));
                 processInfo.UseShellExecute = false;
+                processInfo.WindowStyle = ProcessWindowStyle.Hidden;
 
                 batchProcess = new Process();
                 batchProcess.StartInfo = processInfo;
@@ -201,6 +206,7 @@ namespace XAMPP_ProjectSelector2
 
                 processInfo = new ProcessStartInfo(Path.Combine(lblXamppInstallPath.Text, "apache_stop.bat"));
                 processInfo.UseShellExecute = false;
+                processInfo.WindowStyle = ProcessWindowStyle.Hidden;
 
                 batchProcess = new Process();
                 batchProcess.StartInfo = processInfo;
@@ -212,6 +218,7 @@ namespace XAMPP_ProjectSelector2
 
                 processInfo = new ProcessStartInfo(Path.Combine(lblXamppInstallPath.Text, "mysql_stop.bat"));
                 processInfo.UseShellExecute = false;
+                processInfo.WindowStyle = ProcessWindowStyle.Hidden;
 
                 batchProcess = new Process();
                 batchProcess.StartInfo = processInfo;
@@ -223,6 +230,7 @@ namespace XAMPP_ProjectSelector2
 
                 processInfo = new ProcessStartInfo(Path.Combine(lblXamppInstallPath.Text, "catalina_stop.bat"));
                 processInfo.UseShellExecute = false;
+                processInfo.WindowStyle = ProcessWindowStyle.Hidden;
 
                 batchProcess = new Process();
                 batchProcess.StartInfo = processInfo;
@@ -234,6 +242,7 @@ namespace XAMPP_ProjectSelector2
 
                 processInfo = new ProcessStartInfo(Path.Combine(lblXamppInstallPath.Text, "mercury_stop.bat"));
                 processInfo.UseShellExecute = false;
+                processInfo.WindowStyle = ProcessWindowStyle.Hidden;
 
                 batchProcess = new Process();
                 batchProcess.StartInfo = processInfo;
@@ -245,6 +254,7 @@ namespace XAMPP_ProjectSelector2
 
                 processInfo = new ProcessStartInfo(Path.Combine(lblXamppInstallPath.Text, "filezilla_stop.bat"));
                 processInfo.UseShellExecute = false;
+                processInfo.WindowStyle = ProcessWindowStyle.Hidden;
 
                 batchProcess = new Process();
                 batchProcess.StartInfo = processInfo;
