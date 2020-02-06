@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.tabMain = new MetroFramework.Controls.MetroTabControl();
             this.metroTabPage1 = new MetroFramework.Controls.MetroTabPage();
             this.lblSelectedProject = new MetroFramework.Controls.MetroLabel();
@@ -168,7 +167,7 @@
             // btnManageProject
             // 
             this.btnManageProject.ActiveControl = null;
-            this.btnManageProject.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
+            this.btnManageProject.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnManageProject.Location = new System.Drawing.Point(199, 221);
             this.btnManageProject.Margin = new System.Windows.Forms.Padding(0);
@@ -182,7 +181,7 @@
             // btnSelectProject
             // 
             this.btnSelectProject.ActiveControl = null;
-            this.btnSelectProject.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
+            this.btnSelectProject.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSelectProject.Location = new System.Drawing.Point(5, 221);
             this.btnSelectProject.Margin = new System.Windows.Forms.Padding(0);
@@ -197,7 +196,7 @@
             // btnDeleteProject
             // 
             this.btnDeleteProject.ActiveControl = null;
-            this.btnDeleteProject.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
+            this.btnDeleteProject.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnDeleteProject.Location = new System.Drawing.Point(199, 289);
             this.btnDeleteProject.Margin = new System.Windows.Forms.Padding(0);
@@ -211,7 +210,7 @@
             // btnHotSwitchP5
             // 
             this.btnHotSwitchP5.ActiveControl = null;
-            this.btnHotSwitchP5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
+            this.btnHotSwitchP5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnHotSwitchP5.BackColor = System.Drawing.Color.White;
             this.btnHotSwitchP5.Location = new System.Drawing.Point(285, 120);
@@ -227,7 +226,7 @@
             // btnHotSwitchP4
             // 
             this.btnHotSwitchP4.ActiveControl = null;
-            this.btnHotSwitchP4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
+            this.btnHotSwitchP4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnHotSwitchP4.BackColor = System.Drawing.Color.White;
             this.btnHotSwitchP4.Location = new System.Drawing.Point(154, 120);
@@ -243,7 +242,7 @@
             // btnHotSwitchP3
             // 
             this.btnHotSwitchP3.ActiveControl = null;
-            this.btnHotSwitchP3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
+            this.btnHotSwitchP3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnHotSwitchP3.BackColor = System.Drawing.Color.White;
             this.btnHotSwitchP3.Location = new System.Drawing.Point(5, 120);
@@ -258,7 +257,7 @@
             // btnHotSwitchP2
             // 
             this.btnHotSwitchP2.ActiveControl = null;
-            this.btnHotSwitchP2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
+            this.btnHotSwitchP2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnHotSwitchP2.BackColor = System.Drawing.Color.White;
             this.btnHotSwitchP2.Location = new System.Drawing.Point(199, 77);
@@ -273,7 +272,7 @@
             // btnHotSwitchP1
             // 
             this.btnHotSwitchP1.ActiveControl = null;
-            this.btnHotSwitchP1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
+            this.btnHotSwitchP1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnHotSwitchP1.BackColor = System.Drawing.Color.White;
             this.btnHotSwitchP1.Location = new System.Drawing.Point(5, 77);
@@ -335,7 +334,7 @@
             // btnToggleAllServicesOff
             // 
             this.btnToggleAllServicesOff.ActiveControl = null;
-            this.btnToggleAllServicesOff.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
+            this.btnToggleAllServicesOff.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnToggleAllServicesOff.Location = new System.Drawing.Point(199, 284);
             this.btnToggleAllServicesOff.Name = "btnToggleAllServicesOff";
@@ -348,7 +347,7 @@
             // btnToggleAllServicesOn
             // 
             this.btnToggleAllServicesOn.ActiveControl = null;
-            this.btnToggleAllServicesOn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
+            this.btnToggleAllServicesOn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnToggleAllServicesOn.Location = new System.Drawing.Point(5, 283);
             this.btnToggleAllServicesOn.Name = "btnToggleAllServicesOn";
@@ -604,7 +603,7 @@
             // btnCancel
             // 
             this.btnCancel.ActiveControl = null;
-            this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
+            this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancel.BackColor = System.Drawing.Color.White;
             this.btnCancel.Enabled = false;
@@ -620,7 +619,7 @@
             // btnSaveProject
             // 
             this.btnSaveProject.ActiveControl = null;
-            this.btnSaveProject.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
+            this.btnSaveProject.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSaveProject.BackColor = System.Drawing.Color.White;
             this.btnSaveProject.Enabled = false;
@@ -636,7 +635,7 @@
             // btnAddNewProject
             // 
             this.btnAddNewProject.ActiveControl = null;
-            this.btnAddNewProject.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
+            this.btnAddNewProject.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAddNewProject.BackColor = System.Drawing.Color.White;
             this.btnAddNewProject.Location = new System.Drawing.Point(6, 17);
@@ -696,7 +695,7 @@
             // btnStartServices
             // 
             this.btnStartServices.ActiveControl = null;
-            this.btnStartServices.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
+            this.btnStartServices.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnStartServices.BackColor = System.Drawing.Color.White;
             this.btnStartServices.ForeColor = System.Drawing.SystemColors.ControlText;
@@ -713,7 +712,7 @@
             // btnStopServices
             // 
             this.btnStopServices.ActiveControl = null;
-            this.btnStopServices.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
+            this.btnStopServices.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnStopServices.Location = new System.Drawing.Point(204, 392);
             this.btnStopServices.Margin = new System.Windows.Forms.Padding(0);
@@ -771,7 +770,6 @@
             this.Controls.Add(this.btnStartServices);
             this.Controls.Add(this.tabMain);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
