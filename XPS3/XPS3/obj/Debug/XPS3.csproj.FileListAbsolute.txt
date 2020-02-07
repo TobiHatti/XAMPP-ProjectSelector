@@ -2,10 +2,10 @@ C:\Users\zivi\Desktop\Projects (GIT)\XAMPP_ProjectSelector\XPS3\XPS3\bin\Debug\X
 C:\Users\zivi\Desktop\Projects (GIT)\XAMPP_ProjectSelector\XPS3\XPS3\bin\Debug\XPS3.exe
 C:\Users\zivi\Desktop\Projects (GIT)\XAMPP_ProjectSelector\XPS3\XPS3\bin\Debug\XPS3.pdb
 C:\Users\zivi\Desktop\Projects (GIT)\XAMPP_ProjectSelector\XPS3\XPS3\bin\Debug\MetroSet UI.dll
-C:\Users\zivi\Desktop\Projects (GIT)\XAMPP_ProjectSelector\XPS3\XPS3\obj\Debug\XPS3.Form1.resources
 C:\Users\zivi\Desktop\Projects (GIT)\XAMPP_ProjectSelector\XPS3\XPS3\obj\Debug\XPS3.Properties.Resources.resources
 C:\Users\zivi\Desktop\Projects (GIT)\XAMPP_ProjectSelector\XPS3\XPS3\obj\Debug\XPS3.csproj.GenerateResource.cache
 C:\Users\zivi\Desktop\Projects (GIT)\XAMPP_ProjectSelector\XPS3\XPS3\obj\Debug\XPS3.csproj.CopyComplete
 C:\Users\zivi\Desktop\Projects (GIT)\XAMPP_ProjectSelector\XPS3\XPS3\obj\Debug\XPS3.exe
 C:\Users\zivi\Desktop\Projects (GIT)\XAMPP_ProjectSelector\XPS3\XPS3\obj\Debug\XPS3.pdb
 C:\Users\zivi\Desktop\Projects (GIT)\XAMPP_ProjectSelector\XPS3\XPS3\obj\Debug\XPS3.csprojAssemblyReference.cache
+C:\Users\zivi\Desktop\Projects (GIT)\XAMPP_ProjectSelector\XPS3\XPS3\obj\Debug\XPS3.XPSMain.resources

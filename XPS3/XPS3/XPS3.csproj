@@ -49,7 +49,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BindingManager.cs" />
     <Compile Include="XPSMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -87,6 +86,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\xamppPS.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="apache.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="filezilla.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="mysql.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="tomcat.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="mysql.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="mercury.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
