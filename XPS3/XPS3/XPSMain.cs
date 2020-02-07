@@ -153,5 +153,21 @@ namespace XPS3
         {
             cmsTomcatConfig.Show(btnTomcatConfig, 32, 0);
         }
+
+        private void btnSelectXamppInstallPath_Click(object sender, EventArgs e)
+        {
+            if(fbdFolderSelector.ShowDialog() == DialogResult.OK)
+            {
+                txbXamppInstallPath.Text = fbdFolderSelector.SelectedPath;
+            }
+        }
+
+        private void btnSelectDefaultEditor_Click(object sender, EventArgs e)
+        {
+            if(ofdFileSelector.ShowDialog() == DialogResult.OK)
+            {
+                txbDefaultEditorPath.Text = ofdFileSelector.FileName;
+            }
+        }
     }
 }
