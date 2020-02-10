@@ -8,6 +8,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -157,10 +158,68 @@ namespace XPS3
 
         private void btnStartServices_Click(object sender, EventArgs e)
         {
+            if(chbServiceApache.Switched)       AttemptStartApache();
+            if(chbServiceMySQL.Switched)        AttemptStartMySQL();
+            if(chbServiceFileZilla.Switched)    AttemptStartFileZilla();
+            if(chbServiceMercury.Switched)      AttemptStartMercury();
+            if(chbServiceTomcat.Switched)       AttemptStartTomcat();
 
         }
 
         private void btnStopServices_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        public bool IsProcessOpen(string name)
+        {
+            foreach (Process clsProcess in Process.GetProcesses())
+            {
+                if (clsProcess.ProcessName.Contains(name))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        private void tmrCheckServiceStatus_Tick(object sender, EventArgs e)
+        {
+            pbxApacheStatus.BackColor = IsProcessOpen("httpd") ? Color.Lime : Color.Red;
+            pbxMySQLStatus.BackColor = IsProcessOpen("mysqld") ? Color.Lime : Color.Red;
+            pbxFileZillaStatus.BackColor = IsProcessOpen("FileZillaServer") ? Color.Lime : Color.Red;
+            pbxMercuryStatus.BackColor = IsProcessOpen("mercury") ? Color.Lime : Color.Red;
+            pbxTomcatStatus.BackColor = IsProcessOpen("catalina") ? Color.Lime : Color.Red;
+
+            pbxApacheStatus.Invalidate();
+            pbxMySQLStatus.Invalidate();
+            pbxFileZillaStatus.Invalidate();
+            pbxMercuryStatus.Invalidate();
+            pbxTomcatStatus.Invalidate();
+        }
+
+        private void AttemptStartApache()
+        {
+
+        }
+
+        private void AttemptStartMySQL()
+        {
+
+        }
+
+        private void AttemptStartFileZilla()
+        {
+
+        }
+
+        private void AttemptStartMercury()
+        {
+
+        }
+
+        private void AttemptStartTomcat()
         {
 
         }
@@ -407,5 +466,7 @@ namespace XPS3
         }
 
         #endregion
+
+        
     }
 }

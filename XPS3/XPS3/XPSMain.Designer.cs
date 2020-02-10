@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(XPSMain));
             this.tctTabMenu = new MetroSet_UI.Controls.MetroSetTabControl();
             this.tabProjects = new MetroSet_UI.Child.MetroSetTabPage();
@@ -145,6 +146,7 @@
             this.pbxFileZillaStatus = new System.Windows.Forms.PictureBox();
             this.pbxMercuryStatus = new System.Windows.Forms.PictureBox();
             this.pbxTomcatStatus = new System.Windows.Forms.PictureBox();
+            this.tmrCheckServiceStatus = new System.Windows.Forms.Timer(this.components);
             this.tctTabMenu.SuspendLayout();
             this.tabProjects.SuspendLayout();
             this.tabServices.SuspendLayout();
@@ -178,11 +180,11 @@
             this.tctTabMenu.Controls.Add(this.tabServices);
             this.tctTabMenu.Controls.Add(this.tabManager);
             this.tctTabMenu.Controls.Add(this.tabSettings);
-            this.tctTabMenu.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.tctTabMenu.Cursor = System.Windows.Forms.Cursors.Default;
             this.tctTabMenu.ItemSize = new System.Drawing.Size(100, 38);
             this.tctTabMenu.Location = new System.Drawing.Point(12, 12);
             this.tctTabMenu.Name = "tctTabMenu";
-            this.tctTabMenu.SelectedIndex = 0;
+            this.tctTabMenu.SelectedIndex = 1;
             this.tctTabMenu.Size = new System.Drawing.Size(315, 393);
             this.tctTabMenu.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tctTabMenu.Speed = 20;
@@ -1762,7 +1764,7 @@
             this.tslBrowsePhp,
             this.tslBrowsePhpMyAdmin});
             this.cmsApacheConfig.Name = "cmsApacheConfig";
-            this.cmsApacheConfig.Size = new System.Drawing.Size(227, 208);
+            this.cmsApacheConfig.Size = new System.Drawing.Size(227, 186);
             this.cmsApacheConfig.Style = MetroSet_UI.Design.Style.Custom;
             this.cmsApacheConfig.StyleManager = null;
             this.cmsApacheConfig.ThemeAuthor = "Narwin";
@@ -2203,6 +2205,12 @@
             this.pbxTomcatStatus.TabIndex = 20;
             this.pbxTomcatStatus.TabStop = false;
             // 
+            // tmrCheckServiceStatus
+            // 
+            this.tmrCheckServiceStatus.Enabled = true;
+            this.tmrCheckServiceStatus.Interval = 1000;
+            this.tmrCheckServiceStatus.Tick += new System.EventHandler(this.tmrCheckServiceStatus_Tick);
+            // 
             // XPSMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2361,6 +2369,7 @@
         private System.Windows.Forms.PictureBox pbxFileZillaStatus;
         private System.Windows.Forms.PictureBox pbxMySQLStatus;
         private System.Windows.Forms.PictureBox pbxApacheStatus;
+        private System.Windows.Forms.Timer tmrCheckServiceStatus;
     }
 }
 

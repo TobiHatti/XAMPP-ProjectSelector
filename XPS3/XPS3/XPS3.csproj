@@ -100,9 +100,6 @@
     <None Include="filezilla.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="mysql.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="tomcat.png" />
   </ItemGroup>
   <ItemGroup>
