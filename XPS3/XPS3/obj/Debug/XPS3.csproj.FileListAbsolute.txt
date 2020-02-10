@@ -9,3 +9,8 @@ C:\Users\zivi\Desktop\Projects (GIT)\XAMPP_ProjectSelector\XPS3\XPS3\obj\Debug\X
 C:\Users\zivi\Desktop\Projects (GIT)\XAMPP_ProjectSelector\XPS3\XPS3\obj\Debug\XPS3.pdb
 C:\Users\zivi\Desktop\Projects (GIT)\XAMPP_ProjectSelector\XPS3\XPS3\obj\Debug\XPS3.csprojAssemblyReference.cache
 C:\Users\zivi\Desktop\Projects (GIT)\XAMPP_ProjectSelector\XPS3\XPS3\obj\Debug\XPS3.XPSMain.resources
+C:\Users\zivi\Desktop\Projects (GIT)\XAMPP_ProjectSelector\XPS3\XPS3\bin\Debug\x86\sqlite3.dll
+C:\Users\zivi\Desktop\Projects (GIT)\XAMPP_ProjectSelector\XPS3\XPS3\bin\Debug\x64\sqlite3.dll
+C:\Users\zivi\Desktop\Projects (GIT)\XAMPP_ProjectSelector\XPS3\XPS3\bin\Debug\System.Data.SQLite.dll
+C:\Users\zivi\Desktop\Projects (GIT)\XAMPP_ProjectSelector\XPS3\XPS3\bin\Debug\System.Data.SQLite.xml
+C:\Users\zivi\Desktop\Projects (GIT)\XAMPP_ProjectSelector\XPS3\XPS3\bin\Debug\System.Data.SQLite.dll.config
