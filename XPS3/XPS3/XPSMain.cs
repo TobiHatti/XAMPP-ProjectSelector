@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.SQLite;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -14,10 +15,13 @@ namespace XPS3
 {
     public partial class XPSMain : Form
     {
-        private readonly string XPSDataFile =   $@"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}\XPS3\xpsdat.db";
-        private readonly string ConString =     $@"URI=file:{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}\XPS3\xpsdat.db";
+        private readonly string XPSDataFile = $@"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}\XPS3\xpsdat.db";
+        private readonly string ConString = $@"URI=file:{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}\XPS3\xpsdat.db";
         private SQLiteConnection connection = null;
         private SQLiteCommand cmd = null;
+
+        private string defaultEditor = "notepad.exe";
+        private string xamppInstallPath = null;
 
         private bool disableOnCheckChangeUpdate = true;
         public XPSMain()
@@ -54,7 +58,7 @@ namespace XPS3
 
             // Set up db (only on first execution)
             cmd = new SQLiteCommand(connection);
-            if(!fileExitst)
+            if (!fileExitst)
             {
                 cmd.CommandText = @"CREATE TABLE ""Settings"" (""ID"" INTEGER PRIMARY KEY AUTOINCREMENT, ""Key"" TEXT UNIQUE, ""Value"" TEXT);";
                 cmd.ExecuteNonQuery();
@@ -94,7 +98,7 @@ namespace XPS3
             connection.Close();
             if (result == null && pDefaultValue != null) return pDefaultValue;
             else return result;
-            
+
         }
 
         private void LoadDBDataToForm()
@@ -107,14 +111,44 @@ namespace XPS3
             chbServiceTomcat.Switched = Convert.ToBoolean(SettingsPeek("ServiceStatusTomcat", false));
 
             // Settings-Tab
-            txbXamppInstallPath.Text = Convert.ToString(SettingsPeek("XAMPPInstall", @"C:\xampp"));
-            txbDefaultEditorPath.Text = Convert.ToString(SettingsPeek("DefaultEditor", @"notepad.exe"));
+            xamppInstallPath = Convert.ToString(SettingsPeek("XAMPPInstall", @"C:\xampp"));
+            defaultEditor = Convert.ToString(SettingsPeek("DefaultEditor", @"notepad.exe"));
+
+            txbXamppInstallPath.Text = xamppInstallPath;
+            txbDefaultEditorPath.Text = defaultEditor;
 
             chbAutostartApache.Checked = Convert.ToBoolean(SettingsPeek("AutostartApache", false));
             chbAutostartMySQL.Checked = Convert.ToBoolean(SettingsPeek("AutostartMySQL", false));
             chbAutostartFileZilla.Checked = Convert.ToBoolean(SettingsPeek("AutostartFileZilla", false));
             chbAutostartMercury.Checked = Convert.ToBoolean(SettingsPeek("AutostartMercury", false));
             chbAutostartTomcat.Checked = Convert.ToBoolean(SettingsPeek("AutostartTomcat", false));
+        }
+
+        private void LaunchInEditor(string pRelativePathToFile)
+        {
+            if (!(Directory.Exists(xamppInstallPath) && File.Exists(Path.Combine(xamppInstallPath, "xampp-control.exe")) && Directory.Exists(Path.Combine(xamppInstallPath, "htdocs"))))
+            {
+                MessageBox.Show("Your XAMPP-Installation-Path is not valid! Please check if you have selected the correct folder in the \"Settings\"-Tab", "Wrong XAMPP-Folder", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+            Process.Start(defaultEditor, Path.Combine(xamppInstallPath, pRelativePathToFile));
+        }
+
+        private void OpenFolder(string pRelativePathToFolder)
+        {
+            if (!(Directory.Exists(xamppInstallPath) && File.Exists(Path.Combine(xamppInstallPath, "xampp-control.exe")) && Directory.Exists(Path.Combine(xamppInstallPath, "htdocs"))))
+            {
+                MessageBox.Show("Your XAMPP-Installation-Path is not valid! Please check if you have selected the correct folder in the \"Settings\"-Tab", "Wrong XAMPP-Folder", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+
+            ProcessStartInfo startInfo = new ProcessStartInfo
+            {
+                Arguments = Path.Combine(xamppInstallPath, pRelativePathToFolder),
+                FileName = "explorer.exe"
+            };
+
+            Process.Start(startInfo);
         }
 
         #region ========== Main Page ========== 
@@ -236,35 +270,18 @@ namespace XPS3
         #region ---------- Admin-Btn / Picturebox ---------- 
 
         private void pbxSetAA_Paint(object sender, PaintEventArgs e) => e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-
-        private void pbxLogoApache_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pbxLogoMySQL_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pbxLogoFileZilla_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pbxLogoMercury_Click(object sender, EventArgs e)
-        {
-
-        }
-
+        private void pbxLogoApache_Click(object sender, EventArgs e) => Process.Start("http://localhost/");
+        private void pbxLogoMySQL_Click(object sender, EventArgs e) => Process.Start("http://localhost/phpmyadmin/");
+        private void pbxLogoFileZilla_Click(object sender, EventArgs e) => Process.Start(Path.Combine(xamppInstallPath, @"FileZillaFTP\FileZilla Server Interface.exe"));
+        private void pbxLogoMercury_Click(object sender, EventArgs e) => Process.Start(Path.Combine(xamppInstallPath, @"MercuryMail\mercury.exe"));
         private void pbxLogoTomcat_Click(object sender, EventArgs e)
         {
-
+            // Launch TODO
         }
 
         #endregion
 
-        #region ---------- Open Contect-Menu ----------
+        #region ---------- Open Context-Menu ----------
 
         private void btnApacheConfig_Click(object sender, EventArgs e) => cmsApacheConfig.Show(btnApacheConfig, 32,0);
         private void btnMySQLConfig_Click(object sender, EventArgs e) => cmsMySQLConfig.Show(btnMySQLConfig, 32, 0);
@@ -276,100 +293,25 @@ namespace XPS3
 
         #region ---------- Context-Menu Options ----------
 
-        private void tsmApacheConfig_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tsmApacheSSLConfig_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tslApacheXamppConfig_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tslPhpConfig_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tslPhpMyAdminConfig_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tslBrowseApache_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tslBrowsePhp_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tslBrowsePhpMyAdmin_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tslTomcatConfig_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tslTomcatUsers_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tslTomcatWeb_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tslTomcatContext_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tslBrowseTomcat_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tslMercuryConfig_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tslBrowseMercury_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tslMySQLConfig_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tslBrowseMySQL_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tslFileZillaConfig_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tslBrowseFileZilla_Click(object sender, EventArgs e)
-        {
-
-        }
+        private void tsmApacheConfig_Click(object sender, EventArgs e) => LaunchInEditor(@"apache\conf\httpd.conf");
+        private void tsmApacheSSLConfig_Click(object sender, EventArgs e) => LaunchInEditor(@"apache\conf\extra\httpd-ssl.conf");
+        private void tslApacheXamppConfig_Click(object sender, EventArgs e) => LaunchInEditor(@"apache\conf\extra\httpd-xampp.conf");
+        private void tslPhpConfig_Click(object sender, EventArgs e) => LaunchInEditor(@"php\php.ini");
+        private void tslPhpMyAdminConfig_Click(object sender, EventArgs e) => LaunchInEditor(@"phpMyAdmin\config.inc.php");
+        private void tslBrowseApache_Click(object sender, EventArgs e) => OpenFolder(@"apache");
+        private void tslBrowsePhp_Click(object sender, EventArgs e) => OpenFolder(@"php");
+        private void tslBrowsePhpMyAdmin_Click(object sender, EventArgs e) => OpenFolder(@"phpMyAdmin");
+        private void tslTomcatConfig_Click(object sender, EventArgs e) => LaunchInEditor(@"tomcat\conf\server.xml");
+        private void tslTomcatUsers_Click(object sender, EventArgs e) => LaunchInEditor(@"tomcat\conf\tomcat-users.xml");
+        private void tslTomcatWeb_Click(object sender, EventArgs e) => LaunchInEditor(@"tomcat\conf\web.xml");
+        private void tslTomcatContext_Click(object sender, EventArgs e) => LaunchInEditor(@"tomcat\conf\context.xml");
+        private void tslBrowseTomcat_Click(object sender, EventArgs e) => OpenFolder(@"Tomcat\conf");
+        private void tslMercuryConfig_Click(object sender, EventArgs e) => LaunchInEditor(@"MercuryMail\MERCURY.INI");
+        private void tslBrowseMercury_Click(object sender, EventArgs e) => OpenFolder(@"MercuryMail");
+        private void tslMySQLConfig_Click(object sender, EventArgs e) => LaunchInEditor(@"mysql\bin\my.ini");
+        private void tslBrowseMySQL_Click(object sender, EventArgs e) => OpenFolder(@"mysql");
+        private void tslFileZillaConfig_Click(object sender, EventArgs e) => LaunchInEditor(@"FileZillaFTP\FileZilla Server.xml");
+        private void tslBrowseFileZilla_Click(object sender, EventArgs e) => OpenFolder(@"FileZillaFTP");
 
         #endregion
 
@@ -418,8 +360,27 @@ namespace XPS3
         {
             if (fbdFolderSelector.ShowDialog() == DialogResult.OK)
             {
-                txbXamppInstallPath.Text = fbdFolderSelector.SelectedPath;
-                SettingsPoke("XAMPPInstall", fbdFolderSelector.SelectedPath);
+                // Check if the path is valid:
+                if (!(Directory.Exists(fbdFolderSelector.SelectedPath) && File.Exists(Path.Combine(fbdFolderSelector.SelectedPath, "xampp-control.exe")) && Directory.Exists(Path.Combine(fbdFolderSelector.SelectedPath, "htdocs"))))
+                {
+                    DialogResult warningDRes = MessageBox.Show(@"Your XAMPP-Installation-Path is not valid!" + Environment.NewLine +
+                                        @"The default installation-location is ""C:\xampp""." + Environment.NewLine +
+                                        @"The correct folder usually contains the ""xampp-control.exe""." + Environment.NewLine + Environment.NewLine +
+                                        @"Do you want to continue with the currently selected folder?", "Wrong XAMPP-Folder", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Exclamation);
+
+                    if (warningDRes == DialogResult.Yes)
+                    {
+                        txbXamppInstallPath.Text = fbdFolderSelector.SelectedPath;
+                        xamppInstallPath = fbdFolderSelector.SelectedPath;
+                        SettingsPoke("XAMPPInstall", fbdFolderSelector.SelectedPath);
+                    }
+                }
+                else
+                {
+                    txbXamppInstallPath.Text = fbdFolderSelector.SelectedPath;
+                    xamppInstallPath = fbdFolderSelector.SelectedPath;
+                    SettingsPoke("XAMPPInstall", fbdFolderSelector.SelectedPath);
+                }
             }
         }
 
@@ -428,6 +389,7 @@ namespace XPS3
             if (ofdFileSelector.ShowDialog() == DialogResult.OK)
             {
                 txbDefaultEditorPath.Text = ofdFileSelector.FileName;
+                defaultEditor = ofdFileSelector.FileName;
                 SettingsPoke("DefaultEditor", ofdFileSelector.FileName);
             }
         }

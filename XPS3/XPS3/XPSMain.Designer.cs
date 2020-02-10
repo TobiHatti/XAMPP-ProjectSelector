@@ -178,11 +178,11 @@
             this.tctTabMenu.Controls.Add(this.tabServices);
             this.tctTabMenu.Controls.Add(this.tabManager);
             this.tctTabMenu.Controls.Add(this.tabSettings);
-            this.tctTabMenu.Cursor = System.Windows.Forms.Cursors.Default;
+            this.tctTabMenu.Cursor = System.Windows.Forms.Cursors.Hand;
             this.tctTabMenu.ItemSize = new System.Drawing.Size(100, 38);
             this.tctTabMenu.Location = new System.Drawing.Point(12, 12);
             this.tctTabMenu.Name = "tctTabMenu";
-            this.tctTabMenu.SelectedIndex = 3;
+            this.tctTabMenu.SelectedIndex = 0;
             this.tctTabMenu.Size = new System.Drawing.Size(315, 393);
             this.tctTabMenu.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tctTabMenu.Speed = 20;
@@ -1750,6 +1750,7 @@
             // 
             // cmsApacheConfig
             // 
+            this.cmsApacheConfig.BackColor = System.Drawing.SystemColors.Control;
             this.cmsApacheConfig.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmApacheConfig,
             this.tsmApacheSSLConfig,
@@ -1761,14 +1762,17 @@
             this.tslBrowsePhp,
             this.tslBrowsePhpMyAdmin});
             this.cmsApacheConfig.Name = "cmsApacheConfig";
-            this.cmsApacheConfig.Size = new System.Drawing.Size(227, 186);
-            this.cmsApacheConfig.Style = MetroSet_UI.Design.Style.Light;
+            this.cmsApacheConfig.Size = new System.Drawing.Size(227, 208);
+            this.cmsApacheConfig.Style = MetroSet_UI.Design.Style.Custom;
             this.cmsApacheConfig.StyleManager = null;
             this.cmsApacheConfig.ThemeAuthor = "Narwin";
             this.cmsApacheConfig.ThemeName = "MetroLite";
             // 
             // tsmApacheConfig
             // 
+            this.tsmApacheConfig.BackColor = System.Drawing.SystemColors.Control;
+            this.tsmApacheConfig.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tsmApacheConfig.ForeColor = System.Drawing.Color.Black;
             this.tsmApacheConfig.Name = "tsmApacheConfig";
             this.tsmApacheConfig.Size = new System.Drawing.Size(226, 22);
             this.tsmApacheConfig.Text = "Apache (httpd.conf)";
@@ -1776,6 +1780,7 @@
             // 
             // tsmApacheSSLConfig
             // 
+            this.tsmApacheSSLConfig.ForeColor = System.Drawing.Color.Black;
             this.tsmApacheSSLConfig.Name = "tsmApacheSSLConfig";
             this.tsmApacheSSLConfig.Size = new System.Drawing.Size(226, 22);
             this.tsmApacheSSLConfig.Text = "Apache (httpd-ssl.conf)";
@@ -1783,6 +1788,7 @@
             // 
             // tslApacheXamppConfig
             // 
+            this.tslApacheXamppConfig.ForeColor = System.Drawing.Color.Black;
             this.tslApacheXamppConfig.Name = "tslApacheXamppConfig";
             this.tslApacheXamppConfig.Size = new System.Drawing.Size(226, 22);
             this.tslApacheXamppConfig.Text = "Apache (httpd-xampp.conf)";
@@ -1790,6 +1796,7 @@
             // 
             // tslPhpConfig
             // 
+            this.tslPhpConfig.ForeColor = System.Drawing.Color.Black;
             this.tslPhpConfig.Name = "tslPhpConfig";
             this.tslPhpConfig.Size = new System.Drawing.Size(226, 22);
             this.tslPhpConfig.Text = "PHP (php.ini)";
@@ -1797,6 +1804,7 @@
             // 
             // tslPhpMyAdminConfig
             // 
+            this.tslPhpMyAdminConfig.ForeColor = System.Drawing.Color.Black;
             this.tslPhpMyAdminConfig.Name = "tslPhpMyAdminConfig";
             this.tslPhpMyAdminConfig.Size = new System.Drawing.Size(226, 22);
             this.tslPhpMyAdminConfig.Text = "phpMyAdmin (php.inc.conf)";
@@ -1809,6 +1817,7 @@
             // 
             // tslBrowseApache
             // 
+            this.tslBrowseApache.ForeColor = System.Drawing.Color.Black;
             this.tslBrowseApache.Name = "tslBrowseApache";
             this.tslBrowseApache.Size = new System.Drawing.Size(226, 22);
             this.tslBrowseApache.Text = "<Browse> [Apache]";
@@ -1816,6 +1825,7 @@
             // 
             // tslBrowsePhp
             // 
+            this.tslBrowsePhp.ForeColor = System.Drawing.Color.Black;
             this.tslBrowsePhp.Name = "tslBrowsePhp";
             this.tslBrowsePhp.Size = new System.Drawing.Size(226, 22);
             this.tslBrowsePhp.Text = "<Browse> [PHP]";
@@ -1823,6 +1833,7 @@
             // 
             // tslBrowsePhpMyAdmin
             // 
+            this.tslBrowsePhpMyAdmin.ForeColor = System.Drawing.Color.Black;
             this.tslBrowsePhpMyAdmin.Name = "tslBrowsePhpMyAdmin";
             this.tslBrowsePhpMyAdmin.Size = new System.Drawing.Size(226, 22);
             this.tslBrowsePhpMyAdmin.Text = "<Browse> [phpMyAdmin]";
@@ -1836,7 +1847,7 @@
             this.tslBrowseMySQL});
             this.cmsMySQLConfig.Name = "cmsMySQLConfig";
             this.cmsMySQLConfig.Size = new System.Drawing.Size(129, 54);
-            this.cmsMySQLConfig.Style = MetroSet_UI.Design.Style.Light;
+            this.cmsMySQLConfig.Style = MetroSet_UI.Design.Style.Custom;
             this.cmsMySQLConfig.StyleManager = null;
             this.cmsMySQLConfig.ThemeAuthor = "Narwin";
             this.cmsMySQLConfig.ThemeName = "MetroLite";
@@ -1868,7 +1879,7 @@
             this.tslBrowseFileZilla});
             this.cmsFileZillaConfig.Name = "cmsFileZillaConfig";
             this.cmsFileZillaConfig.Size = new System.Drawing.Size(173, 54);
-            this.cmsFileZillaConfig.Style = MetroSet_UI.Design.Style.Light;
+            this.cmsFileZillaConfig.Style = MetroSet_UI.Design.Style.Custom;
             this.cmsFileZillaConfig.StyleManager = null;
             this.cmsFileZillaConfig.ThemeAuthor = "Narwin";
             this.cmsFileZillaConfig.ThemeName = "MetroLite";
@@ -1900,7 +1911,7 @@
             this.tslBrowseMercury});
             this.cmsMercuryConfig.Name = "cmsMercuryConfig";
             this.cmsMercuryConfig.Size = new System.Drawing.Size(135, 54);
-            this.cmsMercuryConfig.Style = MetroSet_UI.Design.Style.Light;
+            this.cmsMercuryConfig.Style = MetroSet_UI.Design.Style.Custom;
             this.cmsMercuryConfig.StyleManager = null;
             this.cmsMercuryConfig.ThemeAuthor = "Narwin";
             this.cmsMercuryConfig.ThemeName = "MetroLite";
@@ -1935,7 +1946,7 @@
             this.tslBrowseTomcat});
             this.cmsTomcatConfig.Name = "cmsTomcatConfig";
             this.cmsTomcatConfig.Size = new System.Drawing.Size(168, 120);
-            this.cmsTomcatConfig.Style = MetroSet_UI.Design.Style.Light;
+            this.cmsTomcatConfig.Style = MetroSet_UI.Design.Style.Custom;
             this.cmsTomcatConfig.StyleManager = null;
             this.cmsTomcatConfig.ThemeAuthor = "Narwin";
             this.cmsTomcatConfig.ThemeName = "MetroLite";
