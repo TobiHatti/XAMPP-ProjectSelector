@@ -19,12 +19,21 @@ namespace XPS3
         private SQLiteConnection connection = null;
         private SQLiteCommand cmd = null;
 
+        private bool disableOnCheckChangeUpdate = true;
         public XPSMain()
         {
             InitializeComponent();
 
+            disableOnCheckChangeUpdate = true;
             SetServiceImages();
             CreateDBCon();
+            LoadDBDataToForm();
+            disableOnCheckChangeUpdate = false;
+        }
+
+        private void XPSMain_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (connection.State == ConnectionState.Open) connection.Close();
         }
 
         private void CreateDBCon()
@@ -54,10 +63,13 @@ namespace XPS3
                 cmd.CommandText = @"CREATE TABLE ""Projects"" (""ID"" INTEGER PRIMARY KEY AUTOINCREMENT, ""Name""  TEXT, ""Description""   TEXT, ""RootDirectory"" TEXT, ""Image"" BLOB);";
                 cmd.ExecuteNonQuery();
             }
+
+            connection.Close();
         }
 
         private void SettingsPoke(string pKey, object pValue)
         {
+            connection.Open();
             cmd.CommandText = $@"SELECT COUNT(*) FROM Settings WHERE Key = ""{pKey}"""; ;
             if (Convert.ToInt32(cmd.ExecuteScalar()) == 0)
             {
@@ -71,17 +83,38 @@ namespace XPS3
                 cmd.CommandText = $@"UPDATE Settings SET Value = ""{pValue}"" WHERE Key = ""{pKey}""";
                 cmd.ExecuteNonQuery();
             }
-        }
-
-        private object SettingsPeek(string pKey)
-        {
-            cmd.CommandText = $@"SELECT Value FROM Settings WHERE Key = ""{pKey}""";
-            return cmd.ExecuteScalar();
-        }
-
-        private void XPSMain_FormClosing(object sender, FormClosingEventArgs e)
-        {
             connection.Close();
+        }
+
+        private object SettingsPeek(string pKey, object pDefaultValue = null)
+        {
+            connection.Open();
+            cmd.CommandText = $@"SELECT Value FROM Settings WHERE Key = ""{pKey}""";
+            object result = cmd.ExecuteScalar();
+            connection.Close();
+            if (result == null && pDefaultValue != null) return pDefaultValue;
+            else return result;
+            
+        }
+
+        private void LoadDBDataToForm()
+        {
+            // Services-Tab
+            chbServiceApache.Switched = Convert.ToBoolean(SettingsPeek("ServiceStatusApache", true));
+            chbServiceMySQL.Switched = Convert.ToBoolean(SettingsPeek("ServiceStatusMySQL", true));
+            chbServiceFileZilla.Switched = Convert.ToBoolean(SettingsPeek("ServiceStatusFileZilla", false));
+            chbServiceMercury.Switched = Convert.ToBoolean(SettingsPeek("ServiceStatusMercury", false));
+            chbServiceTomcat.Switched = Convert.ToBoolean(SettingsPeek("ServiceStatusTomcat", false));
+
+            // Settings-Tab
+            txbXamppInstallPath.Text = Convert.ToString(SettingsPeek("XAMPPInstall", @"C:\xampp"));
+            txbDefaultEditorPath.Text = Convert.ToString(SettingsPeek("DefaultEditor", @"notepad.exe"));
+
+            chbAutostartApache.Checked = Convert.ToBoolean(SettingsPeek("AutostartApache", false));
+            chbAutostartMySQL.Checked = Convert.ToBoolean(SettingsPeek("AutostartMySQL", false));
+            chbAutostartFileZilla.Checked = Convert.ToBoolean(SettingsPeek("AutostartFileZilla", false));
+            chbAutostartMercury.Checked = Convert.ToBoolean(SettingsPeek("AutostartMercury", false));
+            chbAutostartTomcat.Checked = Convert.ToBoolean(SettingsPeek("AutostartTomcat", false));
         }
 
         #region ========== Main Page ========== 
@@ -168,7 +201,14 @@ namespace XPS3
 
         private void UpdateSelectedServices(object sender)
         {
-            
+            if (!disableOnCheckChangeUpdate)
+            {
+                SettingsPoke("ServiceStatusApache", chbServiceApache.Switched);
+                SettingsPoke("ServiceStatusMySQL", chbServiceMySQL.Switched);
+                SettingsPoke("ServiceStatusFileZilla", chbServiceFileZilla.Switched);
+                SettingsPoke("ServiceStatusMercury", chbServiceMercury.Switched);
+                SettingsPoke("ServiceStatusTomcat", chbServiceTomcat.Switched);
+            }
         }
 
         #region ---------- Enable / Disable all ----------
@@ -379,6 +419,7 @@ namespace XPS3
             if (fbdFolderSelector.ShowDialog() == DialogResult.OK)
             {
                 txbXamppInstallPath.Text = fbdFolderSelector.SelectedPath;
+                SettingsPoke("XAMPPInstall", fbdFolderSelector.SelectedPath);
             }
         }
 
@@ -387,15 +428,21 @@ namespace XPS3
             if (ofdFileSelector.ShowDialog() == DialogResult.OK)
             {
                 txbDefaultEditorPath.Text = ofdFileSelector.FileName;
+                SettingsPoke("DefaultEditor", ofdFileSelector.FileName);
             }
         }
 
         private void UpdateAutostartService(object sender)
         {
-
+            if (!disableOnCheckChangeUpdate)
+            {
+                SettingsPoke("AutostartApache", chbAutostartApache.Checked);
+                SettingsPoke("AutostartMySQL", chbAutostartMySQL.Checked);
+                SettingsPoke("AutostartFileZille", chbAutostartFileZilla.Checked);
+                SettingsPoke("AutostartMercury", chbAutostartMercury.Checked);
+                SettingsPoke("AutostartTomcat", chbAutostartTomcat.Checked);
+            }
         }
-
-
 
         #endregion
     }
