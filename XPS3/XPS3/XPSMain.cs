@@ -68,11 +68,11 @@ namespace XPS3
 
         private void RunAutostart()
         {
-            if (chbAutostartApache.Checked) AttemptStartService("Apache", "apache_start.bat", XPSProcess.Apache);
-            if (chbAutostartMySQL.Checked) AttemptStartService("MySQL", "mysql_start.bat", XPSProcess.MySQL);
-            if (chbAutostartFileZilla.Checked) AttemptStartService("FileZilla", "filezilla_start.bat", XPSProcess.FileZilla);
-            if (chbAutostartMercury.Checked) AttemptStartService("Mercury", "mercury_start.bat", XPSProcess.Mercury);
-            if (chbAutostartTomcat.Checked) AttemptStartService("Tomcat", "tomcat_start.bat", XPSProcess.Tomcat);
+            if (chbAutostartApache.Checked) StartServiceRoutine(XPSProcess.Apache);
+            if (chbAutostartMySQL.Checked) StartServiceRoutine(XPSProcess.MySQL);
+            if (chbAutostartFileZilla.Checked) StartServiceRoutine(XPSProcess.FileZilla);
+            if (chbAutostartMercury.Checked) StartServiceRoutine(XPSProcess.Mercury);
+            if (chbAutostartTomcat.Checked) StartServiceRoutine(XPSProcess.Tomcat);
         }
 
         private void CreateDBCon()
@@ -190,47 +190,86 @@ namespace XPS3
 
         #region ---------- Start / Stop Services ----------
 
+        private void StartServiceRoutine(XPSProcess pProcess)
+        {
+            switch(pProcess)
+            {
+                case XPSProcess.Apache:
+                    pbxApacheStatus.BackColor = Color.Orange;
+                    pbxApacheStatus.Invalidate();
+                    AttemptStartService("Apache", "apache_start.bat", XPSProcess.Apache);
+                    break;
+                case XPSProcess.MySQL:
+                    pbxMySQLStatus.BackColor = Color.Orange;
+                    pbxMySQLStatus.Invalidate();
+                    AttemptStartService("MySQL", "mysql_start.bat", XPSProcess.MySQL);
+                    break;
+                case XPSProcess.FileZilla:
+                    pbxFileZillaStatus.BackColor = Color.Orange;
+                    pbxFileZillaStatus.Invalidate();
+                    AttemptStartService("FileZilla", "filezilla_start.bat", XPSProcess.FileZilla);
+                    break;
+                case XPSProcess.Mercury:
+                    pbxMercuryStatus.BackColor = Color.Orange;
+                    pbxMercuryStatus.Invalidate();
+                    AttemptStartService("Mercury", "mercury_start.bat", XPSProcess.Mercury);
+                    break;
+                case XPSProcess.Tomcat:
+                    pbxTomcatStatus.BackColor = Color.Orange;
+                    pbxTomcatStatus.Invalidate();
+                    AttemptStartService("Tomcat", "tomcat_start.bat", XPSProcess.Tomcat);
+                    break;
+            }
+        }
+
+        private void StopServiceRoutine(XPSProcess pProcess)
+        {
+            switch (pProcess)
+            {
+                case XPSProcess.Apache:
+                    pbxApacheStatus.BackColor = Color.Orange;
+                    pbxApacheStatus.Invalidate();
+                    AttemptStartService("Apache", "apache_stop.bat", XPSProcess.Apache, true);
+                    break;
+                case XPSProcess.MySQL:
+                    pbxMySQLStatus.BackColor = Color.Orange;
+                    pbxMySQLStatus.Invalidate();
+                    AttemptStartService("MySQL", "mysql_stop.bat", XPSProcess.MySQL, true);
+                    break;
+                case XPSProcess.FileZilla:
+                    pbxFileZillaStatus.BackColor = Color.Orange;
+                    pbxFileZillaStatus.Invalidate();
+                    AttemptStartService("FileZilla", "filezilla_stop.bat", XPSProcess.FileZilla, true);
+                    break;
+                case XPSProcess.Mercury:
+                    pbxMercuryStatus.BackColor = Color.Orange;
+                    pbxMercuryStatus.Invalidate();
+                    AttemptStartService("Mercury", "mercury_stop.bat", XPSProcess.Mercury, true);
+                    break;
+                case XPSProcess.Tomcat:
+                    pbxTomcatStatus.BackColor = Color.Orange;
+                    pbxTomcatStatus.Invalidate();
+                    AttemptStartService("Tomcat", "tomcat_stop.bat", XPSProcess.Tomcat, true);
+                    break;
+            }
+        }
+
         private void btnStartServices_Click(object sender, EventArgs e)
         {
-            if (chbServiceApache.Switched)
-            {
-                pbxApacheStatus.BackColor = Color.Orange;
-                pbxApacheStatus.Invalidate();
-                AttemptStartService("Apache", "apache_start.bat", XPSProcess.Apache);
-            }
-            if (chbServiceMySQL.Switched)
-            {
-                pbxMySQLStatus.BackColor = Color.Orange;
-                pbxMySQLStatus.Invalidate();
-                AttemptStartService("MySQL", "mysql_start.bat", XPSProcess.MySQL);
-            }
-            if (chbServiceFileZilla.Switched)
-            {
-                pbxFileZillaStatus.BackColor = Color.Orange;
-                pbxFileZillaStatus.Invalidate();
-                AttemptStartService("FileZilla", "filezilla_start.bat", XPSProcess.FileZilla);
-            }
-            if (chbServiceMercury.Switched)
-            {
-                pbxMercuryStatus.BackColor = Color.Orange;
-                pbxMercuryStatus.Invalidate();
-                AttemptStartService("Mercury", "mercury_start.bat", XPSProcess.Mercury);
-            }
-            if (chbServiceTomcat.Switched)
-            {
-                pbxTomcatStatus.BackColor = Color.Orange;
-                pbxTomcatStatus.Invalidate();
-                AttemptStartService("Tomcat", "tomcat_start.bat", XPSProcess.Tomcat);
-            }
+            if (chbServiceApache.Switched) StartServiceRoutine(XPSProcess.Apache);
+            if (chbServiceMySQL.Switched) StartServiceRoutine(XPSProcess.MySQL);
+            if (chbServiceFileZilla.Switched) StartServiceRoutine(XPSProcess.FileZilla);
+            if (chbServiceMercury.Switched) StartServiceRoutine(XPSProcess.Mercury);
+            if (chbServiceTomcat.Switched) StartServiceRoutine(XPSProcess.Tomcat);
         }
 
         private void btnStopServices_Click(object sender, EventArgs e)
         {
-            AttemptStartService("Apache", "apache_stop.bat", XPSProcess.Apache, true);
-            AttemptStartService("MySQL", "mysql_stop.bat", XPSProcess.MySQL, true);
-            AttemptStartService("FileZilla", "filezilla_stop.bat", XPSProcess.FileZilla, true);
-            AttemptStartService("Mercury", "mercury_stop.bat", XPSProcess.Mercury, true);
-            AttemptStartService("Tomcat", "tomcat_stop.bat", XPSProcess.Tomcat, true);
+            StopServiceRoutine(XPSProcess.Apache);
+            StopServiceRoutine(XPSProcess.MySQL);
+            StopServiceRoutine(XPSProcess.FileZilla);
+            StopServiceRoutine(XPSProcess.Mercury);
+            StopServiceRoutine(XPSProcess.Tomcat);
         }
 
         private bool IsProcessOpen(XPSProcess pProcess)
@@ -271,17 +310,28 @@ namespace XPS3
 
         private void tmrCheckServiceStatus_Tick(object sender, EventArgs e)
         {
-            pbxApacheStatus.BackColor = IsProcessOpen(XPSProcess.Apache) ? Color.Lime : Color.Red;
-            pbxMySQLStatus.BackColor = IsProcessOpen(XPSProcess.MySQL) ? Color.Lime : Color.Red;
-            pbxFileZillaStatus.BackColor = IsProcessOpen(XPSProcess.FileZilla) ? Color.Lime : Color.Red;
-            pbxMercuryStatus.BackColor = IsProcessOpen(XPSProcess.Mercury) ? Color.Lime : Color.Red;
-            pbxTomcatStatus.BackColor = IsProcessOpen(XPSProcess.Tomcat) ? Color.Lime : Color.Red;
+            lock(processes)
+            {
+                // Status Indicators
+                pbxApacheStatus.BackColor = IsProcessOpen(XPSProcess.Apache) ? Color.Lime : Color.Red;
+                pbxMySQLStatus.BackColor = IsProcessOpen(XPSProcess.MySQL) ? Color.Lime : Color.Red;
+                pbxFileZillaStatus.BackColor = IsProcessOpen(XPSProcess.FileZilla) ? Color.Lime : Color.Red;
+                pbxMercuryStatus.BackColor = IsProcessOpen(XPSProcess.Mercury) ? Color.Lime : Color.Red;
+                pbxTomcatStatus.BackColor = IsProcessOpen(XPSProcess.Tomcat) ? Color.Lime : Color.Red;
 
-            pbxApacheStatus.Invalidate();
-            pbxMySQLStatus.Invalidate();
-            pbxFileZillaStatus.Invalidate();
-            pbxMercuryStatus.Invalidate();
-            pbxTomcatStatus.Invalidate();
+                // Button Texts
+                btnStartStopApache.Text = IsProcessOpen(XPSProcess.Apache) ? "Stop" : "Start";
+                btnStartStopMySQL.Text = IsProcessOpen(XPSProcess.MySQL) ? "Stop" : "Start";
+                btnStartStopFileZilla.Text = IsProcessOpen(XPSProcess.FileZilla) ? "Stop" : "Start";
+                btnStartStopMercury.Text = IsProcessOpen(XPSProcess.Mercury) ? "Stop" : "Start";
+                btnStartStopTomcat.Text = IsProcessOpen(XPSProcess.Tomcat) ? "Stop" : "Start";
+
+                pbxApacheStatus.Invalidate();
+                pbxMySQLStatus.Invalidate();
+                pbxFileZillaStatus.Invalidate();
+                pbxMercuryStatus.Invalidate();
+                pbxTomcatStatus.Invalidate();
+            }
         }
 
         private void AttemptStartService(string pProcessClearName, string pProcessFile, XPSProcess pProcessType, bool pForceShutdownMode = false)
@@ -390,6 +440,40 @@ namespace XPS3
                 SettingsPoke("ServiceStatusTomcat", chbServiceTomcat.Switched);
             }
         }
+
+        #region ---------- Start / Stop Single ----------
+
+        private void btnStartStopApache_Click(object sender, EventArgs e)
+        {
+            if(IsProcessOpen(XPSProcess.Apache)) StopServiceRoutine(XPSProcess.Apache);
+            else StartServiceRoutine(XPSProcess.Apache);
+        }
+
+        private void btnStartStopMySQL_Click(object sender, EventArgs e)
+        {
+            if (IsProcessOpen(XPSProcess.MySQL)) StopServiceRoutine(XPSProcess.MySQL);
+            else StartServiceRoutine(XPSProcess.MySQL);
+        }
+
+        private void btnStartStopFileZilla_Click(object sender, EventArgs e)
+        {
+            if (IsProcessOpen(XPSProcess.FileZilla)) StopServiceRoutine(XPSProcess.FileZilla);
+            else StartServiceRoutine(XPSProcess.FileZilla);
+        }
+
+        private void btnStartStopMercury_Click(object sender, EventArgs e)
+        {
+            if (IsProcessOpen(XPSProcess.Mercury)) StopServiceRoutine(XPSProcess.Mercury);
+            else StartServiceRoutine(XPSProcess.Mercury);
+        }
+
+        private void btnStartStopTomcat_Click(object sender, EventArgs e)
+        {
+            if (IsProcessOpen(XPSProcess.Tomcat)) StopServiceRoutine(XPSProcess.Tomcat);
+            else StartServiceRoutine(XPSProcess.Tomcat);
+        }
+
+        #endregion
 
         #region ---------- Enable / Disable all ----------
 
@@ -560,9 +644,6 @@ namespace XPS3
                 SettingsPoke("AutostartTomcat", chbAutostartTomcat.Checked);
             }
         }
-
-
-
 
         #endregion
 
