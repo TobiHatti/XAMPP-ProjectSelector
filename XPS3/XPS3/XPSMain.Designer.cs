@@ -47,6 +47,11 @@
             this.btnDeleteSelectedProject = new MetroSet_UI.Controls.MetroSetTile();
             this.btnSeletProject = new MetroSet_UI.Controls.MetroSetTile();
             this.tabServices = new MetroSet_UI.Child.MetroSetTabPage();
+            this.btnStartStopTomcat = new MetroSet_UI.Controls.MetroSetButton();
+            this.btnStartStopMercury = new MetroSet_UI.Controls.MetroSetButton();
+            this.btnStartStopFileZilla = new MetroSet_UI.Controls.MetroSetButton();
+            this.btnStartStopMySQL = new MetroSet_UI.Controls.MetroSetButton();
+            this.btnStartStopApache = new MetroSet_UI.Controls.MetroSetButton();
             this.pbxTomcatStatus = new System.Windows.Forms.PictureBox();
             this.pbxMercuryStatus = new System.Windows.Forms.PictureBox();
             this.pbxFileZillaStatus = new System.Windows.Forms.PictureBox();
@@ -78,7 +83,6 @@
             this.metroSetLabel4 = new MetroSet_UI.Controls.MetroSetLabel();
             this.metroSetDivider2 = new MetroSet_UI.Controls.MetroSetDivider();
             this.tabManager = new MetroSet_UI.Child.MetroSetTabPage();
-            this.ltvProjectList = new System.Windows.Forms.ListView();
             this.btnEditProject = new MetroSet_UI.Controls.MetroSetButton();
             this.btnDeleteProject = new MetroSet_UI.Controls.MetroSetButton();
             this.btnImportConfig = new MetroSet_UI.Controls.MetroSetButton();
@@ -120,28 +124,6 @@
             this.tslBrowseApache = new System.Windows.Forms.ToolStripMenuItem();
             this.tslBrowsePhp = new System.Windows.Forms.ToolStripMenuItem();
             this.tslBrowsePhpMyAdmin = new System.Windows.Forms.ToolStripMenuItem();
-            this.cmsMySQLConfig = new MetroSet_UI.Controls.MetroSetContextMenuStrip();
-            this.tslMySQLConfig = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.tslBrowseMySQL = new System.Windows.Forms.ToolStripMenuItem();
-            this.cmsFileZillaConfig = new MetroSet_UI.Controls.MetroSetContextMenuStrip();
-            this.tslFileZillaConfig = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.tslBrowseFileZilla = new System.Windows.Forms.ToolStripMenuItem();
-            this.cmsMercuryConfig = new MetroSet_UI.Controls.MetroSetContextMenuStrip();
-            this.tslMercuryConfig = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
-            this.tslBrowseMercury = new System.Windows.Forms.ToolStripMenuItem();
-            this.cmsTomcatConfig = new MetroSet_UI.Controls.MetroSetContextMenuStrip();
-            this.tslTomcatConfig = new System.Windows.Forms.ToolStripMenuItem();
-            this.tslTomcatUsers = new System.Windows.Forms.ToolStripMenuItem();
-            this.tslTomcatWeb = new System.Windows.Forms.ToolStripMenuItem();
-            this.tslTomcatContext = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
-            this.tslBrowseTomcat = new System.Windows.Forms.ToolStripMenuItem();
-            this.ofdFileSelector = new System.Windows.Forms.OpenFileDialog();
-            this.fbdFolderSelector = new System.Windows.Forms.FolderBrowserDialog();
-            this.tmrCheckServiceStatus = new System.Windows.Forms.Timer(this.components);
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.tslLogApacheAccess = new System.Windows.Forms.ToolStripMenuItem();
@@ -150,22 +132,40 @@
             this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
             this.tslLogBrowseApache = new System.Windows.Forms.ToolStripMenuItem();
             this.tslLogBrowsePHP = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmsMySQLConfig = new MetroSet_UI.Controls.MetroSetContextMenuStrip();
+            this.tslMySQLConfig = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.tslBrowseMySQL = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
             this.logsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tslLogMysqlError = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
             this.tslLogBrowseMySQL = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
-            this.logsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.tslLogBrowseTomcat = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmsFileZillaConfig = new MetroSet_UI.Controls.MetroSetContextMenuStrip();
+            this.tslFileZillaConfig = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.tslBrowseFileZilla = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmsMercuryConfig = new MetroSet_UI.Controls.MetroSetContextMenuStrip();
+            this.tslMercuryConfig = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.tslBrowseMercury = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator11 = new System.Windows.Forms.ToolStripSeparator();
             this.logsToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.tslLogBrowseMercury = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnStartStopApache = new MetroSet_UI.Controls.MetroSetButton();
-            this.btnStartStopMySQL = new MetroSet_UI.Controls.MetroSetButton();
-            this.btnStartStopFileZilla = new MetroSet_UI.Controls.MetroSetButton();
-            this.btnStartStopMercury = new MetroSet_UI.Controls.MetroSetButton();
-            this.btnStartStopTomcat = new MetroSet_UI.Controls.MetroSetButton();
+            this.cmsTomcatConfig = new MetroSet_UI.Controls.MetroSetContextMenuStrip();
+            this.tslTomcatConfig = new System.Windows.Forms.ToolStripMenuItem();
+            this.tslTomcatUsers = new System.Windows.Forms.ToolStripMenuItem();
+            this.tslTomcatWeb = new System.Windows.Forms.ToolStripMenuItem();
+            this.tslTomcatContext = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            this.tslBrowseTomcat = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
+            this.logsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.tslLogBrowseTomcat = new System.Windows.Forms.ToolStripMenuItem();
+            this.ofdFileSelector = new System.Windows.Forms.OpenFileDialog();
+            this.fbdFolderSelector = new System.Windows.Forms.FolderBrowserDialog();
+            this.tmrCheckServiceStatus = new System.Windows.Forms.Timer(this.components);
+            this.lbcProjectList = new MetroSet_UI.Controls.MetroSetListBox();
             this.tctTabMenu.SuspendLayout();
             this.tabProjects.SuspendLayout();
             this.tabServices.SuspendLayout();
@@ -203,7 +203,7 @@
             this.tctTabMenu.ItemSize = new System.Drawing.Size(100, 38);
             this.tctTabMenu.Location = new System.Drawing.Point(12, 12);
             this.tctTabMenu.Name = "tctTabMenu";
-            this.tctTabMenu.SelectedIndex = 1;
+            this.tctTabMenu.SelectedIndex = 2;
             this.tctTabMenu.Size = new System.Drawing.Size(315, 393);
             this.tctTabMenu.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tctTabMenu.Speed = 20;
@@ -640,6 +640,136 @@
             this.tabServices.ThemeAuthor = "Narwin";
             this.tabServices.ThemeName = "MetroLite";
             this.tabServices.ToolTipText = null;
+            // 
+            // btnStartStopTomcat
+            // 
+            this.btnStartStopTomcat.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.btnStartStopTomcat.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.btnStartStopTomcat.DisabledForeColor = System.Drawing.Color.Gray;
+            this.btnStartStopTomcat.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.btnStartStopTomcat.HoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
+            this.btnStartStopTomcat.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
+            this.btnStartStopTomcat.HoverTextColor = System.Drawing.Color.White;
+            this.btnStartStopTomcat.Location = new System.Drawing.Point(191, 245);
+            this.btnStartStopTomcat.Name = "btnStartStopTomcat";
+            this.btnStartStopTomcat.NormalBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.btnStartStopTomcat.NormalColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.btnStartStopTomcat.NormalTextColor = System.Drawing.Color.White;
+            this.btnStartStopTomcat.PressBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(147)))), ((int)(((byte)(195)))));
+            this.btnStartStopTomcat.PressColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(147)))), ((int)(((byte)(195)))));
+            this.btnStartStopTomcat.PressTextColor = System.Drawing.Color.White;
+            this.btnStartStopTomcat.Size = new System.Drawing.Size(75, 23);
+            this.btnStartStopTomcat.Style = MetroSet_UI.Design.Style.Light;
+            this.btnStartStopTomcat.StyleManager = null;
+            this.btnStartStopTomcat.TabIndex = 21;
+            this.btnStartStopTomcat.Text = "Start";
+            this.btnStartStopTomcat.ThemeAuthor = "Narwin";
+            this.btnStartStopTomcat.ThemeName = "MetroLite";
+            this.btnStartStopTomcat.Click += new System.EventHandler(this.btnStartStopTomcat_Click);
+            // 
+            // btnStartStopMercury
+            // 
+            this.btnStartStopMercury.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.btnStartStopMercury.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.btnStartStopMercury.DisabledForeColor = System.Drawing.Color.Gray;
+            this.btnStartStopMercury.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.btnStartStopMercury.HoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
+            this.btnStartStopMercury.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
+            this.btnStartStopMercury.HoverTextColor = System.Drawing.Color.White;
+            this.btnStartStopMercury.Location = new System.Drawing.Point(191, 199);
+            this.btnStartStopMercury.Name = "btnStartStopMercury";
+            this.btnStartStopMercury.NormalBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.btnStartStopMercury.NormalColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.btnStartStopMercury.NormalTextColor = System.Drawing.Color.White;
+            this.btnStartStopMercury.PressBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(147)))), ((int)(((byte)(195)))));
+            this.btnStartStopMercury.PressColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(147)))), ((int)(((byte)(195)))));
+            this.btnStartStopMercury.PressTextColor = System.Drawing.Color.White;
+            this.btnStartStopMercury.Size = new System.Drawing.Size(75, 23);
+            this.btnStartStopMercury.Style = MetroSet_UI.Design.Style.Light;
+            this.btnStartStopMercury.StyleManager = null;
+            this.btnStartStopMercury.TabIndex = 21;
+            this.btnStartStopMercury.Text = "Start";
+            this.btnStartStopMercury.ThemeAuthor = "Narwin";
+            this.btnStartStopMercury.ThemeName = "MetroLite";
+            this.btnStartStopMercury.Click += new System.EventHandler(this.btnStartStopMercury_Click);
+            // 
+            // btnStartStopFileZilla
+            // 
+            this.btnStartStopFileZilla.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.btnStartStopFileZilla.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.btnStartStopFileZilla.DisabledForeColor = System.Drawing.Color.Gray;
+            this.btnStartStopFileZilla.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.btnStartStopFileZilla.HoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
+            this.btnStartStopFileZilla.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
+            this.btnStartStopFileZilla.HoverTextColor = System.Drawing.Color.White;
+            this.btnStartStopFileZilla.Location = new System.Drawing.Point(191, 153);
+            this.btnStartStopFileZilla.Name = "btnStartStopFileZilla";
+            this.btnStartStopFileZilla.NormalBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.btnStartStopFileZilla.NormalColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.btnStartStopFileZilla.NormalTextColor = System.Drawing.Color.White;
+            this.btnStartStopFileZilla.PressBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(147)))), ((int)(((byte)(195)))));
+            this.btnStartStopFileZilla.PressColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(147)))), ((int)(((byte)(195)))));
+            this.btnStartStopFileZilla.PressTextColor = System.Drawing.Color.White;
+            this.btnStartStopFileZilla.Size = new System.Drawing.Size(75, 23);
+            this.btnStartStopFileZilla.Style = MetroSet_UI.Design.Style.Light;
+            this.btnStartStopFileZilla.StyleManager = null;
+            this.btnStartStopFileZilla.TabIndex = 21;
+            this.btnStartStopFileZilla.Text = "Start";
+            this.btnStartStopFileZilla.ThemeAuthor = "Narwin";
+            this.btnStartStopFileZilla.ThemeName = "MetroLite";
+            this.btnStartStopFileZilla.Click += new System.EventHandler(this.btnStartStopFileZilla_Click);
+            // 
+            // btnStartStopMySQL
+            // 
+            this.btnStartStopMySQL.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.btnStartStopMySQL.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.btnStartStopMySQL.DisabledForeColor = System.Drawing.Color.Gray;
+            this.btnStartStopMySQL.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.btnStartStopMySQL.HoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
+            this.btnStartStopMySQL.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
+            this.btnStartStopMySQL.HoverTextColor = System.Drawing.Color.White;
+            this.btnStartStopMySQL.Location = new System.Drawing.Point(191, 96);
+            this.btnStartStopMySQL.Name = "btnStartStopMySQL";
+            this.btnStartStopMySQL.NormalBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.btnStartStopMySQL.NormalColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.btnStartStopMySQL.NormalTextColor = System.Drawing.Color.White;
+            this.btnStartStopMySQL.PressBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(147)))), ((int)(((byte)(195)))));
+            this.btnStartStopMySQL.PressColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(147)))), ((int)(((byte)(195)))));
+            this.btnStartStopMySQL.PressTextColor = System.Drawing.Color.White;
+            this.btnStartStopMySQL.Size = new System.Drawing.Size(75, 23);
+            this.btnStartStopMySQL.Style = MetroSet_UI.Design.Style.Light;
+            this.btnStartStopMySQL.StyleManager = null;
+            this.btnStartStopMySQL.TabIndex = 21;
+            this.btnStartStopMySQL.Text = "Start";
+            this.btnStartStopMySQL.ThemeAuthor = "Narwin";
+            this.btnStartStopMySQL.ThemeName = "MetroLite";
+            this.btnStartStopMySQL.Click += new System.EventHandler(this.btnStartStopMySQL_Click);
+            // 
+            // btnStartStopApache
+            // 
+            this.btnStartStopApache.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.btnStartStopApache.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.btnStartStopApache.DisabledForeColor = System.Drawing.Color.Gray;
+            this.btnStartStopApache.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.btnStartStopApache.HoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
+            this.btnStartStopApache.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
+            this.btnStartStopApache.HoverTextColor = System.Drawing.Color.White;
+            this.btnStartStopApache.Location = new System.Drawing.Point(191, 52);
+            this.btnStartStopApache.Name = "btnStartStopApache";
+            this.btnStartStopApache.NormalBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.btnStartStopApache.NormalColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.btnStartStopApache.NormalTextColor = System.Drawing.Color.White;
+            this.btnStartStopApache.PressBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(147)))), ((int)(((byte)(195)))));
+            this.btnStartStopApache.PressColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(147)))), ((int)(((byte)(195)))));
+            this.btnStartStopApache.PressTextColor = System.Drawing.Color.White;
+            this.btnStartStopApache.Size = new System.Drawing.Size(75, 23);
+            this.btnStartStopApache.Style = MetroSet_UI.Design.Style.Light;
+            this.btnStartStopApache.StyleManager = null;
+            this.btnStartStopApache.TabIndex = 21;
+            this.btnStartStopApache.Text = "Start";
+            this.btnStartStopApache.ThemeAuthor = "Narwin";
+            this.btnStartStopApache.ThemeName = "MetroLite";
+            this.btnStartStopApache.Click += new System.EventHandler(this.btnStartStopApache_Click);
             // 
             // pbxTomcatStatus
             // 
@@ -1190,7 +1320,7 @@
             // tabManager
             // 
             this.tabManager.BaseColor = System.Drawing.Color.White;
-            this.tabManager.Controls.Add(this.ltvProjectList);
+            this.tabManager.Controls.Add(this.lbcProjectList);
             this.tabManager.Controls.Add(this.btnEditProject);
             this.tabManager.Controls.Add(this.btnDeleteProject);
             this.tabManager.Controls.Add(this.btnImportConfig);
@@ -1212,15 +1342,6 @@
             this.tabManager.ThemeAuthor = "Narwin";
             this.tabManager.ThemeName = "MetroLite";
             this.tabManager.ToolTipText = null;
-            // 
-            // ltvProjectList
-            // 
-            this.ltvProjectList.HideSelection = false;
-            this.ltvProjectList.Location = new System.Drawing.Point(0, 92);
-            this.ltvProjectList.Name = "ltvProjectList";
-            this.ltvProjectList.Size = new System.Drawing.Size(307, 171);
-            this.ltvProjectList.TabIndex = 11;
-            this.ltvProjectList.UseCompatibleStateImageBehavior = false;
             // 
             // btnEditProject
             // 
@@ -1986,6 +2107,64 @@
             this.tslBrowsePhpMyAdmin.Text = "<Browse> [phpMyAdmin]";
             this.tslBrowsePhpMyAdmin.Click += new System.EventHandler(this.tslBrowsePhpMyAdmin_Click);
             // 
+            // toolStripSeparator6
+            // 
+            this.toolStripSeparator6.Name = "toolStripSeparator6";
+            this.toolStripSeparator6.Size = new System.Drawing.Size(223, 6);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tslLogApacheAccess,
+            this.tslLogApacheError,
+            this.tslLogPhpError,
+            this.toolStripSeparator7,
+            this.tslLogBrowseApache,
+            this.tslLogBrowsePHP});
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(226, 22);
+            this.toolStripMenuItem1.Text = "Logs";
+            // 
+            // tslLogApacheAccess
+            // 
+            this.tslLogApacheAccess.Name = "tslLogApacheAccess";
+            this.tslLogApacheAccess.Size = new System.Drawing.Size(181, 22);
+            this.tslLogApacheAccess.Text = "Apache (access.log)";
+            this.tslLogApacheAccess.Click += new System.EventHandler(this.tslLogApacheAccess_Click);
+            // 
+            // tslLogApacheError
+            // 
+            this.tslLogApacheError.Name = "tslLogApacheError";
+            this.tslLogApacheError.Size = new System.Drawing.Size(181, 22);
+            this.tslLogApacheError.Text = "Apache (error.log)";
+            this.tslLogApacheError.Click += new System.EventHandler(this.tslLogApacheError_Click);
+            // 
+            // tslLogPhpError
+            // 
+            this.tslLogPhpError.Name = "tslLogPhpError";
+            this.tslLogPhpError.Size = new System.Drawing.Size(181, 22);
+            this.tslLogPhpError.Text = "PHP (php_error_log)";
+            this.tslLogPhpError.Click += new System.EventHandler(this.tslLogPhpError_Click);
+            // 
+            // toolStripSeparator7
+            // 
+            this.toolStripSeparator7.Name = "toolStripSeparator7";
+            this.toolStripSeparator7.Size = new System.Drawing.Size(178, 6);
+            // 
+            // tslLogBrowseApache
+            // 
+            this.tslLogBrowseApache.Name = "tslLogBrowseApache";
+            this.tslLogBrowseApache.Size = new System.Drawing.Size(181, 22);
+            this.tslLogBrowseApache.Text = "<Browse> [Aoache]";
+            this.tslLogBrowseApache.Click += new System.EventHandler(this.tslLogBrowseApache_Click);
+            // 
+            // tslLogBrowsePHP
+            // 
+            this.tslLogBrowsePHP.Name = "tslLogBrowsePHP";
+            this.tslLogBrowsePHP.Size = new System.Drawing.Size(181, 22);
+            this.tslLogBrowsePHP.Text = "<Browse> [PHP]";
+            this.tslLogBrowsePHP.Click += new System.EventHandler(this.tslLogBrowsePHP_Click);
+            // 
             // cmsMySQLConfig
             // 
             this.cmsMySQLConfig.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -2019,6 +2198,40 @@
             this.tslBrowseMySQL.Size = new System.Drawing.Size(128, 22);
             this.tslBrowseMySQL.Text = "<Browse>";
             this.tslBrowseMySQL.Click += new System.EventHandler(this.tslBrowseMySQL_Click);
+            // 
+            // toolStripSeparator8
+            // 
+            this.toolStripSeparator8.Name = "toolStripSeparator8";
+            this.toolStripSeparator8.Size = new System.Drawing.Size(125, 6);
+            // 
+            // logsToolStripMenuItem
+            // 
+            this.logsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tslLogMysqlError,
+            this.toolStripSeparator9,
+            this.tslLogBrowseMySQL});
+            this.logsToolStripMenuItem.Name = "logsToolStripMenuItem";
+            this.logsToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
+            this.logsToolStripMenuItem.Text = "Logs";
+            // 
+            // tslLogMysqlError
+            // 
+            this.tslLogMysqlError.Name = "tslLogMysqlError";
+            this.tslLogMysqlError.Size = new System.Drawing.Size(156, 22);
+            this.tslLogMysqlError.Text = "mysql_error.log";
+            this.tslLogMysqlError.Click += new System.EventHandler(this.tslLogMysqlError_Click);
+            // 
+            // toolStripSeparator9
+            // 
+            this.toolStripSeparator9.Name = "toolStripSeparator9";
+            this.toolStripSeparator9.Size = new System.Drawing.Size(153, 6);
+            // 
+            // tslLogBrowseMySQL
+            // 
+            this.tslLogBrowseMySQL.Name = "tslLogBrowseMySQL";
+            this.tslLogBrowseMySQL.Size = new System.Drawing.Size(156, 22);
+            this.tslLogBrowseMySQL.Text = "<Browse>";
+            this.tslLogBrowseMySQL.Click += new System.EventHandler(this.tslLogBrowseMySQL_Click);
             // 
             // cmsFileZillaConfig
             // 
@@ -2086,6 +2299,26 @@
             this.tslBrowseMercury.Text = "<Browse>";
             this.tslBrowseMercury.Click += new System.EventHandler(this.tslBrowseMercury_Click);
             // 
+            // toolStripSeparator11
+            // 
+            this.toolStripSeparator11.Name = "toolStripSeparator11";
+            this.toolStripSeparator11.Size = new System.Drawing.Size(131, 6);
+            // 
+            // logsToolStripMenuItem2
+            // 
+            this.logsToolStripMenuItem2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tslLogBrowseMercury});
+            this.logsToolStripMenuItem2.Name = "logsToolStripMenuItem2";
+            this.logsToolStripMenuItem2.Size = new System.Drawing.Size(134, 22);
+            this.logsToolStripMenuItem2.Text = "Logs";
+            // 
+            // tslLogBrowseMercury
+            // 
+            this.tslLogBrowseMercury.Name = "tslLogBrowseMercury";
+            this.tslLogBrowseMercury.Size = new System.Drawing.Size(128, 22);
+            this.tslLogBrowseMercury.Text = "<Browse>";
+            this.tslLogBrowseMercury.Click += new System.EventHandler(this.tslLogBrowseMercury_Click);
+            // 
             // cmsTomcatConfig
             // 
             this.cmsTomcatConfig.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -2144,6 +2377,26 @@
             this.tslBrowseTomcat.Text = "<Browse>";
             this.tslBrowseTomcat.Click += new System.EventHandler(this.tslBrowseTomcat_Click);
             // 
+            // toolStripSeparator10
+            // 
+            this.toolStripSeparator10.Name = "toolStripSeparator10";
+            this.toolStripSeparator10.Size = new System.Drawing.Size(164, 6);
+            // 
+            // logsToolStripMenuItem1
+            // 
+            this.logsToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tslLogBrowseTomcat});
+            this.logsToolStripMenuItem1.Name = "logsToolStripMenuItem1";
+            this.logsToolStripMenuItem1.Size = new System.Drawing.Size(167, 22);
+            this.logsToolStripMenuItem1.Text = "Logs";
+            // 
+            // tslLogBrowseTomcat
+            // 
+            this.tslLogBrowseTomcat.Name = "tslLogBrowseTomcat";
+            this.tslLogBrowseTomcat.Size = new System.Drawing.Size(128, 22);
+            this.tslLogBrowseTomcat.Text = "<Browse>";
+            this.tslLogBrowseTomcat.Click += new System.EventHandler(this.tslLogBrowseTomcat_Click);
+            // 
             // ofdFileSelector
             // 
             this.ofdFileSelector.DefaultExt = "exe";
@@ -2163,267 +2416,31 @@
             this.tmrCheckServiceStatus.Interval = 2000;
             this.tmrCheckServiceStatus.Tick += new System.EventHandler(this.tmrCheckServiceStatus_Tick);
             // 
-            // toolStripSeparator6
+            // lbcProjectList
             // 
-            this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(223, 6);
-            // 
-            // toolStripMenuItem1
-            // 
-            this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tslLogApacheAccess,
-            this.tslLogApacheError,
-            this.tslLogPhpError,
-            this.toolStripSeparator7,
-            this.tslLogBrowseApache,
-            this.tslLogBrowsePHP});
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(226, 22);
-            this.toolStripMenuItem1.Text = "Logs";
-            // 
-            // tslLogApacheAccess
-            // 
-            this.tslLogApacheAccess.Name = "tslLogApacheAccess";
-            this.tslLogApacheAccess.Size = new System.Drawing.Size(181, 22);
-            this.tslLogApacheAccess.Text = "Apache (access.log)";
-            this.tslLogApacheAccess.Click += new System.EventHandler(this.tslLogApacheAccess_Click);
-            // 
-            // tslLogApacheError
-            // 
-            this.tslLogApacheError.Name = "tslLogApacheError";
-            this.tslLogApacheError.Size = new System.Drawing.Size(181, 22);
-            this.tslLogApacheError.Text = "Apache (error.log)";
-            this.tslLogApacheError.Click += new System.EventHandler(this.tslLogApacheError_Click);
-            // 
-            // tslLogPhpError
-            // 
-            this.tslLogPhpError.Name = "tslLogPhpError";
-            this.tslLogPhpError.Size = new System.Drawing.Size(181, 22);
-            this.tslLogPhpError.Text = "PHP (php_error_log)";
-            this.tslLogPhpError.Click += new System.EventHandler(this.tslLogPhpError_Click);
-            // 
-            // toolStripSeparator7
-            // 
-            this.toolStripSeparator7.Name = "toolStripSeparator7";
-            this.toolStripSeparator7.Size = new System.Drawing.Size(178, 6);
-            // 
-            // tslLogBrowseApache
-            // 
-            this.tslLogBrowseApache.Name = "tslLogBrowseApache";
-            this.tslLogBrowseApache.Size = new System.Drawing.Size(181, 22);
-            this.tslLogBrowseApache.Text = "<Browse> [Aoache]";
-            this.tslLogBrowseApache.Click += new System.EventHandler(this.tslLogBrowseApache_Click);
-            // 
-            // tslLogBrowsePHP
-            // 
-            this.tslLogBrowsePHP.Name = "tslLogBrowsePHP";
-            this.tslLogBrowsePHP.Size = new System.Drawing.Size(181, 22);
-            this.tslLogBrowsePHP.Text = "<Browse> [PHP]";
-            this.tslLogBrowsePHP.Click += new System.EventHandler(this.tslLogBrowsePHP_Click);
-            // 
-            // toolStripSeparator8
-            // 
-            this.toolStripSeparator8.Name = "toolStripSeparator8";
-            this.toolStripSeparator8.Size = new System.Drawing.Size(125, 6);
-            // 
-            // logsToolStripMenuItem
-            // 
-            this.logsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tslLogMysqlError,
-            this.toolStripSeparator9,
-            this.tslLogBrowseMySQL});
-            this.logsToolStripMenuItem.Name = "logsToolStripMenuItem";
-            this.logsToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
-            this.logsToolStripMenuItem.Text = "Logs";
-            // 
-            // tslLogMysqlError
-            // 
-            this.tslLogMysqlError.Name = "tslLogMysqlError";
-            this.tslLogMysqlError.Size = new System.Drawing.Size(180, 22);
-            this.tslLogMysqlError.Text = "mysql_error.log";
-            this.tslLogMysqlError.Click += new System.EventHandler(this.tslLogMysqlError_Click);
-            // 
-            // toolStripSeparator9
-            // 
-            this.toolStripSeparator9.Name = "toolStripSeparator9";
-            this.toolStripSeparator9.Size = new System.Drawing.Size(177, 6);
-            // 
-            // tslLogBrowseMySQL
-            // 
-            this.tslLogBrowseMySQL.Name = "tslLogBrowseMySQL";
-            this.tslLogBrowseMySQL.Size = new System.Drawing.Size(180, 22);
-            this.tslLogBrowseMySQL.Text = "<Browse>";
-            this.tslLogBrowseMySQL.Click += new System.EventHandler(this.tslLogBrowseMySQL_Click);
-            // 
-            // toolStripSeparator10
-            // 
-            this.toolStripSeparator10.Name = "toolStripSeparator10";
-            this.toolStripSeparator10.Size = new System.Drawing.Size(164, 6);
-            // 
-            // logsToolStripMenuItem1
-            // 
-            this.logsToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tslLogBrowseTomcat});
-            this.logsToolStripMenuItem1.Name = "logsToolStripMenuItem1";
-            this.logsToolStripMenuItem1.Size = new System.Drawing.Size(167, 22);
-            this.logsToolStripMenuItem1.Text = "Logs";
-            // 
-            // tslLogBrowseTomcat
-            // 
-            this.tslLogBrowseTomcat.Name = "tslLogBrowseTomcat";
-            this.tslLogBrowseTomcat.Size = new System.Drawing.Size(180, 22);
-            this.tslLogBrowseTomcat.Text = "<Browse>";
-            this.tslLogBrowseTomcat.Click += new System.EventHandler(this.tslLogBrowseTomcat_Click);
-            // 
-            // toolStripSeparator11
-            // 
-            this.toolStripSeparator11.Name = "toolStripSeparator11";
-            this.toolStripSeparator11.Size = new System.Drawing.Size(131, 6);
-            // 
-            // logsToolStripMenuItem2
-            // 
-            this.logsToolStripMenuItem2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tslLogBrowseMercury});
-            this.logsToolStripMenuItem2.Name = "logsToolStripMenuItem2";
-            this.logsToolStripMenuItem2.Size = new System.Drawing.Size(134, 22);
-            this.logsToolStripMenuItem2.Text = "Logs";
-            // 
-            // tslLogBrowseMercury
-            // 
-            this.tslLogBrowseMercury.Name = "tslLogBrowseMercury";
-            this.tslLogBrowseMercury.Size = new System.Drawing.Size(180, 22);
-            this.tslLogBrowseMercury.Text = "<Browse>";
-            this.tslLogBrowseMercury.Click += new System.EventHandler(this.tslLogBrowseMercury_Click);
-            // 
-            // btnStartStopApache
-            // 
-            this.btnStartStopApache.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
-            this.btnStartStopApache.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
-            this.btnStartStopApache.DisabledForeColor = System.Drawing.Color.Gray;
-            this.btnStartStopApache.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.btnStartStopApache.HoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
-            this.btnStartStopApache.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
-            this.btnStartStopApache.HoverTextColor = System.Drawing.Color.White;
-            this.btnStartStopApache.Location = new System.Drawing.Point(191, 52);
-            this.btnStartStopApache.Name = "btnStartStopApache";
-            this.btnStartStopApache.NormalBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
-            this.btnStartStopApache.NormalColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
-            this.btnStartStopApache.NormalTextColor = System.Drawing.Color.White;
-            this.btnStartStopApache.PressBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(147)))), ((int)(((byte)(195)))));
-            this.btnStartStopApache.PressColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(147)))), ((int)(((byte)(195)))));
-            this.btnStartStopApache.PressTextColor = System.Drawing.Color.White;
-            this.btnStartStopApache.Size = new System.Drawing.Size(75, 23);
-            this.btnStartStopApache.Style = MetroSet_UI.Design.Style.Light;
-            this.btnStartStopApache.StyleManager = null;
-            this.btnStartStopApache.TabIndex = 21;
-            this.btnStartStopApache.Text = "Start";
-            this.btnStartStopApache.ThemeAuthor = "Narwin";
-            this.btnStartStopApache.ThemeName = "MetroLite";
-            this.btnStartStopApache.Click += new System.EventHandler(this.btnStartStopApache_Click);
-            // 
-            // btnStartStopMySQL
-            // 
-            this.btnStartStopMySQL.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
-            this.btnStartStopMySQL.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
-            this.btnStartStopMySQL.DisabledForeColor = System.Drawing.Color.Gray;
-            this.btnStartStopMySQL.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.btnStartStopMySQL.HoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
-            this.btnStartStopMySQL.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
-            this.btnStartStopMySQL.HoverTextColor = System.Drawing.Color.White;
-            this.btnStartStopMySQL.Location = new System.Drawing.Point(191, 96);
-            this.btnStartStopMySQL.Name = "btnStartStopMySQL";
-            this.btnStartStopMySQL.NormalBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
-            this.btnStartStopMySQL.NormalColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
-            this.btnStartStopMySQL.NormalTextColor = System.Drawing.Color.White;
-            this.btnStartStopMySQL.PressBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(147)))), ((int)(((byte)(195)))));
-            this.btnStartStopMySQL.PressColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(147)))), ((int)(((byte)(195)))));
-            this.btnStartStopMySQL.PressTextColor = System.Drawing.Color.White;
-            this.btnStartStopMySQL.Size = new System.Drawing.Size(75, 23);
-            this.btnStartStopMySQL.Style = MetroSet_UI.Design.Style.Light;
-            this.btnStartStopMySQL.StyleManager = null;
-            this.btnStartStopMySQL.TabIndex = 21;
-            this.btnStartStopMySQL.Text = "Start";
-            this.btnStartStopMySQL.ThemeAuthor = "Narwin";
-            this.btnStartStopMySQL.ThemeName = "MetroLite";
-            this.btnStartStopMySQL.Click += new System.EventHandler(this.btnStartStopMySQL_Click);
-            // 
-            // btnStartStopFileZilla
-            // 
-            this.btnStartStopFileZilla.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
-            this.btnStartStopFileZilla.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
-            this.btnStartStopFileZilla.DisabledForeColor = System.Drawing.Color.Gray;
-            this.btnStartStopFileZilla.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.btnStartStopFileZilla.HoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
-            this.btnStartStopFileZilla.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
-            this.btnStartStopFileZilla.HoverTextColor = System.Drawing.Color.White;
-            this.btnStartStopFileZilla.Location = new System.Drawing.Point(191, 153);
-            this.btnStartStopFileZilla.Name = "btnStartStopFileZilla";
-            this.btnStartStopFileZilla.NormalBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
-            this.btnStartStopFileZilla.NormalColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
-            this.btnStartStopFileZilla.NormalTextColor = System.Drawing.Color.White;
-            this.btnStartStopFileZilla.PressBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(147)))), ((int)(((byte)(195)))));
-            this.btnStartStopFileZilla.PressColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(147)))), ((int)(((byte)(195)))));
-            this.btnStartStopFileZilla.PressTextColor = System.Drawing.Color.White;
-            this.btnStartStopFileZilla.Size = new System.Drawing.Size(75, 23);
-            this.btnStartStopFileZilla.Style = MetroSet_UI.Design.Style.Light;
-            this.btnStartStopFileZilla.StyleManager = null;
-            this.btnStartStopFileZilla.TabIndex = 21;
-            this.btnStartStopFileZilla.Text = "Start";
-            this.btnStartStopFileZilla.ThemeAuthor = "Narwin";
-            this.btnStartStopFileZilla.ThemeName = "MetroLite";
-            this.btnStartStopFileZilla.Click += new System.EventHandler(this.btnStartStopFileZilla_Click);
-            // 
-            // btnStartStopMercury
-            // 
-            this.btnStartStopMercury.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
-            this.btnStartStopMercury.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
-            this.btnStartStopMercury.DisabledForeColor = System.Drawing.Color.Gray;
-            this.btnStartStopMercury.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.btnStartStopMercury.HoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
-            this.btnStartStopMercury.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
-            this.btnStartStopMercury.HoverTextColor = System.Drawing.Color.White;
-            this.btnStartStopMercury.Location = new System.Drawing.Point(191, 199);
-            this.btnStartStopMercury.Name = "btnStartStopMercury";
-            this.btnStartStopMercury.NormalBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
-            this.btnStartStopMercury.NormalColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
-            this.btnStartStopMercury.NormalTextColor = System.Drawing.Color.White;
-            this.btnStartStopMercury.PressBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(147)))), ((int)(((byte)(195)))));
-            this.btnStartStopMercury.PressColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(147)))), ((int)(((byte)(195)))));
-            this.btnStartStopMercury.PressTextColor = System.Drawing.Color.White;
-            this.btnStartStopMercury.Size = new System.Drawing.Size(75, 23);
-            this.btnStartStopMercury.Style = MetroSet_UI.Design.Style.Light;
-            this.btnStartStopMercury.StyleManager = null;
-            this.btnStartStopMercury.TabIndex = 21;
-            this.btnStartStopMercury.Text = "Start";
-            this.btnStartStopMercury.ThemeAuthor = "Narwin";
-            this.btnStartStopMercury.ThemeName = "MetroLite";
-            this.btnStartStopMercury.Click += new System.EventHandler(this.btnStartStopMercury_Click);
-            // 
-            // btnStartStopTomcat
-            // 
-            this.btnStartStopTomcat.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
-            this.btnStartStopTomcat.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
-            this.btnStartStopTomcat.DisabledForeColor = System.Drawing.Color.Gray;
-            this.btnStartStopTomcat.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.btnStartStopTomcat.HoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
-            this.btnStartStopTomcat.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
-            this.btnStartStopTomcat.HoverTextColor = System.Drawing.Color.White;
-            this.btnStartStopTomcat.Location = new System.Drawing.Point(191, 245);
-            this.btnStartStopTomcat.Name = "btnStartStopTomcat";
-            this.btnStartStopTomcat.NormalBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
-            this.btnStartStopTomcat.NormalColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
-            this.btnStartStopTomcat.NormalTextColor = System.Drawing.Color.White;
-            this.btnStartStopTomcat.PressBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(147)))), ((int)(((byte)(195)))));
-            this.btnStartStopTomcat.PressColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(147)))), ((int)(((byte)(195)))));
-            this.btnStartStopTomcat.PressTextColor = System.Drawing.Color.White;
-            this.btnStartStopTomcat.Size = new System.Drawing.Size(75, 23);
-            this.btnStartStopTomcat.Style = MetroSet_UI.Design.Style.Light;
-            this.btnStartStopTomcat.StyleManager = null;
-            this.btnStartStopTomcat.TabIndex = 21;
-            this.btnStartStopTomcat.Text = "Start";
-            this.btnStartStopTomcat.ThemeAuthor = "Narwin";
-            this.btnStartStopTomcat.ThemeName = "MetroLite";
-            this.btnStartStopTomcat.Click += new System.EventHandler(this.btnStartStopTomcat_Click);
+            this.lbcProjectList.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.lbcProjectList.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
+            this.lbcProjectList.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.lbcProjectList.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.lbcProjectList.HoveredItemBackColor = System.Drawing.Color.LightGray;
+            this.lbcProjectList.HoveredItemColor = System.Drawing.Color.DimGray;
+            this.lbcProjectList.ItemHeight = 30;
+            this.lbcProjectList.Location = new System.Drawing.Point(0, 92);
+            this.lbcProjectList.MultiSelect = false;
+            this.lbcProjectList.Name = "lbcProjectList";
+            this.lbcProjectList.SelectedIndex = -1;
+            this.lbcProjectList.SelectedItem = null;
+            this.lbcProjectList.SelectedItemBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.lbcProjectList.SelectedItemColor = System.Drawing.Color.White;
+            this.lbcProjectList.SelectedValue = null;
+            this.lbcProjectList.ShowBorder = false;
+            this.lbcProjectList.ShowScrollBar = false;
+            this.lbcProjectList.Size = new System.Drawing.Size(307, 171);
+            this.lbcProjectList.Style = MetroSet_UI.Design.Style.Dark;
+            this.lbcProjectList.StyleManager = null;
+            this.lbcProjectList.TabIndex = 12;
+            this.lbcProjectList.ThemeAuthor = "Narwin";
+            this.lbcProjectList.ThemeName = "MetroDark";
             // 
             // XPSMain
             // 
@@ -2570,7 +2587,6 @@
         private MetroSet_UI.Controls.MetroSetButton btnAddNewProject;
         private MetroSet_UI.Controls.MetroSetButton btnImportConfig;
         private MetroSet_UI.Controls.MetroSetButton btnExportConfig;
-        private System.Windows.Forms.ListView ltvProjectList;
         private MetroSet_UI.Controls.MetroSetButton btnEditProject;
         private MetroSet_UI.Controls.MetroSetButton btnDeleteProject;
         private MetroSet_UI.Controls.MetroSetDivider metroSetDivider9;
@@ -2604,6 +2620,7 @@
         private MetroSet_UI.Controls.MetroSetButton btnStartStopFileZilla;
         private MetroSet_UI.Controls.MetroSetButton btnStartStopMySQL;
         private MetroSet_UI.Controls.MetroSetButton btnStartStopApache;
+        private MetroSet_UI.Controls.MetroSetListBox lbcProjectList;
     }
 }
 

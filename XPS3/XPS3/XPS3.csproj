@@ -55,6 +55,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="XPSAddProject.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="XPSAddProject.Designer.cs">
+      <DependentUpon>XPSAddProject.cs</DependentUpon>
+    </Compile>
     <Compile Include="XPSMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -63,6 +69,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="XPSAddProject.resx">
+      <DependentUpon>XPSAddProject.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="XPSMain.resx">
       <DependentUpon>XPSMain.cs</DependentUpon>
     </EmbeddedResource>

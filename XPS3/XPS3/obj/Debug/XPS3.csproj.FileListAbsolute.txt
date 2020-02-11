@@ -14,3 +14,4 @@ C:\Users\zivi\Desktop\Projects (GIT)\XAMPP_ProjectSelector\XPS3\XPS3\bin\Debug\x
 C:\Users\zivi\Desktop\Projects (GIT)\XAMPP_ProjectSelector\XPS3\XPS3\bin\Debug\System.Data.SQLite.dll
 C:\Users\zivi\Desktop\Projects (GIT)\XAMPP_ProjectSelector\XPS3\XPS3\bin\Debug\System.Data.SQLite.xml
 C:\Users\zivi\Desktop\Projects (GIT)\XAMPP_ProjectSelector\XPS3\XPS3\bin\Debug\System.Data.SQLite.dll.config
+C:\Users\zivi\Desktop\Projects (GIT)\XAMPP_ProjectSelector\XPS3\XPS3\obj\Debug\XPS3.XPSAddProject.resources

@@ -57,6 +57,7 @@ namespace XPS3
         private void XPSMain_Load(object sender, EventArgs e)
         {
             RunAutostart();
+            UpdateProjectLists();
         }
 
         private void XPSMain_FormClosing(object sender, FormClosingEventArgs e)
@@ -95,11 +96,11 @@ namespace XPS3
             cmd = new SQLiteCommand(connection);
             if (!fileExitst)
             {
-                cmd.CommandText = @"CREATE TABLE ""Settings"" (""ID"" INTEGER PRIMARY KEY AUTOINCREMENT, ""Key"" TEXT UNIQUE, ""Value"" TEXT);";
+                cmd.CommandText = @"CREATE TABLE 'Settings' ('ID' INTEGER PRIMARY KEY AUTOINCREMENT, 'Key' TEXT UNIQUE, 'Value' TEXT);";
                 cmd.ExecuteNonQuery();
-                cmd.CommandText = @"CREATE TABLE ""Log"" (""ID"" INTEGER PRIMARY KEY AUTOINCREMENT, ""ProjectID"" INTEGER, ""SelectedDate"" TEXT)";
+                cmd.CommandText = @"CREATE TABLE 'Log' ('ID' INTEGER PRIMARY KEY AUTOINCREMENT, 'ProjectID' INTEGER, 'SelectedDate' TEXT)";
                 cmd.ExecuteNonQuery();
-                cmd.CommandText = @"CREATE TABLE ""Projects"" (""ID"" INTEGER PRIMARY KEY AUTOINCREMENT, ""Name""  TEXT, ""Description""   TEXT, ""RootDirectory"" TEXT, ""Image"" BLOB);";
+                cmd.CommandText = @"CREATE TABLE 'Projects' ( 'ID' INTEGER PRIMARY KEY AUTOINCREMENT, 'Name' TEXT, 'Description' TEXT, 'RootDirectory' TEXT, 'Image' BLOB, 'ApacheEnabled' TEXT, 'MySQLEnabled' TEXT, 'FileZillaEnabled'  TEXT, 'MercuryEnabled' TEXT, 'TomcatEnabled' TEXT);";
                 cmd.ExecuteNonQuery();
             }
 
@@ -109,17 +110,17 @@ namespace XPS3
         private void SettingsPoke(string pKey, object pValue)
         {
             connection.Open();
-            cmd.CommandText = $@"SELECT COUNT(*) FROM Settings WHERE Key = ""{pKey}"""; ;
+            cmd.CommandText = $@"SELECT COUNT(*) FROM Settings WHERE Key = '{pKey}'"; ;
             if (Convert.ToInt32(cmd.ExecuteScalar()) == 0)
             {
                 // New entry
-                cmd.CommandText = $@"INSERT INTO Settings (Key, Value) VALUES (""{pKey}"", ""{pValue}"")";
+                cmd.CommandText = $@"INSERT INTO Settings (Key, Value) VALUES ('{pKey}', '{pValue}')";
                 cmd.ExecuteNonQuery();
             }
             else
             {
                 // Update entry
-                cmd.CommandText = $@"UPDATE Settings SET Value = ""{pValue}"" WHERE Key = ""{pKey}""";
+                cmd.CommandText = $@"UPDATE Settings SET Value = '{pValue}' WHERE Key = '{pKey}'";
                 cmd.ExecuteNonQuery();
             }
             connection.Close();
@@ -128,7 +129,7 @@ namespace XPS3
         private object SettingsPeek(string pKey, object pDefaultValue = null)
         {
             connection.Open();
-            cmd.CommandText = $@"SELECT Value FROM Settings WHERE Key = ""{pKey}""";
+            cmd.CommandText = $@"SELECT Value FROM Settings WHERE Key = '{pKey}'";
             object result = cmd.ExecuteScalar();
             connection.Close();
             if (result == null && pDefaultValue != null) return pDefaultValue;
@@ -562,7 +563,41 @@ namespace XPS3
 
         private void btnAddNewProject_Click(object sender, EventArgs e)
         {
+            XPSAddProject addForm = new XPSAddProject();
+            if(addForm.ShowDialog() == DialogResult.OK)
+            {
+                // Add new project to DB
+                connection.Open();
+                cmd.CommandText = "INSERT INTO Projects (Name, Description, RootDirectory, Image, ApacheEnabled, MySQLEnabled, FileZillaEnabled, MercuryEnabled, TomcatEnabled) VALUES " +
+                    $"('{addForm.ProjectTitle.ToString()}','{addForm.ProjectDescription.ToString()}','{addForm.ProjectRoot.ToString()}','{Convert.ToString(addForm.ProjectImage)}'," +
+                    $"'{addForm.DefOpApache.ToString()}','{addForm.DefOpMySQL.ToString()}','{addForm.DefOpFileZilla.ToString()}','{addForm.DefOpMercury.ToString()}','{addForm.DefOpTomcat.ToString()}')";
+                cmd.ExecuteNonQuery();
+                connection.Close();
+                MessageBox.Show("Project Successfully Added!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+                UpdateProjectLists();
+            }
+        }
+
+        private void UpdateProjectLists()
+        {
+            cbxSavedProjects.Items.Clear();
+
+            SQLiteDataReader reader;
+
+            // Main Page - All Projects
+            // Manage Page - All Projects
+            connection.Open();
+            cmd.CommandText = "SELECT * FROM Projects";
+            reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                // Main Page
+                cbxSavedProjects.Items.Add(reader["Name"].ToString());
+            }
+            connection.Close();
+
+            
         }
 
         private void btnEditProject_Click_1(object sender, EventArgs e)
