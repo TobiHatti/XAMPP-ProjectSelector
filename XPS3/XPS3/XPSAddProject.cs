@@ -13,6 +13,8 @@ namespace XPS3
 {
     public partial class XPSAddProject : Form
     {
+        public bool EditMode { get; set; } = false;
+
         public string ProjectTitle { get; set; } = null;
         public string ProjectDescription { get; set; } = null;
         public string ProjectRoot { get; set; } = null;
@@ -81,6 +83,39 @@ namespace XPS3
             {
                 this.DialogResult = DialogResult.OK;
                 this.Close();
+            }
+        }
+
+        private void XPSAddProject_Load(object sender, EventArgs e)
+        {
+            if (EditMode)
+            {
+                lblFormTitle.Text = "Edit Project";
+                this.Text = "XPS3 - Edit Project";
+
+                txtProjectTitle.Text = ProjectTitle;
+                rtbProjectDescription.Text = ProjectDescription;
+                txtProjectRoot.Text = ProjectRoot;
+                fbdProjectRoot.SelectedPath = ProjectRoot;
+
+                if (string.IsNullOrEmpty(ProjectImage))
+                {
+                    byte[] imageBytes = Convert.FromBase64String(ProjectImage);
+                    using (var ms = new MemoryStream(imageBytes, 0, imageBytes.Length))
+                    {
+                        Image image = Image.FromStream(ms, true);
+                        pbxThumbnailPreview.Image = image;
+                        pbxThumbnailPreview.Invalidate();
+                    }
+                }
+
+                chbDefOpApache.Switched = DefOpApache;
+                chbDefOpMySQL.Switched = DefOpMySQL;
+                chbDefOpFileZilla.Switched = DefOpFileZilla;
+                chbDefOpMercury.Switched = DefOpMercury;
+                chbDefOpTomcat.Switched = DefOpTomcat;
+
+                btnSubmit.Text = "Update Project";
             }
         }
     }

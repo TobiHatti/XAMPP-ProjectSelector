@@ -100,7 +100,7 @@ namespace XPS3
                 cmd.ExecuteNonQuery();
                 cmd.CommandText = @"CREATE TABLE 'Log' ('ID' INTEGER PRIMARY KEY AUTOINCREMENT, 'ProjectID' INTEGER, 'SelectedDate' TEXT)";
                 cmd.ExecuteNonQuery();
-                cmd.CommandText = @"CREATE TABLE 'Projects' ( 'ID' INTEGER PRIMARY KEY AUTOINCREMENT, 'Name' TEXT, 'Description' TEXT, 'RootDirectory' TEXT, 'Image' BLOB, 'ApacheEnabled' TEXT, 'MySQLEnabled' TEXT, 'FileZillaEnabled'  TEXT, 'MercuryEnabled' TEXT, 'TomcatEnabled' TEXT);";
+                cmd.CommandText = @"CREATE TABLE 'Projects' ( 'ID' INTEGER PRIMARY KEY AUTOINCREMENT, 'Name' TEXT, 'Description' TEXT, 'RootDirectory' TEXT, 'Image' TEXT, 'ApacheEnabled' TEXT, 'MySQLEnabled' TEXT, 'FileZillaEnabled'  TEXT, 'MercuryEnabled' TEXT, 'TomcatEnabled' TEXT);";
                 cmd.ExecuteNonQuery();
             }
 
@@ -373,12 +373,12 @@ namespace XPS3
 
         private void btnEditProject_Click(object sender, EventArgs e)
         {
-
+            EditProject(Convert.ToInt32(cbxSavedProjects.SelectedValue));
         }
 
         private void btnDeleteProject_Click(object sender, EventArgs e)
         {
-
+            DeleteProject(Convert.ToInt32(cbxSavedProjects.SelectedValue));
         }
 
         #endregion
@@ -563,51 +563,137 @@ namespace XPS3
 
         private void btnAddNewProject_Click(object sender, EventArgs e)
         {
-            XPSAddProject addForm = new XPSAddProject();
-            if(addForm.ShowDialog() == DialogResult.OK)
+            using (XPSAddProject addForm = new XPSAddProject())
             {
-                // Add new project to DB
-                connection.Open();
-                cmd.CommandText = "INSERT INTO Projects (Name, Description, RootDirectory, Image, ApacheEnabled, MySQLEnabled, FileZillaEnabled, MercuryEnabled, TomcatEnabled) VALUES " +
-                    $"('{addForm.ProjectTitle.ToString()}','{addForm.ProjectDescription.ToString()}','{addForm.ProjectRoot.ToString()}','{Convert.ToString(addForm.ProjectImage)}'," +
-                    $"'{addForm.DefOpApache.ToString()}','{addForm.DefOpMySQL.ToString()}','{addForm.DefOpFileZilla.ToString()}','{addForm.DefOpMercury.ToString()}','{addForm.DefOpTomcat.ToString()}')";
-                cmd.ExecuteNonQuery();
-                connection.Close();
-                MessageBox.Show("Project Successfully Added!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if (addForm.ShowDialog() == DialogResult.OK)
+                {
+                    // Add new project to DB
+                    connection.Open();
+                    cmd.CommandText = "INSERT INTO Projects (Name, Description, RootDirectory, Image, ApacheEnabled, MySQLEnabled, FileZillaEnabled, MercuryEnabled, TomcatEnabled) VALUES " +
+                        $"('{addForm.ProjectTitle.ToString()}','{addForm.ProjectDescription.ToString()}','{addForm.ProjectRoot.ToString()}','{Convert.ToString(addForm.ProjectImage)}'," +
+                        $"'{addForm.DefOpApache.ToString()}','{addForm.DefOpMySQL.ToString()}','{addForm.DefOpFileZilla.ToString()}','{addForm.DefOpMercury.ToString()}','{addForm.DefOpTomcat.ToString()}')";
+                    cmd.ExecuteNonQuery();
+                    connection.Close();
+                    MessageBox.Show("Project Successfully Added!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                UpdateProjectLists();
+                    UpdateProjectLists();
+                }
             }
         }
 
         private void UpdateProjectLists()
         {
+            cbxSavedProjects.DataSource = null;
             cbxSavedProjects.Items.Clear();
 
-            SQLiteDataReader reader;
+            dgvProjectList.Columns.Clear();
+            dgvProjectList.Rows.Clear();
+            dgvProjectList.Columns.Add("ID", "ID");
+            dgvProjectList.Columns.Add("Name", "Name");
+            dgvProjectList.Columns.Add("ProjectRoot", "Project Root");
 
-            // Main Page - All Projects
-            // Manage Page - All Projects
-            connection.Open();
-            cmd.CommandText = "SELECT * FROM Projects";
-            reader = cmd.ExecuteReader();
-            while (reader.Read())
-            {
-                // Main Page
-                cbxSavedProjects.Items.Add(reader["Name"].ToString());
-            }
-            connection.Close();
+            dgvProjectList.Columns[0].Visible = false;
+            dgvProjectList.Columns[1].Width = 125;
+            dgvProjectList.Columns[2].Width = 180;
 
             
+            DataTable dtProjects = new DataTable();
+            dtProjects.Columns.Add("ID", typeof(int));
+            dtProjects.Columns.Add("Name", typeof(string));
+
+            connection.Open();
+            cmd.CommandText = "SELECT * FROM Projects";
+
+            using (SQLiteDataReader reader = cmd.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    // Main Page
+                    dtProjects.Rows.Add(new string[] { reader["ID"].ToString(), reader["Name"].ToString() });
+
+                    // Manager Page
+                    dgvProjectList.Rows.Add(new string[] { reader["ID"].ToString(), reader["Name"].ToString(), reader["RootDirectory"].ToString() });
+                }
+            }
+            connection.Close();
+           
+            cbxSavedProjects.DisplayMember = "Name";
+            cbxSavedProjects.ValueMember = "ID";
+            cbxSavedProjects.DataSource = dtProjects;            
         }
 
         private void btnEditProject_Click_1(object sender, EventArgs e)
         {
-
+            EditProject(Convert.ToInt32(dgvProjectList.Rows[dgvProjectList.SelectedRows[0].Index].Cells[0].Value));
         }
 
         private void btnDeleteProject_Click_1(object sender, EventArgs e)
         {
+            DeleteProject(Convert.ToInt32(dgvProjectList.Rows[dgvProjectList.SelectedRows[0].Index].Cells[0].Value));
+        }
 
+        private void dgvProjectList_DoubleClick(object sender, EventArgs e)
+        {
+            EditProject(Convert.ToInt32(dgvProjectList.Rows[dgvProjectList.SelectedRows[0].Index].Cells[0].Value));
+        }
+
+        private void DeleteProject(int pProjectID)
+        {
+            if (MessageBox.Show("Are you sure that you want to delete this project?", "Delete Project", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.Yes)
+            {
+                connection.Open();
+                cmd.CommandText = $"DELETE FROM Projects WHERE ID = {pProjectID}";
+                cmd.ExecuteNonQuery();
+                cmd.CommandText = $"DELETE FROM Log WHERE ProjectID = {pProjectID}";
+                cmd.ExecuteNonQuery();
+                connection.Close();
+
+                MessageBox.Show("Project Deleted!", "Delete Project", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                UpdateProjectLists();
+            }
+        }
+
+        private void EditProject(int pProjectID)
+        {
+            using (XPSAddProject editForm = new XPSAddProject())
+            {
+                editForm.EditMode = true;
+                connection.Open();
+                cmd.CommandText = $"SELECT * FROM Projects WHERE ID = {pProjectID}";
+                using (SQLiteDataReader reader = cmd.ExecuteReader())
+                { 
+                    while (reader.Read())
+                    {
+                        editForm.ProjectTitle = reader["Name"].ToString();
+                        editForm.ProjectDescription = reader["Description"].ToString();
+                        editForm.ProjectRoot = reader["RootDirectory"].ToString();
+                        editForm.ProjectImage = Convert.ToString(reader["Image"]);
+
+                        editForm.DefOpApache = Convert.ToBoolean(reader["ApacheEnabled"]);
+                        editForm.DefOpMySQL = Convert.ToBoolean(reader["MySQLEnabled"]);
+                        editForm.DefOpFileZilla = Convert.ToBoolean(reader["FileZillaEnabled"]);
+                        editForm.DefOpMercury = Convert.ToBoolean(reader["MercuryEnabled"]);
+                        editForm.DefOpTomcat = Convert.ToBoolean(reader["TomcatEnabled"]);
+                    }
+                }
+                connection.Close();
+
+                if (editForm.ShowDialog() == DialogResult.OK)
+                {
+                    // Update DB
+                    connection.Open();
+                    cmd.CommandText = $"UPDATE Projects SET Name = '{editForm.Name.ToString()}', Description = '{editForm.ProjectDescription.ToString()}', RootDirectory = '{editForm.ProjectRoot.ToString()}', Image = '{Convert.ToString(editForm.ProjectImage)}', " +
+                        $"ApacheEnabled = '{editForm.DefOpApache.ToString()}', MySQLEnabled = '{editForm.DefOpMySQL.ToString()}', FileZillaEnabled = '{editForm.DefOpFileZilla.ToString()}', MercuryEnabled = '{editForm.DefOpMercury.ToString()}', TomcatEnabled = '{editForm.DefOpTomcat.ToString()}' " +
+                        $"WHERE ID = {pProjectID}";
+                    cmd.ExecuteNonQuery();
+                    connection.Close();
+                    MessageBox.Show("Project Successfully Updated!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    UpdateProjectLists();
+                }
+
+            }
         }
 
         #endregion
@@ -680,8 +766,11 @@ namespace XPS3
             }
         }
 
+
         #endregion
 
         
+
+
     }
 }

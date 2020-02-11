@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(XPSMain));
             this.tctTabMenu = new MetroSet_UI.Controls.MetroSetTabControl();
             this.tabProjects = new MetroSet_UI.Child.MetroSetTabPage();
@@ -165,7 +166,7 @@
             this.ofdFileSelector = new System.Windows.Forms.OpenFileDialog();
             this.fbdFolderSelector = new System.Windows.Forms.FolderBrowserDialog();
             this.tmrCheckServiceStatus = new System.Windows.Forms.Timer(this.components);
-            this.lbcProjectList = new MetroSet_UI.Controls.MetroSetListBox();
+            this.dgvProjectList = new System.Windows.Forms.DataGridView();
             this.tctTabMenu.SuspendLayout();
             this.tabProjects.SuspendLayout();
             this.tabServices.SuspendLayout();
@@ -186,6 +187,7 @@
             this.cmsFileZillaConfig.SuspendLayout();
             this.cmsMercuryConfig.SuspendLayout();
             this.cmsTomcatConfig.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvProjectList)).BeginInit();
             this.SuspendLayout();
             // 
             // tctTabMenu
@@ -1320,7 +1322,7 @@
             // tabManager
             // 
             this.tabManager.BaseColor = System.Drawing.Color.White;
-            this.tabManager.Controls.Add(this.lbcProjectList);
+            this.tabManager.Controls.Add(this.dgvProjectList);
             this.tabManager.Controls.Add(this.btnEditProject);
             this.tabManager.Controls.Add(this.btnDeleteProject);
             this.tabManager.Controls.Add(this.btnImportConfig);
@@ -2416,31 +2418,42 @@
             this.tmrCheckServiceStatus.Interval = 2000;
             this.tmrCheckServiceStatus.Tick += new System.EventHandler(this.tmrCheckServiceStatus_Tick);
             // 
-            // lbcProjectList
+            // dgvProjectList
             // 
-            this.lbcProjectList.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.lbcProjectList.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
-            this.lbcProjectList.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.lbcProjectList.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.lbcProjectList.HoveredItemBackColor = System.Drawing.Color.LightGray;
-            this.lbcProjectList.HoveredItemColor = System.Drawing.Color.DimGray;
-            this.lbcProjectList.ItemHeight = 30;
-            this.lbcProjectList.Location = new System.Drawing.Point(0, 92);
-            this.lbcProjectList.MultiSelect = false;
-            this.lbcProjectList.Name = "lbcProjectList";
-            this.lbcProjectList.SelectedIndex = -1;
-            this.lbcProjectList.SelectedItem = null;
-            this.lbcProjectList.SelectedItemBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
-            this.lbcProjectList.SelectedItemColor = System.Drawing.Color.White;
-            this.lbcProjectList.SelectedValue = null;
-            this.lbcProjectList.ShowBorder = false;
-            this.lbcProjectList.ShowScrollBar = false;
-            this.lbcProjectList.Size = new System.Drawing.Size(307, 171);
-            this.lbcProjectList.Style = MetroSet_UI.Design.Style.Dark;
-            this.lbcProjectList.StyleManager = null;
-            this.lbcProjectList.TabIndex = 12;
-            this.lbcProjectList.ThemeAuthor = "Narwin";
-            this.lbcProjectList.ThemeName = "MetroDark";
+            this.dgvProjectList.AllowUserToAddRows = false;
+            this.dgvProjectList.AllowUserToDeleteRows = false;
+            this.dgvProjectList.AllowUserToResizeColumns = false;
+            this.dgvProjectList.AllowUserToResizeRows = false;
+            this.dgvProjectList.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(247)))), ((int)(((byte)(255)))));
+            this.dgvProjectList.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvProjectList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.dgvProjectList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvProjectList.DefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvProjectList.GridColor = System.Drawing.Color.White;
+            this.dgvProjectList.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.dgvProjectList.Location = new System.Drawing.Point(0, 92);
+            this.dgvProjectList.MultiSelect = false;
+            this.dgvProjectList.Name = "dgvProjectList";
+            this.dgvProjectList.ReadOnly = true;
+            this.dgvProjectList.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.dgvProjectList.RowHeadersVisible = false;
+            this.dgvProjectList.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dgvProjectList.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dgvProjectList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvProjectList.ShowCellErrors = false;
+            this.dgvProjectList.ShowCellToolTips = false;
+            this.dgvProjectList.ShowEditingIcon = false;
+            this.dgvProjectList.ShowRowErrors = false;
+            this.dgvProjectList.Size = new System.Drawing.Size(307, 171);
+            this.dgvProjectList.TabIndex = 11;
+            this.dgvProjectList.DoubleClick += new System.EventHandler(this.dgvProjectList_DoubleClick);
             // 
             // XPSMain
             // 
@@ -2480,6 +2493,7 @@
             this.cmsFileZillaConfig.ResumeLayout(false);
             this.cmsMercuryConfig.ResumeLayout(false);
             this.cmsTomcatConfig.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvProjectList)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -2620,7 +2634,7 @@
         private MetroSet_UI.Controls.MetroSetButton btnStartStopFileZilla;
         private MetroSet_UI.Controls.MetroSetButton btnStartStopMySQL;
         private MetroSet_UI.Controls.MetroSetButton btnStartStopApache;
-        private MetroSet_UI.Controls.MetroSetListBox lbcProjectList;
+        private System.Windows.Forms.DataGridView dgvProjectList;
     }
 }
 

@@ -31,10 +31,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(XPSAddProject));
             this.txtProjectTitle = new MetroSet_UI.Controls.MetroSetTextBox();
             this.metroSetLabel1 = new MetroSet_UI.Controls.MetroSetLabel();
-            this.metroSetLabel4 = new MetroSet_UI.Controls.MetroSetLabel();
+            this.lblFormTitle = new MetroSet_UI.Controls.MetroSetLabel();
             this.metroSetDivider2 = new MetroSet_UI.Controls.MetroSetDivider();
             this.metroSetLabel2 = new MetroSet_UI.Controls.MetroSetLabel();
-            this.rtbProjectDescription = new MetroSet_UI.Controls.MetroSetRichTextBox();
             this.metroSetDivider1 = new MetroSet_UI.Controls.MetroSetDivider();
             this.chbDefOpApache = new MetroSet_UI.Controls.MetroSetSwitch();
             this.chbDefOpMySQL = new MetroSet_UI.Controls.MetroSetSwitch();
@@ -59,6 +58,7 @@
             this.btnBrowseRootFolder = new MetroSet_UI.Controls.MetroSetButton();
             this.fbdProjectRoot = new System.Windows.Forms.FolderBrowserDialog();
             this.ofdOpenThumbnail = new System.Windows.Forms.OpenFileDialog();
+            this.rtbProjectDescription = new MetroSet_UI.Controls.MetroSetTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbxThumbnailPreview)).BeginInit();
             this.SuspendLayout();
             // 
@@ -103,19 +103,19 @@
             this.metroSetLabel1.ThemeAuthor = "Narwin";
             this.metroSetLabel1.ThemeName = "MetroLite";
             // 
-            // metroSetLabel4
+            // lblFormTitle
             // 
-            this.metroSetLabel4.Cursor = System.Windows.Forms.Cursors.Default;
-            this.metroSetLabel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.metroSetLabel4.Location = new System.Drawing.Point(12, 9);
-            this.metroSetLabel4.Name = "metroSetLabel4";
-            this.metroSetLabel4.Size = new System.Drawing.Size(207, 23);
-            this.metroSetLabel4.Style = MetroSet_UI.Design.Style.Light;
-            this.metroSetLabel4.StyleManager = null;
-            this.metroSetLabel4.TabIndex = 9;
-            this.metroSetLabel4.Text = "Add New Project";
-            this.metroSetLabel4.ThemeAuthor = "Narwin";
-            this.metroSetLabel4.ThemeName = "MetroLite";
+            this.lblFormTitle.Cursor = System.Windows.Forms.Cursors.Default;
+            this.lblFormTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFormTitle.Location = new System.Drawing.Point(12, 9);
+            this.lblFormTitle.Name = "lblFormTitle";
+            this.lblFormTitle.Size = new System.Drawing.Size(207, 23);
+            this.lblFormTitle.Style = MetroSet_UI.Design.Style.Light;
+            this.lblFormTitle.StyleManager = null;
+            this.lblFormTitle.TabIndex = 9;
+            this.lblFormTitle.Text = "Add New Project";
+            this.lblFormTitle.ThemeAuthor = "Narwin";
+            this.lblFormTitle.ThemeName = "MetroLite";
             // 
             // metroSetDivider2
             // 
@@ -144,29 +144,6 @@
             this.metroSetLabel2.Text = "Project Description:";
             this.metroSetLabel2.ThemeAuthor = "Narwin";
             this.metroSetLabel2.ThemeName = "MetroLite";
-            // 
-            // rtbProjectDescription
-            // 
-            this.rtbProjectDescription.AutoWordSelection = false;
-            this.rtbProjectDescription.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(155)))), ((int)(((byte)(155)))));
-            this.rtbProjectDescription.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            this.rtbProjectDescription.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(155)))), ((int)(((byte)(155)))));
-            this.rtbProjectDescription.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
-            this.rtbProjectDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.rtbProjectDescription.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
-            this.rtbProjectDescription.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.rtbProjectDescription.Lines = null;
-            this.rtbProjectDescription.Location = new System.Drawing.Point(12, 123);
-            this.rtbProjectDescription.MaxLength = 32767;
-            this.rtbProjectDescription.Name = "rtbProjectDescription";
-            this.rtbProjectDescription.ReadOnly = false;
-            this.rtbProjectDescription.Size = new System.Drawing.Size(325, 79);
-            this.rtbProjectDescription.Style = MetroSet_UI.Design.Style.Light;
-            this.rtbProjectDescription.StyleManager = null;
-            this.rtbProjectDescription.TabIndex = 10;
-            this.rtbProjectDescription.ThemeAuthor = "Narwin";
-            this.rtbProjectDescription.ThemeName = "MetroLite";
-            this.rtbProjectDescription.WordWrap = true;
             // 
             // metroSetDivider1
             // 
@@ -593,12 +570,41 @@
             // 
             this.ofdOpenThumbnail.FileName = "openFileDialog1";
             // 
+            // rtbProjectDescription
+            // 
+            this.rtbProjectDescription.AutoCompleteCustomSource = null;
+            this.rtbProjectDescription.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.None;
+            this.rtbProjectDescription.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.None;
+            this.rtbProjectDescription.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(155)))), ((int)(((byte)(155)))));
+            this.rtbProjectDescription.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.rtbProjectDescription.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(155)))), ((int)(((byte)(155)))));
+            this.rtbProjectDescription.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            this.rtbProjectDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.rtbProjectDescription.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.rtbProjectDescription.Image = null;
+            this.rtbProjectDescription.Lines = null;
+            this.rtbProjectDescription.Location = new System.Drawing.Point(12, 123);
+            this.rtbProjectDescription.MaxLength = 32767;
+            this.rtbProjectDescription.Multiline = true;
+            this.rtbProjectDescription.Name = "rtbProjectDescription";
+            this.rtbProjectDescription.ReadOnly = false;
+            this.rtbProjectDescription.Size = new System.Drawing.Size(325, 79);
+            this.rtbProjectDescription.Style = MetroSet_UI.Design.Style.Light;
+            this.rtbProjectDescription.StyleManager = null;
+            this.rtbProjectDescription.TabIndex = 24;
+            this.rtbProjectDescription.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.rtbProjectDescription.ThemeAuthor = "Narwin";
+            this.rtbProjectDescription.ThemeName = "MetroLite";
+            this.rtbProjectDescription.UseSystemPasswordChar = false;
+            this.rtbProjectDescription.WatermarkText = "";
+            // 
             // XPSAddProject
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(349, 477);
+            this.Controls.Add(this.rtbProjectDescription);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnBrowseRootFolder);
             this.Controls.Add(this.btnSubmit);
@@ -615,8 +621,7 @@
             this.Controls.Add(this.chbDefOpFileZilla);
             this.Controls.Add(this.chbDefOpMySQL);
             this.Controls.Add(this.chbDefOpApache);
-            this.Controls.Add(this.rtbProjectDescription);
-            this.Controls.Add(this.metroSetLabel4);
+            this.Controls.Add(this.lblFormTitle);
             this.Controls.Add(this.metroSetDivider3);
             this.Controls.Add(this.metroSetDivider1);
             this.Controls.Add(this.metroSetDivider2);
@@ -634,6 +639,7 @@
             this.Name = "XPSAddProject";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "XPS3 - Add Project";
+            this.Load += new System.EventHandler(this.XPSAddProject_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbxThumbnailPreview)).EndInit();
             this.ResumeLayout(false);
 
@@ -643,10 +649,9 @@
 
         private MetroSet_UI.Controls.MetroSetTextBox txtProjectTitle;
         private MetroSet_UI.Controls.MetroSetLabel metroSetLabel1;
-        private MetroSet_UI.Controls.MetroSetLabel metroSetLabel4;
+        private MetroSet_UI.Controls.MetroSetLabel lblFormTitle;
         private MetroSet_UI.Controls.MetroSetDivider metroSetDivider2;
         private MetroSet_UI.Controls.MetroSetLabel metroSetLabel2;
-        private MetroSet_UI.Controls.MetroSetRichTextBox rtbProjectDescription;
         private MetroSet_UI.Controls.MetroSetDivider metroSetDivider1;
         private MetroSet_UI.Controls.MetroSetSwitch chbDefOpApache;
         private MetroSet_UI.Controls.MetroSetSwitch chbDefOpMySQL;
@@ -671,5 +676,6 @@
         private MetroSet_UI.Controls.MetroSetButton btnBrowseRootFolder;
         private System.Windows.Forms.FolderBrowserDialog fbdProjectRoot;
         private System.Windows.Forms.OpenFileDialog ofdOpenThumbnail;
+        private MetroSet_UI.Controls.MetroSetTextBox rtbProjectDescription;
     }
 }
