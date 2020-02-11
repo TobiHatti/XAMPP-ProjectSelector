@@ -47,6 +47,11 @@
             this.btnDeleteSelectedProject = new MetroSet_UI.Controls.MetroSetTile();
             this.btnSeletProject = new MetroSet_UI.Controls.MetroSetTile();
             this.tabServices = new MetroSet_UI.Child.MetroSetTabPage();
+            this.pbxTomcatStatus = new System.Windows.Forms.PictureBox();
+            this.pbxMercuryStatus = new System.Windows.Forms.PictureBox();
+            this.pbxFileZillaStatus = new System.Windows.Forms.PictureBox();
+            this.pbxMySQLStatus = new System.Windows.Forms.PictureBox();
+            this.pbxApacheStatus = new System.Windows.Forms.PictureBox();
             this.btnTomcatConfig = new MetroSet_UI.Controls.MetroDefaultSetButton();
             this.btnMercuryConfig = new MetroSet_UI.Controls.MetroDefaultSetButton();
             this.btnFileZillaConfig = new MetroSet_UI.Controls.MetroDefaultSetButton();
@@ -78,7 +83,14 @@
             this.metroSetLabel4 = new MetroSet_UI.Controls.MetroSetLabel();
             this.metroSetDivider2 = new MetroSet_UI.Controls.MetroSetDivider();
             this.tabManager = new MetroSet_UI.Child.MetroSetTabPage();
+            this.ltvProjectList = new System.Windows.Forms.ListView();
+            this.btnEditProject = new MetroSet_UI.Controls.MetroSetButton();
+            this.btnDeleteProject = new MetroSet_UI.Controls.MetroSetButton();
+            this.btnImportConfig = new MetroSet_UI.Controls.MetroSetButton();
+            this.btnExportConfig = new MetroSet_UI.Controls.MetroSetButton();
+            this.btnAddNewProject = new MetroSet_UI.Controls.MetroSetButton();
             this.metroSetLabel5 = new MetroSet_UI.Controls.MetroSetLabel();
+            this.metroSetDivider9 = new MetroSet_UI.Controls.MetroSetDivider();
             this.metroSetDivider3 = new MetroSet_UI.Controls.MetroSetDivider();
             this.tabSettings = new MetroSet_UI.Child.MetroSetTabPage();
             this.metroSetLabel19 = new MetroSet_UI.Controls.MetroSetLabel();
@@ -134,22 +146,15 @@
             this.tslBrowseTomcat = new System.Windows.Forms.ToolStripMenuItem();
             this.ofdFileSelector = new System.Windows.Forms.OpenFileDialog();
             this.fbdFolderSelector = new System.Windows.Forms.FolderBrowserDialog();
-            this.btnAddNewProject = new MetroSet_UI.Controls.MetroSetButton();
-            this.btnExportConfig = new MetroSet_UI.Controls.MetroSetButton();
-            this.btnImportConfig = new MetroSet_UI.Controls.MetroSetButton();
-            this.ltvProjectList = new System.Windows.Forms.ListView();
-            this.btnDeleteProject = new MetroSet_UI.Controls.MetroSetButton();
-            this.btnEditProject = new MetroSet_UI.Controls.MetroSetButton();
-            this.metroSetDivider9 = new MetroSet_UI.Controls.MetroSetDivider();
-            this.pbxApacheStatus = new System.Windows.Forms.PictureBox();
-            this.pbxMySQLStatus = new System.Windows.Forms.PictureBox();
-            this.pbxFileZillaStatus = new System.Windows.Forms.PictureBox();
-            this.pbxMercuryStatus = new System.Windows.Forms.PictureBox();
-            this.pbxTomcatStatus = new System.Windows.Forms.PictureBox();
             this.tmrCheckServiceStatus = new System.Windows.Forms.Timer(this.components);
             this.tctTabMenu.SuspendLayout();
             this.tabProjects.SuspendLayout();
             this.tabServices.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxTomcatStatus)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxMercuryStatus)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxFileZillaStatus)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxMySQLStatus)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxApacheStatus)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxLogoTomcat)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxLogoMercury)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxLogoFileZilla)).BeginInit();
@@ -162,11 +167,6 @@
             this.cmsFileZillaConfig.SuspendLayout();
             this.cmsMercuryConfig.SuspendLayout();
             this.cmsTomcatConfig.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbxApacheStatus)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbxMySQLStatus)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbxFileZillaStatus)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbxMercuryStatus)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbxTomcatStatus)).BeginInit();
             this.SuspendLayout();
             // 
             // tctTabMenu
@@ -180,7 +180,7 @@
             this.tctTabMenu.Controls.Add(this.tabServices);
             this.tctTabMenu.Controls.Add(this.tabManager);
             this.tctTabMenu.Controls.Add(this.tabSettings);
-            this.tctTabMenu.Cursor = System.Windows.Forms.Cursors.Default;
+            this.tctTabMenu.Cursor = System.Windows.Forms.Cursors.Hand;
             this.tctTabMenu.ItemSize = new System.Drawing.Size(100, 38);
             this.tctTabMenu.Location = new System.Drawing.Point(12, 12);
             this.tctTabMenu.Name = "tctTabMenu";
@@ -621,6 +621,51 @@
             this.tabServices.ThemeAuthor = "Narwin";
             this.tabServices.ThemeName = "MetroLite";
             this.tabServices.ToolTipText = null;
+            // 
+            // pbxTomcatStatus
+            // 
+            this.pbxTomcatStatus.BackColor = System.Drawing.Color.Red;
+            this.pbxTomcatStatus.Location = new System.Drawing.Point(107, 245);
+            this.pbxTomcatStatus.Name = "pbxTomcatStatus";
+            this.pbxTomcatStatus.Size = new System.Drawing.Size(10, 22);
+            this.pbxTomcatStatus.TabIndex = 20;
+            this.pbxTomcatStatus.TabStop = false;
+            // 
+            // pbxMercuryStatus
+            // 
+            this.pbxMercuryStatus.BackColor = System.Drawing.Color.Red;
+            this.pbxMercuryStatus.Location = new System.Drawing.Point(107, 199);
+            this.pbxMercuryStatus.Name = "pbxMercuryStatus";
+            this.pbxMercuryStatus.Size = new System.Drawing.Size(10, 22);
+            this.pbxMercuryStatus.TabIndex = 20;
+            this.pbxMercuryStatus.TabStop = false;
+            // 
+            // pbxFileZillaStatus
+            // 
+            this.pbxFileZillaStatus.BackColor = System.Drawing.Color.Red;
+            this.pbxFileZillaStatus.Location = new System.Drawing.Point(107, 153);
+            this.pbxFileZillaStatus.Name = "pbxFileZillaStatus";
+            this.pbxFileZillaStatus.Size = new System.Drawing.Size(10, 22);
+            this.pbxFileZillaStatus.TabIndex = 20;
+            this.pbxFileZillaStatus.TabStop = false;
+            // 
+            // pbxMySQLStatus
+            // 
+            this.pbxMySQLStatus.BackColor = System.Drawing.Color.Red;
+            this.pbxMySQLStatus.Location = new System.Drawing.Point(107, 97);
+            this.pbxMySQLStatus.Name = "pbxMySQLStatus";
+            this.pbxMySQLStatus.Size = new System.Drawing.Size(10, 22);
+            this.pbxMySQLStatus.TabIndex = 20;
+            this.pbxMySQLStatus.TabStop = false;
+            // 
+            // pbxApacheStatus
+            // 
+            this.pbxApacheStatus.BackColor = System.Drawing.Color.Red;
+            this.pbxApacheStatus.Location = new System.Drawing.Point(107, 51);
+            this.pbxApacheStatus.Name = "pbxApacheStatus";
+            this.pbxApacheStatus.Size = new System.Drawing.Size(10, 22);
+            this.pbxApacheStatus.TabIndex = 20;
+            this.pbxApacheStatus.TabStop = false;
             // 
             // btnTomcatConfig
             // 
@@ -1224,6 +1269,145 @@
             this.tabManager.ThemeName = "MetroLite";
             this.tabManager.ToolTipText = null;
             // 
+            // ltvProjectList
+            // 
+            this.ltvProjectList.HideSelection = false;
+            this.ltvProjectList.Location = new System.Drawing.Point(0, 92);
+            this.ltvProjectList.Name = "ltvProjectList";
+            this.ltvProjectList.Size = new System.Drawing.Size(307, 171);
+            this.ltvProjectList.TabIndex = 11;
+            this.ltvProjectList.UseCompatibleStateImageBehavior = false;
+            // 
+            // btnEditProject
+            // 
+            this.btnEditProject.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.btnEditProject.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.btnEditProject.DisabledForeColor = System.Drawing.Color.Gray;
+            this.btnEditProject.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.btnEditProject.HoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
+            this.btnEditProject.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
+            this.btnEditProject.HoverTextColor = System.Drawing.Color.White;
+            this.btnEditProject.Location = new System.Drawing.Point(0, 269);
+            this.btnEditProject.Name = "btnEditProject";
+            this.btnEditProject.NormalBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.btnEditProject.NormalColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.btnEditProject.NormalTextColor = System.Drawing.Color.White;
+            this.btnEditProject.PressBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(147)))), ((int)(((byte)(195)))));
+            this.btnEditProject.PressColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(147)))), ((int)(((byte)(195)))));
+            this.btnEditProject.PressTextColor = System.Drawing.Color.White;
+            this.btnEditProject.Size = new System.Drawing.Size(151, 31);
+            this.btnEditProject.Style = MetroSet_UI.Design.Style.Custom;
+            this.btnEditProject.StyleManager = null;
+            this.btnEditProject.TabIndex = 10;
+            this.btnEditProject.Text = "Edit";
+            this.btnEditProject.ThemeAuthor = "Narwin";
+            this.btnEditProject.ThemeName = "MetroLite";
+            this.btnEditProject.Click += new System.EventHandler(this.btnEditProject_Click_1);
+            // 
+            // btnDeleteProject
+            // 
+            this.btnDeleteProject.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.btnDeleteProject.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.btnDeleteProject.DisabledForeColor = System.Drawing.Color.Gray;
+            this.btnDeleteProject.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.btnDeleteProject.HoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
+            this.btnDeleteProject.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
+            this.btnDeleteProject.HoverTextColor = System.Drawing.Color.White;
+            this.btnDeleteProject.Location = new System.Drawing.Point(156, 269);
+            this.btnDeleteProject.Name = "btnDeleteProject";
+            this.btnDeleteProject.NormalBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.btnDeleteProject.NormalColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.btnDeleteProject.NormalTextColor = System.Drawing.Color.White;
+            this.btnDeleteProject.PressBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(147)))), ((int)(((byte)(195)))));
+            this.btnDeleteProject.PressColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(147)))), ((int)(((byte)(195)))));
+            this.btnDeleteProject.PressTextColor = System.Drawing.Color.White;
+            this.btnDeleteProject.Size = new System.Drawing.Size(151, 31);
+            this.btnDeleteProject.Style = MetroSet_UI.Design.Style.Custom;
+            this.btnDeleteProject.StyleManager = null;
+            this.btnDeleteProject.TabIndex = 10;
+            this.btnDeleteProject.Text = "Delete";
+            this.btnDeleteProject.ThemeAuthor = "Narwin";
+            this.btnDeleteProject.ThemeName = "MetroLite";
+            this.btnDeleteProject.Click += new System.EventHandler(this.btnDeleteProject_Click_1);
+            // 
+            // btnImportConfig
+            // 
+            this.btnImportConfig.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.btnImportConfig.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.btnImportConfig.DisabledForeColor = System.Drawing.Color.Gray;
+            this.btnImportConfig.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.btnImportConfig.HoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
+            this.btnImportConfig.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
+            this.btnImportConfig.HoverTextColor = System.Drawing.Color.White;
+            this.btnImportConfig.Location = new System.Drawing.Point(156, 316);
+            this.btnImportConfig.Name = "btnImportConfig";
+            this.btnImportConfig.NormalBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.btnImportConfig.NormalColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.btnImportConfig.NormalTextColor = System.Drawing.Color.White;
+            this.btnImportConfig.PressBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(147)))), ((int)(((byte)(195)))));
+            this.btnImportConfig.PressColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(147)))), ((int)(((byte)(195)))));
+            this.btnImportConfig.PressTextColor = System.Drawing.Color.White;
+            this.btnImportConfig.Size = new System.Drawing.Size(151, 31);
+            this.btnImportConfig.Style = MetroSet_UI.Design.Style.Custom;
+            this.btnImportConfig.StyleManager = null;
+            this.btnImportConfig.TabIndex = 10;
+            this.btnImportConfig.Text = "Import Config";
+            this.btnImportConfig.ThemeAuthor = "Narwin";
+            this.btnImportConfig.ThemeName = "MetroLite";
+            this.btnImportConfig.Click += new System.EventHandler(this.btnImportConfig_Click);
+            // 
+            // btnExportConfig
+            // 
+            this.btnExportConfig.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.btnExportConfig.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.btnExportConfig.DisabledForeColor = System.Drawing.Color.Gray;
+            this.btnExportConfig.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.btnExportConfig.HoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
+            this.btnExportConfig.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
+            this.btnExportConfig.HoverTextColor = System.Drawing.Color.White;
+            this.btnExportConfig.Location = new System.Drawing.Point(0, 316);
+            this.btnExportConfig.Name = "btnExportConfig";
+            this.btnExportConfig.NormalBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.btnExportConfig.NormalColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.btnExportConfig.NormalTextColor = System.Drawing.Color.White;
+            this.btnExportConfig.PressBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(147)))), ((int)(((byte)(195)))));
+            this.btnExportConfig.PressColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(147)))), ((int)(((byte)(195)))));
+            this.btnExportConfig.PressTextColor = System.Drawing.Color.White;
+            this.btnExportConfig.Size = new System.Drawing.Size(151, 31);
+            this.btnExportConfig.Style = MetroSet_UI.Design.Style.Custom;
+            this.btnExportConfig.StyleManager = null;
+            this.btnExportConfig.TabIndex = 10;
+            this.btnExportConfig.Text = "Export Config";
+            this.btnExportConfig.ThemeAuthor = "Narwin";
+            this.btnExportConfig.ThemeName = "MetroLite";
+            this.btnExportConfig.Click += new System.EventHandler(this.btnExportConfig_Click);
+            // 
+            // btnAddNewProject
+            // 
+            this.btnAddNewProject.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.btnAddNewProject.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.btnAddNewProject.DisabledForeColor = System.Drawing.Color.Gray;
+            this.btnAddNewProject.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.btnAddNewProject.HoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
+            this.btnAddNewProject.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
+            this.btnAddNewProject.HoverTextColor = System.Drawing.Color.White;
+            this.btnAddNewProject.Location = new System.Drawing.Point(0, 41);
+            this.btnAddNewProject.Name = "btnAddNewProject";
+            this.btnAddNewProject.NormalBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.btnAddNewProject.NormalColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.btnAddNewProject.NormalTextColor = System.Drawing.Color.White;
+            this.btnAddNewProject.PressBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(147)))), ((int)(((byte)(195)))));
+            this.btnAddNewProject.PressColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(147)))), ((int)(((byte)(195)))));
+            this.btnAddNewProject.PressTextColor = System.Drawing.Color.White;
+            this.btnAddNewProject.Size = new System.Drawing.Size(307, 45);
+            this.btnAddNewProject.Style = MetroSet_UI.Design.Style.Custom;
+            this.btnAddNewProject.StyleManager = null;
+            this.btnAddNewProject.TabIndex = 9;
+            this.btnAddNewProject.Text = "Add New Project";
+            this.btnAddNewProject.ThemeAuthor = "Narwin";
+            this.btnAddNewProject.ThemeName = "MetroLite";
+            this.btnAddNewProject.Click += new System.EventHandler(this.btnAddNewProject_Click);
+            // 
             // metroSetLabel5
             // 
             this.metroSetLabel5.Cursor = System.Windows.Forms.Cursors.Default;
@@ -1237,6 +1421,21 @@
             this.metroSetLabel5.Text = "Manager";
             this.metroSetLabel5.ThemeAuthor = "Narwin";
             this.metroSetLabel5.ThemeName = "MetroLite";
+            // 
+            // metroSetDivider9
+            // 
+            this.metroSetDivider9.Cursor = System.Windows.Forms.Cursors.Default;
+            this.metroSetDivider9.Location = new System.Drawing.Point(-4, 306);
+            this.metroSetDivider9.Name = "metroSetDivider9";
+            this.metroSetDivider9.Orientation = MetroSet_UI.Enums.DividerStyle.Horizontal;
+            this.metroSetDivider9.Size = new System.Drawing.Size(311, 4);
+            this.metroSetDivider9.Style = MetroSet_UI.Design.Style.Dark;
+            this.metroSetDivider9.StyleManager = null;
+            this.metroSetDivider9.TabIndex = 7;
+            this.metroSetDivider9.Text = "metroSetDivider3";
+            this.metroSetDivider9.ThemeAuthor = "Narwin";
+            this.metroSetDivider9.ThemeName = "MetroDark";
+            this.metroSetDivider9.Thickness = 1;
             // 
             // metroSetDivider3
             // 
@@ -2006,205 +2205,6 @@
             this.fbdFolderSelector.SelectedPath = "C:\\";
             this.fbdFolderSelector.ShowNewFolderButton = false;
             // 
-            // btnAddNewProject
-            // 
-            this.btnAddNewProject.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
-            this.btnAddNewProject.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
-            this.btnAddNewProject.DisabledForeColor = System.Drawing.Color.Gray;
-            this.btnAddNewProject.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.btnAddNewProject.HoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
-            this.btnAddNewProject.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
-            this.btnAddNewProject.HoverTextColor = System.Drawing.Color.White;
-            this.btnAddNewProject.Location = new System.Drawing.Point(0, 41);
-            this.btnAddNewProject.Name = "btnAddNewProject";
-            this.btnAddNewProject.NormalBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
-            this.btnAddNewProject.NormalColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
-            this.btnAddNewProject.NormalTextColor = System.Drawing.Color.White;
-            this.btnAddNewProject.PressBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(147)))), ((int)(((byte)(195)))));
-            this.btnAddNewProject.PressColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(147)))), ((int)(((byte)(195)))));
-            this.btnAddNewProject.PressTextColor = System.Drawing.Color.White;
-            this.btnAddNewProject.Size = new System.Drawing.Size(307, 45);
-            this.btnAddNewProject.Style = MetroSet_UI.Design.Style.Custom;
-            this.btnAddNewProject.StyleManager = null;
-            this.btnAddNewProject.TabIndex = 9;
-            this.btnAddNewProject.Text = "Add New Project";
-            this.btnAddNewProject.ThemeAuthor = "Narwin";
-            this.btnAddNewProject.ThemeName = "MetroLite";
-            this.btnAddNewProject.Click += new System.EventHandler(this.btnAddNewProject_Click);
-            // 
-            // btnExportConfig
-            // 
-            this.btnExportConfig.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
-            this.btnExportConfig.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
-            this.btnExportConfig.DisabledForeColor = System.Drawing.Color.Gray;
-            this.btnExportConfig.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.btnExportConfig.HoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
-            this.btnExportConfig.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
-            this.btnExportConfig.HoverTextColor = System.Drawing.Color.White;
-            this.btnExportConfig.Location = new System.Drawing.Point(0, 316);
-            this.btnExportConfig.Name = "btnExportConfig";
-            this.btnExportConfig.NormalBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
-            this.btnExportConfig.NormalColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
-            this.btnExportConfig.NormalTextColor = System.Drawing.Color.White;
-            this.btnExportConfig.PressBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(147)))), ((int)(((byte)(195)))));
-            this.btnExportConfig.PressColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(147)))), ((int)(((byte)(195)))));
-            this.btnExportConfig.PressTextColor = System.Drawing.Color.White;
-            this.btnExportConfig.Size = new System.Drawing.Size(151, 31);
-            this.btnExportConfig.Style = MetroSet_UI.Design.Style.Custom;
-            this.btnExportConfig.StyleManager = null;
-            this.btnExportConfig.TabIndex = 10;
-            this.btnExportConfig.Text = "Export Config";
-            this.btnExportConfig.ThemeAuthor = "Narwin";
-            this.btnExportConfig.ThemeName = "MetroLite";
-            this.btnExportConfig.Click += new System.EventHandler(this.btnExportConfig_Click);
-            // 
-            // btnImportConfig
-            // 
-            this.btnImportConfig.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
-            this.btnImportConfig.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
-            this.btnImportConfig.DisabledForeColor = System.Drawing.Color.Gray;
-            this.btnImportConfig.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.btnImportConfig.HoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
-            this.btnImportConfig.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
-            this.btnImportConfig.HoverTextColor = System.Drawing.Color.White;
-            this.btnImportConfig.Location = new System.Drawing.Point(156, 316);
-            this.btnImportConfig.Name = "btnImportConfig";
-            this.btnImportConfig.NormalBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
-            this.btnImportConfig.NormalColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
-            this.btnImportConfig.NormalTextColor = System.Drawing.Color.White;
-            this.btnImportConfig.PressBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(147)))), ((int)(((byte)(195)))));
-            this.btnImportConfig.PressColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(147)))), ((int)(((byte)(195)))));
-            this.btnImportConfig.PressTextColor = System.Drawing.Color.White;
-            this.btnImportConfig.Size = new System.Drawing.Size(151, 31);
-            this.btnImportConfig.Style = MetroSet_UI.Design.Style.Custom;
-            this.btnImportConfig.StyleManager = null;
-            this.btnImportConfig.TabIndex = 10;
-            this.btnImportConfig.Text = "Import Config";
-            this.btnImportConfig.ThemeAuthor = "Narwin";
-            this.btnImportConfig.ThemeName = "MetroLite";
-            this.btnImportConfig.Click += new System.EventHandler(this.btnImportConfig_Click);
-            // 
-            // ltvProjectList
-            // 
-            this.ltvProjectList.HideSelection = false;
-            this.ltvProjectList.Location = new System.Drawing.Point(0, 92);
-            this.ltvProjectList.Name = "ltvProjectList";
-            this.ltvProjectList.Size = new System.Drawing.Size(307, 171);
-            this.ltvProjectList.TabIndex = 11;
-            this.ltvProjectList.UseCompatibleStateImageBehavior = false;
-            // 
-            // btnDeleteProject
-            // 
-            this.btnDeleteProject.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
-            this.btnDeleteProject.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
-            this.btnDeleteProject.DisabledForeColor = System.Drawing.Color.Gray;
-            this.btnDeleteProject.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.btnDeleteProject.HoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
-            this.btnDeleteProject.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
-            this.btnDeleteProject.HoverTextColor = System.Drawing.Color.White;
-            this.btnDeleteProject.Location = new System.Drawing.Point(156, 269);
-            this.btnDeleteProject.Name = "btnDeleteProject";
-            this.btnDeleteProject.NormalBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
-            this.btnDeleteProject.NormalColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
-            this.btnDeleteProject.NormalTextColor = System.Drawing.Color.White;
-            this.btnDeleteProject.PressBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(147)))), ((int)(((byte)(195)))));
-            this.btnDeleteProject.PressColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(147)))), ((int)(((byte)(195)))));
-            this.btnDeleteProject.PressTextColor = System.Drawing.Color.White;
-            this.btnDeleteProject.Size = new System.Drawing.Size(151, 31);
-            this.btnDeleteProject.Style = MetroSet_UI.Design.Style.Custom;
-            this.btnDeleteProject.StyleManager = null;
-            this.btnDeleteProject.TabIndex = 10;
-            this.btnDeleteProject.Text = "Delete";
-            this.btnDeleteProject.ThemeAuthor = "Narwin";
-            this.btnDeleteProject.ThemeName = "MetroLite";
-            this.btnDeleteProject.Click += new System.EventHandler(this.btnDeleteProject_Click_1);
-            // 
-            // btnEditProject
-            // 
-            this.btnEditProject.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
-            this.btnEditProject.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
-            this.btnEditProject.DisabledForeColor = System.Drawing.Color.Gray;
-            this.btnEditProject.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.btnEditProject.HoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
-            this.btnEditProject.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
-            this.btnEditProject.HoverTextColor = System.Drawing.Color.White;
-            this.btnEditProject.Location = new System.Drawing.Point(0, 269);
-            this.btnEditProject.Name = "btnEditProject";
-            this.btnEditProject.NormalBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
-            this.btnEditProject.NormalColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
-            this.btnEditProject.NormalTextColor = System.Drawing.Color.White;
-            this.btnEditProject.PressBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(147)))), ((int)(((byte)(195)))));
-            this.btnEditProject.PressColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(147)))), ((int)(((byte)(195)))));
-            this.btnEditProject.PressTextColor = System.Drawing.Color.White;
-            this.btnEditProject.Size = new System.Drawing.Size(151, 31);
-            this.btnEditProject.Style = MetroSet_UI.Design.Style.Custom;
-            this.btnEditProject.StyleManager = null;
-            this.btnEditProject.TabIndex = 10;
-            this.btnEditProject.Text = "Edit";
-            this.btnEditProject.ThemeAuthor = "Narwin";
-            this.btnEditProject.ThemeName = "MetroLite";
-            this.btnEditProject.Click += new System.EventHandler(this.btnEditProject_Click_1);
-            // 
-            // metroSetDivider9
-            // 
-            this.metroSetDivider9.Cursor = System.Windows.Forms.Cursors.Default;
-            this.metroSetDivider9.Location = new System.Drawing.Point(-4, 306);
-            this.metroSetDivider9.Name = "metroSetDivider9";
-            this.metroSetDivider9.Orientation = MetroSet_UI.Enums.DividerStyle.Horizontal;
-            this.metroSetDivider9.Size = new System.Drawing.Size(311, 4);
-            this.metroSetDivider9.Style = MetroSet_UI.Design.Style.Dark;
-            this.metroSetDivider9.StyleManager = null;
-            this.metroSetDivider9.TabIndex = 7;
-            this.metroSetDivider9.Text = "metroSetDivider3";
-            this.metroSetDivider9.ThemeAuthor = "Narwin";
-            this.metroSetDivider9.ThemeName = "MetroDark";
-            this.metroSetDivider9.Thickness = 1;
-            // 
-            // pbxApacheStatus
-            // 
-            this.pbxApacheStatus.BackColor = System.Drawing.Color.Red;
-            this.pbxApacheStatus.Location = new System.Drawing.Point(107, 51);
-            this.pbxApacheStatus.Name = "pbxApacheStatus";
-            this.pbxApacheStatus.Size = new System.Drawing.Size(10, 22);
-            this.pbxApacheStatus.TabIndex = 20;
-            this.pbxApacheStatus.TabStop = false;
-            // 
-            // pbxMySQLStatus
-            // 
-            this.pbxMySQLStatus.BackColor = System.Drawing.Color.Red;
-            this.pbxMySQLStatus.Location = new System.Drawing.Point(107, 97);
-            this.pbxMySQLStatus.Name = "pbxMySQLStatus";
-            this.pbxMySQLStatus.Size = new System.Drawing.Size(10, 22);
-            this.pbxMySQLStatus.TabIndex = 20;
-            this.pbxMySQLStatus.TabStop = false;
-            // 
-            // pbxFileZillaStatus
-            // 
-            this.pbxFileZillaStatus.BackColor = System.Drawing.Color.Red;
-            this.pbxFileZillaStatus.Location = new System.Drawing.Point(107, 153);
-            this.pbxFileZillaStatus.Name = "pbxFileZillaStatus";
-            this.pbxFileZillaStatus.Size = new System.Drawing.Size(10, 22);
-            this.pbxFileZillaStatus.TabIndex = 20;
-            this.pbxFileZillaStatus.TabStop = false;
-            // 
-            // pbxMercuryStatus
-            // 
-            this.pbxMercuryStatus.BackColor = System.Drawing.Color.Red;
-            this.pbxMercuryStatus.Location = new System.Drawing.Point(107, 199);
-            this.pbxMercuryStatus.Name = "pbxMercuryStatus";
-            this.pbxMercuryStatus.Size = new System.Drawing.Size(10, 22);
-            this.pbxMercuryStatus.TabIndex = 20;
-            this.pbxMercuryStatus.TabStop = false;
-            // 
-            // pbxTomcatStatus
-            // 
-            this.pbxTomcatStatus.BackColor = System.Drawing.Color.Red;
-            this.pbxTomcatStatus.Location = new System.Drawing.Point(107, 245);
-            this.pbxTomcatStatus.Name = "pbxTomcatStatus";
-            this.pbxTomcatStatus.Size = new System.Drawing.Size(10, 22);
-            this.pbxTomcatStatus.TabIndex = 20;
-            this.pbxTomcatStatus.TabStop = false;
-            // 
             // tmrCheckServiceStatus
             // 
             this.tmrCheckServiceStatus.Enabled = true;
@@ -2231,6 +2231,11 @@
             this.tctTabMenu.ResumeLayout(false);
             this.tabProjects.ResumeLayout(false);
             this.tabServices.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pbxTomcatStatus)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxMercuryStatus)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxFileZillaStatus)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxMySQLStatus)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxApacheStatus)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxLogoTomcat)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxLogoMercury)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxLogoFileZilla)).EndInit();
@@ -2243,11 +2248,6 @@
             this.cmsFileZillaConfig.ResumeLayout(false);
             this.cmsMercuryConfig.ResumeLayout(false);
             this.cmsTomcatConfig.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pbxApacheStatus)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbxMySQLStatus)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbxFileZillaStatus)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbxMercuryStatus)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbxTomcatStatus)).EndInit();
             this.ResumeLayout(false);
 
         }

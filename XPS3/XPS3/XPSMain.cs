@@ -25,9 +25,25 @@ namespace XPS3
         private string xamppInstallPath = null;
 
         private bool disableOnCheckChangeUpdate = true;
+
+        private volatile Process[] processes;
+        private Thread processThread = null;
+
+        private enum XPSProcess
+        {
+            Apache,
+            MySQL,
+            FileZilla,
+            Mercury,
+            Tomcat
+        }
+
         public XPSMain()
         {
             InitializeComponent();
+
+            processThread = new Thread(UpdateProcessThreads);
+            processThread.Start();
 
             disableOnCheckChangeUpdate = true;
             SetServiceImages();
@@ -158,39 +174,65 @@ namespace XPS3
 
         private void btnStartServices_Click(object sender, EventArgs e)
         {
-            if(chbServiceApache.Switched)       AttemptStartApache();
-            if(chbServiceMySQL.Switched)        AttemptStartMySQL();
-            if(chbServiceFileZilla.Switched)    AttemptStartFileZilla();
-            if(chbServiceMercury.Switched)      AttemptStartMercury();
-            if(chbServiceTomcat.Switched)       AttemptStartTomcat();
-
+            if (chbServiceApache.Switched) AttemptStartService("Apache", "apache_start.bat", XPSProcess.Apache);
+            if (chbServiceMySQL.Switched) AttemptStartService("MySQL", "mysql_start.bat", XPSProcess.MySQL);
+            if (chbServiceFileZilla.Switched) AttemptStartService("FileZilla", "filezilla_start.bat", XPSProcess.FileZilla);
+            if (chbServiceMercury.Switched) AttemptStartService("Mercury", "mercury_start.bat", XPSProcess.Mercury);
+            if (chbServiceTomcat.Switched) AttemptStartService("Tomcat", "tomcat_start.bat", XPSProcess.Tomcat);
         }
 
         private void btnStopServices_Click(object sender, EventArgs e)
         {
-
+            AttemptStartService("Apache", "apache_stop.bat", XPSProcess.Apache, true);
+            AttemptStartService("MySQL", "mysql_stop.bat", XPSProcess.MySQL, true);
+            AttemptStartService("FileZilla", "filezilla_stop.bat", XPSProcess.FileZilla, true);
+            AttemptStartService("Mercury", "mercury_stop.bat", XPSProcess.Mercury, true);
+            AttemptStartService("Tomcat", "tomcat_stop.bat", XPSProcess.Tomcat, true);
         }
 
-        public bool IsProcessOpen(string name)
+        private bool IsProcessOpen(XPSProcess pProcess)
         {
-            foreach (Process clsProcess in Process.GetProcesses())
+            string name = null;
+
+            switch(pProcess)
             {
-                if (clsProcess.ProcessName.Contains(name))
+                case XPSProcess.Apache: name = "httpd"; break;
+                case XPSProcess.MySQL: name = "mysqld"; break;
+                case XPSProcess.FileZilla: name = "FileZillaServer"; break;
+                case XPSProcess.Mercury: name = "mercury"; break;
+                case XPSProcess.Tomcat: name = "catalina"; break;
+            }
+
+            lock (processes)
+            {
+                foreach (Process clsProcess in processes)
                 {
-                    return true;
+                    if (clsProcess.ProcessName.Contains(name))
+                    {
+                        return true;
+                    }
                 }
             }
 
             return false;
         }
 
+       private void UpdateProcessThreads()
+        {
+            while(true)
+            {
+                processes = Process.GetProcesses();
+                Thread.Sleep(1000);
+            }
+        }
+
         private void tmrCheckServiceStatus_Tick(object sender, EventArgs e)
         {
-            pbxApacheStatus.BackColor = IsProcessOpen("httpd") ? Color.Lime : Color.Red;
-            pbxMySQLStatus.BackColor = IsProcessOpen("mysqld") ? Color.Lime : Color.Red;
-            pbxFileZillaStatus.BackColor = IsProcessOpen("FileZillaServer") ? Color.Lime : Color.Red;
-            pbxMercuryStatus.BackColor = IsProcessOpen("mercury") ? Color.Lime : Color.Red;
-            pbxTomcatStatus.BackColor = IsProcessOpen("catalina") ? Color.Lime : Color.Red;
+            pbxApacheStatus.BackColor = IsProcessOpen(XPSProcess.Apache) ? Color.Lime : Color.Red;
+            pbxMySQLStatus.BackColor = IsProcessOpen(XPSProcess.MySQL) ? Color.Lime : Color.Red;
+            pbxFileZillaStatus.BackColor = IsProcessOpen(XPSProcess.FileZilla) ? Color.Lime : Color.Red;
+            pbxMercuryStatus.BackColor = IsProcessOpen(XPSProcess.Mercury) ? Color.Lime : Color.Red;
+            pbxTomcatStatus.BackColor = IsProcessOpen(XPSProcess.Tomcat) ? Color.Lime : Color.Red;
 
             pbxApacheStatus.Invalidate();
             pbxMySQLStatus.Invalidate();
@@ -199,29 +241,31 @@ namespace XPS3
             pbxTomcatStatus.Invalidate();
         }
 
-        private void AttemptStartApache()
+        private void AttemptStartService(string pProcessClearName, string pProcessFile, XPSProcess pProcessType, bool pForceShutdownMode = false)
         {
+            bool processRunning = IsProcessOpen(pProcessType);
 
-        }
-
-        private void AttemptStartMySQL()
-        {
-
-        }
-
-        private void AttemptStartFileZilla()
-        {
-
-        }
-
-        private void AttemptStartMercury()
-        {
-
-        }
-
-        private void AttemptStartTomcat()
-        {
-
+            if ((!processRunning && !pForceShutdownMode) || (processRunning && pForceShutdownMode))
+            {
+                try
+                {
+                    Process batchProcess;
+                    ProcessStartInfo processInfo = new ProcessStartInfo(Path.Combine(xamppInstallPath, pProcessFile))
+                    {
+                        UseShellExecute = false,
+                        WindowStyle = ProcessWindowStyle.Hidden,
+                        RedirectStandardOutput = false,
+                        RedirectStandardError = true,
+                        CreateNoWindow = true
+                    };
+                    batchProcess = Process.Start(processInfo);
+                }
+                catch
+                {
+                    if(pForceShutdownMode) MessageBox.Show($"An error occured whilst trying to stop {pProcessClearName}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    else MessageBox.Show($"An error occured whilst trying to start {pProcessClearName}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
 
         #endregion
