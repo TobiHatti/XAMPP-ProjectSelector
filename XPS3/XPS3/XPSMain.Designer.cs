@@ -84,6 +84,7 @@
             this.metroSetLabel4 = new MetroSet_UI.Controls.MetroSetLabel();
             this.metroSetDivider2 = new MetroSet_UI.Controls.MetroSetDivider();
             this.tabManager = new MetroSet_UI.Child.MetroSetTabPage();
+            this.dgvProjectList = new System.Windows.Forms.DataGridView();
             this.btnEditProject = new MetroSet_UI.Controls.MetroSetButton();
             this.btnDeleteProject = new MetroSet_UI.Controls.MetroSetButton();
             this.btnImportConfig = new MetroSet_UI.Controls.MetroSetButton();
@@ -166,7 +167,9 @@
             this.ofdFileSelector = new System.Windows.Forms.OpenFileDialog();
             this.fbdFolderSelector = new System.Windows.Forms.FolderBrowserDialog();
             this.tmrCheckServiceStatus = new System.Windows.Forms.Timer(this.components);
-            this.dgvProjectList = new System.Windows.Forms.DataGridView();
+            this.metroSetLabel11 = new MetroSet_UI.Controls.MetroSetLabel();
+            this.rbnAutostartAfterSwitchTrue = new MetroSet_UI.Controls.MetroSetRadioButton();
+            this.rbnAutostartAfterSwitchFalse = new MetroSet_UI.Controls.MetroSetRadioButton();
             this.tctTabMenu.SuspendLayout();
             this.tabProjects.SuspendLayout();
             this.tabServices.SuspendLayout();
@@ -181,13 +184,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbxLogoMySQL)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxLogoApache)).BeginInit();
             this.tabManager.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvProjectList)).BeginInit();
             this.tabSettings.SuspendLayout();
             this.cmsApacheConfig.SuspendLayout();
             this.cmsMySQLConfig.SuspendLayout();
             this.cmsFileZillaConfig.SuspendLayout();
             this.cmsMercuryConfig.SuspendLayout();
             this.cmsTomcatConfig.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvProjectList)).BeginInit();
             this.SuspendLayout();
             // 
             // tctTabMenu
@@ -201,11 +204,11 @@
             this.tctTabMenu.Controls.Add(this.tabServices);
             this.tctTabMenu.Controls.Add(this.tabManager);
             this.tctTabMenu.Controls.Add(this.tabSettings);
-            this.tctTabMenu.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.tctTabMenu.Cursor = System.Windows.Forms.Cursors.Default;
             this.tctTabMenu.ItemSize = new System.Drawing.Size(100, 38);
             this.tctTabMenu.Location = new System.Drawing.Point(12, 12);
             this.tctTabMenu.Name = "tctTabMenu";
-            this.tctTabMenu.SelectedIndex = 2;
+            this.tctTabMenu.SelectedIndex = 0;
             this.tctTabMenu.Size = new System.Drawing.Size(315, 393);
             this.tctTabMenu.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tctTabMenu.Speed = 20;
@@ -1345,6 +1348,43 @@
             this.tabManager.ThemeName = "MetroLite";
             this.tabManager.ToolTipText = null;
             // 
+            // dgvProjectList
+            // 
+            this.dgvProjectList.AllowUserToAddRows = false;
+            this.dgvProjectList.AllowUserToDeleteRows = false;
+            this.dgvProjectList.AllowUserToResizeColumns = false;
+            this.dgvProjectList.AllowUserToResizeRows = false;
+            this.dgvProjectList.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(247)))), ((int)(((byte)(255)))));
+            this.dgvProjectList.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvProjectList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.dgvProjectList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvProjectList.DefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvProjectList.GridColor = System.Drawing.Color.White;
+            this.dgvProjectList.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.dgvProjectList.Location = new System.Drawing.Point(0, 92);
+            this.dgvProjectList.MultiSelect = false;
+            this.dgvProjectList.Name = "dgvProjectList";
+            this.dgvProjectList.ReadOnly = true;
+            this.dgvProjectList.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.dgvProjectList.RowHeadersVisible = false;
+            this.dgvProjectList.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dgvProjectList.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dgvProjectList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvProjectList.ShowCellErrors = false;
+            this.dgvProjectList.ShowCellToolTips = false;
+            this.dgvProjectList.ShowEditingIcon = false;
+            this.dgvProjectList.ShowRowErrors = false;
+            this.dgvProjectList.Size = new System.Drawing.Size(307, 171);
+            this.dgvProjectList.TabIndex = 11;
+            this.dgvProjectList.DoubleClick += new System.EventHandler(this.dgvProjectList_DoubleClick);
+            // 
             // btnEditProject
             // 
             this.btnEditProject.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
@@ -1522,6 +1562,8 @@
             // tabSettings
             // 
             this.tabSettings.BaseColor = System.Drawing.Color.White;
+            this.tabSettings.Controls.Add(this.rbnAutostartAfterSwitchFalse);
+            this.tabSettings.Controls.Add(this.rbnAutostartAfterSwitchTrue);
             this.tabSettings.Controls.Add(this.metroSetLabel19);
             this.tabSettings.Controls.Add(this.chbAutostartTomcat);
             this.tabSettings.Controls.Add(this.chbAutostartMercury);
@@ -1532,6 +1574,7 @@
             this.tabSettings.Controls.Add(this.btnSelectXamppInstallPath);
             this.tabSettings.Controls.Add(this.txbDefaultEditorPath);
             this.tabSettings.Controls.Add(this.txbXamppInstallPath);
+            this.tabSettings.Controls.Add(this.metroSetLabel11);
             this.tabSettings.Controls.Add(this.metroSetLabel18);
             this.tabSettings.Controls.Add(this.metroSetLabel17);
             this.tabSettings.Controls.Add(this.metroSetLabel16);
@@ -1579,7 +1622,7 @@
             this.chbAutostartTomcat.Cursor = System.Windows.Forms.Cursors.Hand;
             this.chbAutostartTomcat.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(205)))), ((int)(((byte)(205)))));
             this.chbAutostartTomcat.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.chbAutostartTomcat.Location = new System.Drawing.Point(137, 284);
+            this.chbAutostartTomcat.Location = new System.Drawing.Point(137, 232);
             this.chbAutostartTomcat.Name = "chbAutostartTomcat";
             this.chbAutostartTomcat.SignStyle = MetroSet_UI.Enums.SignStyle.Sign;
             this.chbAutostartTomcat.Size = new System.Drawing.Size(75, 16);
@@ -1602,7 +1645,7 @@
             this.chbAutostartMercury.Cursor = System.Windows.Forms.Cursors.Hand;
             this.chbAutostartMercury.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(205)))), ((int)(((byte)(205)))));
             this.chbAutostartMercury.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.chbAutostartMercury.Location = new System.Drawing.Point(137, 260);
+            this.chbAutostartMercury.Location = new System.Drawing.Point(218, 210);
             this.chbAutostartMercury.Name = "chbAutostartMercury";
             this.chbAutostartMercury.SignStyle = MetroSet_UI.Enums.SignStyle.Sign;
             this.chbAutostartMercury.Size = new System.Drawing.Size(75, 16);
@@ -1625,7 +1668,7 @@
             this.chbAutostartFileZilla.Cursor = System.Windows.Forms.Cursors.Hand;
             this.chbAutostartFileZilla.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(205)))), ((int)(((byte)(205)))));
             this.chbAutostartFileZilla.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.chbAutostartFileZilla.Location = new System.Drawing.Point(137, 236);
+            this.chbAutostartFileZilla.Location = new System.Drawing.Point(137, 210);
             this.chbAutostartFileZilla.Name = "chbAutostartFileZilla";
             this.chbAutostartFileZilla.SignStyle = MetroSet_UI.Enums.SignStyle.Sign;
             this.chbAutostartFileZilla.Size = new System.Drawing.Size(75, 16);
@@ -1648,7 +1691,7 @@
             this.chbAutostartMySQL.Cursor = System.Windows.Forms.Cursors.Hand;
             this.chbAutostartMySQL.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(205)))), ((int)(((byte)(205)))));
             this.chbAutostartMySQL.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.chbAutostartMySQL.Location = new System.Drawing.Point(137, 212);
+            this.chbAutostartMySQL.Location = new System.Drawing.Point(218, 188);
             this.chbAutostartMySQL.Name = "chbAutostartMySQL";
             this.chbAutostartMySQL.SignStyle = MetroSet_UI.Enums.SignStyle.Sign;
             this.chbAutostartMySQL.Size = new System.Drawing.Size(75, 16);
@@ -2418,42 +2461,60 @@
             this.tmrCheckServiceStatus.Interval = 2000;
             this.tmrCheckServiceStatus.Tick += new System.EventHandler(this.tmrCheckServiceStatus_Tick);
             // 
-            // dgvProjectList
+            // metroSetLabel11
             // 
-            this.dgvProjectList.AllowUserToAddRows = false;
-            this.dgvProjectList.AllowUserToDeleteRows = false;
-            this.dgvProjectList.AllowUserToResizeColumns = false;
-            this.dgvProjectList.AllowUserToResizeRows = false;
-            this.dgvProjectList.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(247)))), ((int)(((byte)(255)))));
-            this.dgvProjectList.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvProjectList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            this.dgvProjectList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvProjectList.DefaultCellStyle = dataGridViewCellStyle1;
-            this.dgvProjectList.GridColor = System.Drawing.Color.White;
-            this.dgvProjectList.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.dgvProjectList.Location = new System.Drawing.Point(0, 92);
-            this.dgvProjectList.MultiSelect = false;
-            this.dgvProjectList.Name = "dgvProjectList";
-            this.dgvProjectList.ReadOnly = true;
-            this.dgvProjectList.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            this.dgvProjectList.RowHeadersVisible = false;
-            this.dgvProjectList.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.dgvProjectList.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dgvProjectList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvProjectList.ShowCellErrors = false;
-            this.dgvProjectList.ShowCellToolTips = false;
-            this.dgvProjectList.ShowEditingIcon = false;
-            this.dgvProjectList.ShowRowErrors = false;
-            this.dgvProjectList.Size = new System.Drawing.Size(307, 171);
-            this.dgvProjectList.TabIndex = 11;
-            this.dgvProjectList.DoubleClick += new System.EventHandler(this.dgvProjectList_DoubleClick);
+            this.metroSetLabel11.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.metroSetLabel11.Location = new System.Drawing.Point(-4, 257);
+            this.metroSetLabel11.Name = "metroSetLabel11";
+            this.metroSetLabel11.Size = new System.Drawing.Size(315, 23);
+            this.metroSetLabel11.Style = MetroSet_UI.Design.Style.Light;
+            this.metroSetLabel11.StyleManager = null;
+            this.metroSetLabel11.TabIndex = 11;
+            this.metroSetLabel11.Text = "Auto-Start services after switching Projects:";
+            this.metroSetLabel11.ThemeAuthor = "Narwin";
+            this.metroSetLabel11.ThemeName = "MetroLite";
+            // 
+            // rbnAutostartAfterSwitchTrue
+            // 
+            this.rbnAutostartAfterSwitchTrue.BackgroundColor = System.Drawing.Color.White;
+            this.rbnAutostartAfterSwitchTrue.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(155)))), ((int)(((byte)(155)))));
+            this.rbnAutostartAfterSwitchTrue.Checked = true;
+            this.rbnAutostartAfterSwitchTrue.CheckSignColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.rbnAutostartAfterSwitchTrue.CheckState = MetroSet_UI.Enums.CheckState.Checked;
+            this.rbnAutostartAfterSwitchTrue.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(205)))), ((int)(((byte)(205)))));
+            this.rbnAutostartAfterSwitchTrue.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.rbnAutostartAfterSwitchTrue.Group = 1;
+            this.rbnAutostartAfterSwitchTrue.Location = new System.Drawing.Point(137, 283);
+            this.rbnAutostartAfterSwitchTrue.Name = "rbnAutostartAfterSwitchTrue";
+            this.rbnAutostartAfterSwitchTrue.Size = new System.Drawing.Size(75, 17);
+            this.rbnAutostartAfterSwitchTrue.Style = MetroSet_UI.Design.Style.Light;
+            this.rbnAutostartAfterSwitchTrue.StyleManager = null;
+            this.rbnAutostartAfterSwitchTrue.TabIndex = 16;
+            this.rbnAutostartAfterSwitchTrue.Text = "Yes";
+            this.rbnAutostartAfterSwitchTrue.ThemeAuthor = "Narwin";
+            this.rbnAutostartAfterSwitchTrue.ThemeName = "MetroLite";
+            this.rbnAutostartAfterSwitchTrue.CheckedChanged += new MetroSet_UI.Controls.MetroSetRadioButton.CheckedChangedEventHandler(this.UpdateAutostartAfterSwitch);
+            // 
+            // rbnAutostartAfterSwitchFalse
+            // 
+            this.rbnAutostartAfterSwitchFalse.BackgroundColor = System.Drawing.Color.White;
+            this.rbnAutostartAfterSwitchFalse.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(155)))), ((int)(((byte)(155)))));
+            this.rbnAutostartAfterSwitchFalse.Checked = false;
+            this.rbnAutostartAfterSwitchFalse.CheckSignColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.rbnAutostartAfterSwitchFalse.CheckState = MetroSet_UI.Enums.CheckState.Unchecked;
+            this.rbnAutostartAfterSwitchFalse.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(205)))), ((int)(((byte)(205)))));
+            this.rbnAutostartAfterSwitchFalse.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.rbnAutostartAfterSwitchFalse.Group = 1;
+            this.rbnAutostartAfterSwitchFalse.Location = new System.Drawing.Point(190, 283);
+            this.rbnAutostartAfterSwitchFalse.Name = "rbnAutostartAfterSwitchFalse";
+            this.rbnAutostartAfterSwitchFalse.Size = new System.Drawing.Size(75, 17);
+            this.rbnAutostartAfterSwitchFalse.Style = MetroSet_UI.Design.Style.Light;
+            this.rbnAutostartAfterSwitchFalse.StyleManager = null;
+            this.rbnAutostartAfterSwitchFalse.TabIndex = 16;
+            this.rbnAutostartAfterSwitchFalse.Text = "No";
+            this.rbnAutostartAfterSwitchFalse.ThemeAuthor = "Narwin";
+            this.rbnAutostartAfterSwitchFalse.ThemeName = "MetroLite";
+            this.rbnAutostartAfterSwitchFalse.CheckedChanged += new MetroSet_UI.Controls.MetroSetRadioButton.CheckedChangedEventHandler(this.UpdateAutostartAfterSwitch);
             // 
             // XPSMain
             // 
@@ -2487,13 +2548,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbxLogoMySQL)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxLogoApache)).EndInit();
             this.tabManager.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvProjectList)).EndInit();
             this.tabSettings.ResumeLayout(false);
             this.cmsApacheConfig.ResumeLayout(false);
             this.cmsMySQLConfig.ResumeLayout(false);
             this.cmsFileZillaConfig.ResumeLayout(false);
             this.cmsMercuryConfig.ResumeLayout(false);
             this.cmsTomcatConfig.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvProjectList)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -2635,6 +2696,9 @@
         private MetroSet_UI.Controls.MetroSetButton btnStartStopMySQL;
         private MetroSet_UI.Controls.MetroSetButton btnStartStopApache;
         private System.Windows.Forms.DataGridView dgvProjectList;
+        private MetroSet_UI.Controls.MetroSetRadioButton rbnAutostartAfterSwitchFalse;
+        private MetroSet_UI.Controls.MetroSetRadioButton rbnAutostartAfterSwitchTrue;
+        private MetroSet_UI.Controls.MetroSetLabel metroSetLabel11;
     }
 }
 

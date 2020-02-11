@@ -98,7 +98,7 @@ namespace XPS3
                 txtProjectRoot.Text = ProjectRoot;
                 fbdProjectRoot.SelectedPath = ProjectRoot;
 
-                if (string.IsNullOrEmpty(ProjectImage))
+                if (!string.IsNullOrEmpty(ProjectImage))
                 {
                     byte[] imageBytes = Convert.FromBase64String(ProjectImage);
                     using (var ms = new MemoryStream(imageBytes, 0, imageBytes.Length))

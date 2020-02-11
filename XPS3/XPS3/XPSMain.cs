@@ -29,6 +29,11 @@ namespace XPS3
         private volatile Process[] processes;
         private Thread processThread = null;
 
+        private int[] projectHotswapIDs = new int[6];
+        private int currentlyActiveProjectID = -1;
+
+        private bool startServicesAfterSwitch = false;
+
         private enum XPSProcess
         {
             Apache,
@@ -58,6 +63,7 @@ namespace XPS3
         {
             RunAutostart();
             UpdateProjectLists();
+            UpdateRecentList();
         }
 
         private void XPSMain_FormClosing(object sender, FormClosingEventArgs e)
@@ -158,6 +164,9 @@ namespace XPS3
             chbAutostartFileZilla.Checked = Convert.ToBoolean(SettingsPeek("AutostartFileZilla", false));
             chbAutostartMercury.Checked = Convert.ToBoolean(SettingsPeek("AutostartMercury", false));
             chbAutostartTomcat.Checked = Convert.ToBoolean(SettingsPeek("AutostartTomcat", false));
+
+            rbnAutostartAfterSwitchTrue.Checked = Convert.ToBoolean(SettingsPeek("AutostartAfterSwitch", true));
+            rbnAutostartAfterSwitchFalse.Checked = !Convert.ToBoolean(SettingsPeek("AutostartAfterSwitch", true));
         }
 
         private void LaunchInEditor(string pRelativePathToFile)
@@ -300,6 +309,36 @@ namespace XPS3
             return false;
         }
 
+        private void UpdateRecentList()
+        {
+            for (int i = 0; i < projectHotswapIDs.Length; i++) projectHotswapIDs[i] = -1;
+
+            connection.Open();
+            cmd.CommandText = "SELECT * FROM Log GROUP BY ProjectID ORDER BY SelectedDate ASC LIMIT 6";
+            using (SQLiteDataReader reader = cmd.ExecuteReader())
+            {
+                int i = 0;
+                while(reader.Read())
+                    projectHotswapIDs[i] = Convert.ToInt32(reader["ProjectID"]);
+            }
+            connection.Close();
+
+            for(int i = 0; i < projectHotswapIDs.Length; i++)
+            {
+                Control currentTile = this.Controls.Find($"btnHotSwitchP{i+1}", true)[0];
+                // TODO
+                if (projectHotswapIDs[i] != -1)
+                {
+                    currentTile.Enabled = true;
+                }
+                else
+                {
+                    
+                    currentTile.Enabled = false;
+                }
+            }
+        }
+
        private void UpdateProcessThreads()
         {
             while(true)
@@ -368,7 +407,7 @@ namespace XPS3
 
         private void btnSeletProject_Click(object sender, EventArgs e)
         {
-
+            SelectProjectOption(Convert.ToInt32(cbxSavedProjects.SelectedValue));
         }
 
         private void btnEditProject_Click(object sender, EventArgs e)
@@ -381,46 +420,115 @@ namespace XPS3
             DeleteProject(Convert.ToInt32(cbxSavedProjects.SelectedValue));
         }
 
+        private void SelectProjectOption(int pProjectID)
+        {
+            StopServiceRoutine(XPSProcess.Apache);
+
+            currentlyActiveProjectID = pProjectID;
+
+            string projectName = "";
+            string projectPath = "";
+
+            bool startApache = false;
+            bool startMySQL = false;
+            bool startFileZilla = false;
+            bool startMercury = false;
+            bool startTomcat = false;
+
+            // Load Project-Data from DB
+            connection.Open();
+            cmd.CommandText = $"SELECT * FROM Projects WHERE ID = {pProjectID}";
+            using(SQLiteDataReader reader = cmd.ExecuteReader())
+            {
+                while(reader.Read())
+                {
+                    projectName = reader["Name"].ToString();
+                    projectPath = reader["RootDirectory"].ToString();
+
+                    startApache = Convert.ToBoolean(reader["ApacheEnabled"]);
+                    startMySQL = Convert.ToBoolean(reader["MySQLEnabled"]);
+                    startFileZilla = Convert.ToBoolean(reader["FileZillaEnabled"]);
+                    startMercury = Convert.ToBoolean(reader["MercuryEnabled"]);
+                    startTomcat = Convert.ToBoolean(reader["TomcatEnabled"]);
+                }
+            }
+            connection.Close();
+
+            // Set up Project (1) - Set Apache Config
+            lblSelectedProject.Text = $"Selected Project: {projectName}";
+            string line;
+            string oldConfigFile = Path.Combine(xamppInstallPath, @"apache\conf\httpd.conf");
+            string newConfigFile = Path.Combine(xamppInstallPath, @"apache\conf\httpd-tmp.conf");
+            try
+            {
+                using (StreamReader sr = new StreamReader(oldConfigFile))
+                {
+                    using (StreamWriter sw = new StreamWriter(newConfigFile))
+                    {
+                        while ((line = sr.ReadLine()) != null)
+                        {
+                            if (line.StartsWith("DocumentRoot"))
+                            {
+                                sw.WriteLine($@"DocumentRoot ""{projectPath.Replace('\\', '/')}""");
+                                sw.WriteLine($@"<Directory ""{projectPath.Replace('\\', '/')}"">");
+                                sr.ReadLine();
+                            }
+                            else sw.WriteLine(line);
+                        }
+                        sw.Close();
+                    }
+                    sr.Close();
+                }
+                File.Delete(oldConfigFile);
+                File.Move(newConfigFile, oldConfigFile);
+            }
+            catch
+            {
+                MessageBox.Show("An error occured whilst trying to select and set up the project. Please try again later.", "Could not select Project", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            // Set up Project (2) - Select default services
+            chbServiceApache.Switched = startApache;
+            chbServiceMySQL.Switched = startMySQL;
+            chbServiceFileZilla.Switched = startFileZilla;
+            chbServiceMercury.Switched = startMercury;
+            chbServiceTomcat.Switched = startTomcat;
+
+            // Set up Project (3) - Start services if flag is set
+            if(rbnAutostartAfterSwitchTrue.Checked)
+            {
+                if (chbServiceApache.Switched) StartServiceRoutine(XPSProcess.Apache);
+                if (chbServiceMySQL.Switched) StartServiceRoutine(XPSProcess.MySQL);
+                if (chbServiceFileZilla.Switched) StartServiceRoutine(XPSProcess.FileZilla);
+                if (chbServiceMercury.Switched) StartServiceRoutine(XPSProcess.Mercury);
+                if (chbServiceTomcat.Switched) StartServiceRoutine(XPSProcess.Tomcat);
+            }
+
+            // Add Log-Entry
+            connection.Open();
+            cmd.CommandText = $"INSERT INTO Log (ProjectID, SelectedDate) VALUES ('{pProjectID}','{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")}')";
+            cmd.ExecuteNonQuery();
+            connection.Close();
+
+        }
+
         #endregion
 
         #region ---------- HotSwap Projects ----------
 
-        private void btnHotSwitchP1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnHotSwitchP2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnHotSwitchP3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnHotSwitchP4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnHotSwitchP5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnHotSwitchP6_Click(object sender, EventArgs e)
-        {
-
-        }
+        private void btnHotSwitchP1_Click(object sender, EventArgs e) => SelectProjectOption(projectHotswapIDs[0]);
+        private void btnHotSwitchP2_Click(object sender, EventArgs e) => SelectProjectOption(projectHotswapIDs[1]);
+        private void btnHotSwitchP3_Click(object sender, EventArgs e) => SelectProjectOption(projectHotswapIDs[2]);
+        private void btnHotSwitchP4_Click(object sender, EventArgs e) => SelectProjectOption(projectHotswapIDs[3]);
+        private void btnHotSwitchP5_Click(object sender, EventArgs e) => SelectProjectOption(projectHotswapIDs[4]);
+        private void btnHotSwitchP6_Click(object sender, EventArgs e) => SelectProjectOption(projectHotswapIDs[5]);
 
         #endregion
 
         #endregion
 
         #region ========== Services Page ==========
-        
+
         private void SetServiceImages()
         {
             pbxLogoApache.Image = Properties.Resources.apache;
@@ -639,19 +747,23 @@ namespace XPS3
 
         private void DeleteProject(int pProjectID)
         {
-            if (MessageBox.Show("Are you sure that you want to delete this project?", "Delete Project", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.Yes)
+            if (currentlyActiveProjectID != pProjectID)
             {
-                connection.Open();
-                cmd.CommandText = $"DELETE FROM Projects WHERE ID = {pProjectID}";
-                cmd.ExecuteNonQuery();
-                cmd.CommandText = $"DELETE FROM Log WHERE ProjectID = {pProjectID}";
-                cmd.ExecuteNonQuery();
-                connection.Close();
+                if (MessageBox.Show("Are you sure that you want to delete this project?", "Delete Project", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.Yes)
+                {
+                    connection.Open();
+                    cmd.CommandText = $"DELETE FROM Projects WHERE ID = {pProjectID}";
+                    cmd.ExecuteNonQuery();
+                    cmd.CommandText = $"DELETE FROM Log WHERE ProjectID = {pProjectID}";
+                    cmd.ExecuteNonQuery();
+                    connection.Close();
 
-                MessageBox.Show("Project Deleted!", "Delete Project", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Project Deleted!", "Delete Project", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                UpdateProjectLists();
+                    UpdateProjectLists();
+                }
             }
+            else MessageBox.Show("You can not delete a Project if it is currently selected!", "Can Not Delete Project", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
         }
 
         private void EditProject(int pProjectID)
@@ -683,7 +795,7 @@ namespace XPS3
                 {
                     // Update DB
                     connection.Open();
-                    cmd.CommandText = $"UPDATE Projects SET Name = '{editForm.Name.ToString()}', Description = '{editForm.ProjectDescription.ToString()}', RootDirectory = '{editForm.ProjectRoot.ToString()}', Image = '{Convert.ToString(editForm.ProjectImage)}', " +
+                    cmd.CommandText = $"UPDATE Projects SET Name = '{editForm.ProjectTitle.ToString()}', Description = '{editForm.ProjectDescription.ToString()}', RootDirectory = '{editForm.ProjectRoot.ToString()}', Image = '{Convert.ToString(editForm.ProjectImage)}', " +
                         $"ApacheEnabled = '{editForm.DefOpApache.ToString()}', MySQLEnabled = '{editForm.DefOpMySQL.ToString()}', FileZillaEnabled = '{editForm.DefOpFileZilla.ToString()}', MercuryEnabled = '{editForm.DefOpMercury.ToString()}', TomcatEnabled = '{editForm.DefOpTomcat.ToString()}' " +
                         $"WHERE ID = {pProjectID}";
                     cmd.ExecuteNonQuery();
@@ -766,10 +878,18 @@ namespace XPS3
             }
         }
 
+        private void UpdateAutostartAfterSwitch(object sender)
+        {
+            if (!disableOnCheckChangeUpdate)
+            {
+                SettingsPoke("AutostartAfterSwitch", rbnAutostartAfterSwitchTrue.Checked);
+            }
+        }
+
 
         #endregion
 
-        
+
 
 
     }
