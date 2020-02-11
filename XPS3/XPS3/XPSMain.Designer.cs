@@ -147,6 +147,25 @@
             this.ofdFileSelector = new System.Windows.Forms.OpenFileDialog();
             this.fbdFolderSelector = new System.Windows.Forms.FolderBrowserDialog();
             this.tmrCheckServiceStatus = new System.Windows.Forms.Timer(this.components);
+            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.tslLogApacheAccess = new System.Windows.Forms.ToolStripMenuItem();
+            this.tslLogApacheError = new System.Windows.Forms.ToolStripMenuItem();
+            this.tslLogPhpError = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
+            this.tslLogBrowseApache = new System.Windows.Forms.ToolStripMenuItem();
+            this.tslLogBrowsePHP = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
+            this.logsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tslLogMysqlError = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
+            this.tslLogBrowseMySQL = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
+            this.logsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.tslLogBrowseTomcat = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator11 = new System.Windows.Forms.ToolStripSeparator();
+            this.logsToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.tslLogBrowseMercury = new System.Windows.Forms.ToolStripMenuItem();
             this.tctTabMenu.SuspendLayout();
             this.tabProjects.SuspendLayout();
             this.tabServices.SuspendLayout();
@@ -1961,9 +1980,11 @@
             this.toolStripSeparator1,
             this.tslBrowseApache,
             this.tslBrowsePhp,
-            this.tslBrowsePhpMyAdmin});
+            this.tslBrowsePhpMyAdmin,
+            this.toolStripSeparator6,
+            this.toolStripMenuItem1});
             this.cmsApacheConfig.Name = "cmsApacheConfig";
-            this.cmsApacheConfig.Size = new System.Drawing.Size(227, 186);
+            this.cmsApacheConfig.Size = new System.Drawing.Size(227, 214);
             this.cmsApacheConfig.Style = MetroSet_UI.Design.Style.Custom;
             this.cmsApacheConfig.StyleManager = null;
             this.cmsApacheConfig.ThemeAuthor = "Narwin";
@@ -2045,9 +2066,11 @@
             this.cmsMySQLConfig.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tslMySQLConfig,
             this.toolStripSeparator2,
-            this.tslBrowseMySQL});
+            this.tslBrowseMySQL,
+            this.toolStripSeparator8,
+            this.logsToolStripMenuItem});
             this.cmsMySQLConfig.Name = "cmsMySQLConfig";
-            this.cmsMySQLConfig.Size = new System.Drawing.Size(129, 54);
+            this.cmsMySQLConfig.Size = new System.Drawing.Size(129, 82);
             this.cmsMySQLConfig.Style = MetroSet_UI.Design.Style.Custom;
             this.cmsMySQLConfig.StyleManager = null;
             this.cmsMySQLConfig.ThemeAuthor = "Narwin";
@@ -2109,9 +2132,11 @@
             this.cmsMercuryConfig.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tslMercuryConfig,
             this.toolStripSeparator4,
-            this.tslBrowseMercury});
+            this.tslBrowseMercury,
+            this.toolStripSeparator11,
+            this.logsToolStripMenuItem2});
             this.cmsMercuryConfig.Name = "cmsMercuryConfig";
-            this.cmsMercuryConfig.Size = new System.Drawing.Size(135, 54);
+            this.cmsMercuryConfig.Size = new System.Drawing.Size(135, 82);
             this.cmsMercuryConfig.Style = MetroSet_UI.Design.Style.Custom;
             this.cmsMercuryConfig.StyleManager = null;
             this.cmsMercuryConfig.ThemeAuthor = "Narwin";
@@ -2144,9 +2169,11 @@
             this.tslTomcatWeb,
             this.tslTomcatContext,
             this.toolStripSeparator5,
-            this.tslBrowseTomcat});
+            this.tslBrowseTomcat,
+            this.toolStripSeparator10,
+            this.logsToolStripMenuItem1});
             this.cmsTomcatConfig.Name = "cmsTomcatConfig";
-            this.cmsTomcatConfig.Size = new System.Drawing.Size(168, 120);
+            this.cmsTomcatConfig.Size = new System.Drawing.Size(168, 148);
             this.cmsTomcatConfig.Style = MetroSet_UI.Design.Style.Custom;
             this.cmsTomcatConfig.StyleManager = null;
             this.cmsTomcatConfig.ThemeAuthor = "Narwin";
@@ -2211,6 +2238,138 @@
             this.tmrCheckServiceStatus.Interval = 1000;
             this.tmrCheckServiceStatus.Tick += new System.EventHandler(this.tmrCheckServiceStatus_Tick);
             // 
+            // toolStripSeparator6
+            // 
+            this.toolStripSeparator6.Name = "toolStripSeparator6";
+            this.toolStripSeparator6.Size = new System.Drawing.Size(223, 6);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tslLogApacheAccess,
+            this.tslLogApacheError,
+            this.tslLogPhpError,
+            this.toolStripSeparator7,
+            this.tslLogBrowseApache,
+            this.tslLogBrowsePHP});
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(226, 22);
+            this.toolStripMenuItem1.Text = "Logs";
+            // 
+            // tslLogApacheAccess
+            // 
+            this.tslLogApacheAccess.Name = "tslLogApacheAccess";
+            this.tslLogApacheAccess.Size = new System.Drawing.Size(181, 22);
+            this.tslLogApacheAccess.Text = "Apache (access.log)";
+            this.tslLogApacheAccess.Click += new System.EventHandler(this.tslLogApacheAccess_Click);
+            // 
+            // tslLogApacheError
+            // 
+            this.tslLogApacheError.Name = "tslLogApacheError";
+            this.tslLogApacheError.Size = new System.Drawing.Size(181, 22);
+            this.tslLogApacheError.Text = "Apache (error.log)";
+            this.tslLogApacheError.Click += new System.EventHandler(this.tslLogApacheError_Click);
+            // 
+            // tslLogPhpError
+            // 
+            this.tslLogPhpError.Name = "tslLogPhpError";
+            this.tslLogPhpError.Size = new System.Drawing.Size(181, 22);
+            this.tslLogPhpError.Text = "PHP (php_error_log)";
+            this.tslLogPhpError.Click += new System.EventHandler(this.tslLogPhpError_Click);
+            // 
+            // toolStripSeparator7
+            // 
+            this.toolStripSeparator7.Name = "toolStripSeparator7";
+            this.toolStripSeparator7.Size = new System.Drawing.Size(178, 6);
+            // 
+            // tslLogBrowseApache
+            // 
+            this.tslLogBrowseApache.Name = "tslLogBrowseApache";
+            this.tslLogBrowseApache.Size = new System.Drawing.Size(181, 22);
+            this.tslLogBrowseApache.Text = "<Browse> [Aoache]";
+            this.tslLogBrowseApache.Click += new System.EventHandler(this.tslLogBrowseApache_Click);
+            // 
+            // tslLogBrowsePHP
+            // 
+            this.tslLogBrowsePHP.Name = "tslLogBrowsePHP";
+            this.tslLogBrowsePHP.Size = new System.Drawing.Size(181, 22);
+            this.tslLogBrowsePHP.Text = "<Browse> [PHP]";
+            this.tslLogBrowsePHP.Click += new System.EventHandler(this.tslLogBrowsePHP_Click);
+            // 
+            // toolStripSeparator8
+            // 
+            this.toolStripSeparator8.Name = "toolStripSeparator8";
+            this.toolStripSeparator8.Size = new System.Drawing.Size(125, 6);
+            // 
+            // logsToolStripMenuItem
+            // 
+            this.logsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tslLogMysqlError,
+            this.toolStripSeparator9,
+            this.tslLogBrowseMySQL});
+            this.logsToolStripMenuItem.Name = "logsToolStripMenuItem";
+            this.logsToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
+            this.logsToolStripMenuItem.Text = "Logs";
+            // 
+            // tslLogMysqlError
+            // 
+            this.tslLogMysqlError.Name = "tslLogMysqlError";
+            this.tslLogMysqlError.Size = new System.Drawing.Size(180, 22);
+            this.tslLogMysqlError.Text = "mysql_error.log";
+            this.tslLogMysqlError.Click += new System.EventHandler(this.tslLogMysqlError_Click);
+            // 
+            // toolStripSeparator9
+            // 
+            this.toolStripSeparator9.Name = "toolStripSeparator9";
+            this.toolStripSeparator9.Size = new System.Drawing.Size(177, 6);
+            // 
+            // tslLogBrowseMySQL
+            // 
+            this.tslLogBrowseMySQL.Name = "tslLogBrowseMySQL";
+            this.tslLogBrowseMySQL.Size = new System.Drawing.Size(180, 22);
+            this.tslLogBrowseMySQL.Text = "<Browse>";
+            this.tslLogBrowseMySQL.Click += new System.EventHandler(this.tslLogBrowseMySQL_Click);
+            // 
+            // toolStripSeparator10
+            // 
+            this.toolStripSeparator10.Name = "toolStripSeparator10";
+            this.toolStripSeparator10.Size = new System.Drawing.Size(164, 6);
+            // 
+            // logsToolStripMenuItem1
+            // 
+            this.logsToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tslLogBrowseTomcat});
+            this.logsToolStripMenuItem1.Name = "logsToolStripMenuItem1";
+            this.logsToolStripMenuItem1.Size = new System.Drawing.Size(167, 22);
+            this.logsToolStripMenuItem1.Text = "Logs";
+            // 
+            // tslLogBrowseTomcat
+            // 
+            this.tslLogBrowseTomcat.Name = "tslLogBrowseTomcat";
+            this.tslLogBrowseTomcat.Size = new System.Drawing.Size(180, 22);
+            this.tslLogBrowseTomcat.Text = "<Browse>";
+            this.tslLogBrowseTomcat.Click += new System.EventHandler(this.tslLogBrowseTomcat_Click);
+            // 
+            // toolStripSeparator11
+            // 
+            this.toolStripSeparator11.Name = "toolStripSeparator11";
+            this.toolStripSeparator11.Size = new System.Drawing.Size(131, 6);
+            // 
+            // logsToolStripMenuItem2
+            // 
+            this.logsToolStripMenuItem2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tslLogBrowseMercury});
+            this.logsToolStripMenuItem2.Name = "logsToolStripMenuItem2";
+            this.logsToolStripMenuItem2.Size = new System.Drawing.Size(134, 22);
+            this.logsToolStripMenuItem2.Text = "Logs";
+            // 
+            // tslLogBrowseMercury
+            // 
+            this.tslLogBrowseMercury.Name = "tslLogBrowseMercury";
+            this.tslLogBrowseMercury.Size = new System.Drawing.Size(180, 22);
+            this.tslLogBrowseMercury.Text = "<Browse>";
+            this.tslLogBrowseMercury.Click += new System.EventHandler(this.tslLogBrowseMercury_Click);
+            // 
             // XPSMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2228,6 +2387,7 @@
             this.Name = "XPSMain";
             this.Text = "XAMPP Project Selector - XPS3";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.XPSMain_FormClosing);
+            this.Load += new System.EventHandler(this.XPSMain_Load);
             this.tctTabMenu.ResumeLayout(false);
             this.tabProjects.ResumeLayout(false);
             this.tabServices.ResumeLayout(false);
@@ -2370,6 +2530,25 @@
         private System.Windows.Forms.PictureBox pbxMySQLStatus;
         private System.Windows.Forms.PictureBox pbxApacheStatus;
         private System.Windows.Forms.Timer tmrCheckServiceStatus;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem tslLogApacheAccess;
+        private System.Windows.Forms.ToolStripMenuItem tslLogApacheError;
+        private System.Windows.Forms.ToolStripMenuItem tslLogPhpError;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
+        private System.Windows.Forms.ToolStripMenuItem tslLogBrowseApache;
+        private System.Windows.Forms.ToolStripMenuItem tslLogBrowsePHP;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator8;
+        private System.Windows.Forms.ToolStripMenuItem logsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tslLogMysqlError;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator9;
+        private System.Windows.Forms.ToolStripMenuItem tslLogBrowseMySQL;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator11;
+        private System.Windows.Forms.ToolStripMenuItem logsToolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem tslLogBrowseMercury;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator10;
+        private System.Windows.Forms.ToolStripMenuItem logsToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem tslLogBrowseTomcat;
     }
 }
 

@@ -42,8 +42,10 @@ namespace XPS3
         {
             InitializeComponent();
 
+            processes = Process.GetProcesses();
             processThread = new Thread(UpdateProcessThreads);
             processThread.Start();
+
 
             disableOnCheckChangeUpdate = true;
             SetServiceImages();
@@ -52,9 +54,25 @@ namespace XPS3
             disableOnCheckChangeUpdate = false;
         }
 
+        private void XPSMain_Load(object sender, EventArgs e)
+        {
+            RunAutostart();
+        }
+
         private void XPSMain_FormClosing(object sender, FormClosingEventArgs e)
         {
+            processThread.Abort();
+
             if (connection.State == ConnectionState.Open) connection.Close();
+        }
+
+        private void RunAutostart()
+        {
+            if (chbAutostartApache.Checked) AttemptStartService("Apache", "apache_start.bat", XPSProcess.Apache);
+            if (chbAutostartMySQL.Checked) AttemptStartService("MySQL", "mysql_start.bat", XPSProcess.MySQL);
+            if (chbAutostartFileZilla.Checked) AttemptStartService("FileZilla", "filezilla_start.bat", XPSProcess.FileZilla);
+            if (chbAutostartMercury.Checked) AttemptStartService("Mercury", "mercury_start.bat", XPSProcess.Mercury);
+            if (chbAutostartTomcat.Checked) AttemptStartService("Tomcat", "tomcat_start.bat", XPSProcess.Tomcat);
         }
 
         private void CreateDBCon()
@@ -174,11 +192,36 @@ namespace XPS3
 
         private void btnStartServices_Click(object sender, EventArgs e)
         {
-            if (chbServiceApache.Switched) AttemptStartService("Apache", "apache_start.bat", XPSProcess.Apache);
-            if (chbServiceMySQL.Switched) AttemptStartService("MySQL", "mysql_start.bat", XPSProcess.MySQL);
-            if (chbServiceFileZilla.Switched) AttemptStartService("FileZilla", "filezilla_start.bat", XPSProcess.FileZilla);
-            if (chbServiceMercury.Switched) AttemptStartService("Mercury", "mercury_start.bat", XPSProcess.Mercury);
-            if (chbServiceTomcat.Switched) AttemptStartService("Tomcat", "tomcat_start.bat", XPSProcess.Tomcat);
+            if (chbServiceApache.Switched)
+            {
+                pbxApacheStatus.BackColor = Color.Orange;
+                pbxApacheStatus.Invalidate();
+                AttemptStartService("Apache", "apache_start.bat", XPSProcess.Apache);
+            }
+            if (chbServiceMySQL.Switched)
+            {
+                pbxMySQLStatus.BackColor = Color.Orange;
+                pbxMySQLStatus.Invalidate();
+                AttemptStartService("MySQL", "mysql_start.bat", XPSProcess.MySQL);
+            }
+            if (chbServiceFileZilla.Switched)
+            {
+                pbxFileZillaStatus.BackColor = Color.Orange;
+                pbxFileZillaStatus.Invalidate();
+                AttemptStartService("FileZilla", "filezilla_start.bat", XPSProcess.FileZilla);
+            }
+            if (chbServiceMercury.Switched)
+            {
+                pbxMercuryStatus.BackColor = Color.Orange;
+                pbxMercuryStatus.Invalidate();
+                AttemptStartService("Mercury", "mercury_start.bat", XPSProcess.Mercury);
+            }
+            if (chbServiceTomcat.Switched)
+            {
+                pbxTomcatStatus.BackColor = Color.Orange;
+                pbxTomcatStatus.Invalidate();
+                AttemptStartService("Tomcat", "tomcat_start.bat", XPSProcess.Tomcat);
+            }
         }
 
         private void btnStopServices_Click(object sender, EventArgs e)
@@ -415,6 +458,15 @@ namespace XPS3
         private void tslBrowseMySQL_Click(object sender, EventArgs e) => OpenFolder(@"mysql");
         private void tslFileZillaConfig_Click(object sender, EventArgs e) => LaunchInEditor(@"FileZillaFTP\FileZilla Server.xml");
         private void tslBrowseFileZilla_Click(object sender, EventArgs e) => OpenFolder(@"FileZillaFTP");
+        private void tslLogApacheAccess_Click(object sender, EventArgs e) => LaunchInEditor(@"apache\logs\access.log");
+        private void tslLogApacheError_Click(object sender, EventArgs e) => LaunchInEditor(@"apache\logs\error.log");
+        private void tslLogPhpError_Click(object sender, EventArgs e) => LaunchInEditor(@"php\logs\php_error_log");
+        private void tslLogBrowseApache_Click(object sender, EventArgs e) => OpenFolder(@"apache\logs");
+        private void tslLogBrowsePHP_Click(object sender, EventArgs e) => OpenFolder(@"php\logs");
+        private void tslLogMysqlError_Click(object sender, EventArgs e) => LaunchInEditor(@"mysql\data\mysql_error.log");
+        private void tslLogBrowseMySQL_Click(object sender, EventArgs e) => OpenFolder(@"mysql\data");
+        private void tslLogBrowseTomcat_Click(object sender, EventArgs e) => OpenFolder(@"MercuryMail\LOGS");
+        private void tslLogBrowseMercury_Click(object sender, EventArgs e) => OpenFolder(@"tomcat\logs");
 
         #endregion
 
@@ -508,6 +560,9 @@ namespace XPS3
                 SettingsPoke("AutostartTomcat", chbAutostartTomcat.Checked);
             }
         }
+
+
+
 
         #endregion
 
