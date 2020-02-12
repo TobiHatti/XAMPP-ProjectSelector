@@ -45,26 +45,40 @@ namespace XPS3
 
         public XPSMain()
         {
-            InitializeComponent();
+            try
+            {
+                InitializeComponent();
 
-            processes = Process.GetProcesses();
-            processThread = new Thread(UpdateProcessThreads);
-            processThread.Start();
+                processes = Process.GetProcesses();
+                processThread = new Thread(UpdateProcessThreads);
+                processThread.Start();
 
 
-            disableOnCheckChangeUpdate = true;
-            SetServiceImages();
-            CreateDBCon();
-            LoadDBDataToForm();
-            disableOnCheckChangeUpdate = false;
+                disableOnCheckChangeUpdate = true;
+                SetServiceImages();
+                CreateDBCon();
+                LoadDBDataToForm();
+                disableOnCheckChangeUpdate = false;
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show($"An error occured whilst starting the Program (E01). \r\n\r\n\r\n{ex.Message}", "Startup-Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void XPSMain_Load(object sender, EventArgs e)
         {
-            RunAutostart();
-            UpdateProjectLists();
-            UpdateRecentList();
-            SelectRecentProject();
+            try
+            {
+                RunAutostart();
+                UpdateProjectLists();
+                UpdateRecentList();
+                SelectRecentProject();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occured whilst starting the Program (E02). \r\n\r\n\r\n{ex.Message}", "Startup-Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void XPSMain_FormClosing(object sender, FormClosingEventArgs e)

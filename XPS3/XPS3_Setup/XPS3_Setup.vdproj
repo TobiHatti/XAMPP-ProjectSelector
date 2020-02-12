@@ -63,8 +63,20 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_95EF076DD7354EDD893FF3EF4678AFEC"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_BAB1B23267F0035F380FDCCFBC591E89"
         "OwnerKey" = "8:_243BAB00A19D4C8BA3DB1424603087D6"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_CB80441E79364EBC9000441C32BBDD1A"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -322,6 +334,26 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_95EF076DD7354EDD893FF3EF4678AFEC"
+            {
+            "SourcePath" = "8:..\\XPS3\\bin\\Release\\x86\\SQLite.Interop.dll"
+            "TargetName" = "8:SQLite.Interop.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_C95D471A6116450FAD6E3E2B1C640D21"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_BAB1B23267F0035F380FDCCFBC591E89"
             {
             "AssemblyRegister" = "3:1"
@@ -351,6 +383,26 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_CB80441E79364EBC9000441C32BBDD1A"
+            {
+            "SourcePath" = "8:..\\XPS3\\bin\\Release\\x86\\sqlite3.dll"
+            "TargetName" = "8:sqlite3.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_C95D471A6116450FAD6E3E2B1C640D21"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_D99847B20BE948A0B161CFF4B1677D20"
@@ -430,7 +482,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:XPS3 - XAMPP Project Selector"
         "ProductCode" = "8:{22A20FE8-3618-47FC-BB4F-2CA8ADC999C5}"
-        "PackageCode" = "8:{39EB08D9-8D16-4841-AA02-55AA6A2B62A7}"
+        "PackageCode" = "8:{49E77B96-5C58-44E0-815E-49EA6B449DBE}"
         "UpgradeCode" = "8:{75EEE9E5-79FA-42D2-9156-071A14504900}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -440,7 +492,7 @@
         "ProductVersion" = "8:3.0.0"
         "Manufacturer" = "8:Endix Development"
         "ARPHELPTELEPHONE" = "8:"
-        "ARPHELPLINK" = "8:https:/endev.at/support"
+        "ARPHELPLINK" = "8:https://endev.at/support"
         "Title" = "8:XPS3_Setup"
         "Subject" = "8:"
         "ARPCONTACT" = "8:Tobias Hattinger"
@@ -979,7 +1031,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_243BAB00A19D4C8BA3DB1424603087D6"
             {
-            "SourcePath" = "8:"
+            "SourcePath" = "8:..\\XPS3\\obj\\Release\\XPS3.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_C95D471A6116450FAD6E3E2B1C640D21"
