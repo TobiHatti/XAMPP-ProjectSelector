@@ -1,0 +1,16 @@
+C:\Users\zivi\Desktop\Projects (GIT)\XAMPP_ProjectSelector\XPS3\XPS3\bin\Release\x86\sqlite3.dll
+C:\Users\zivi\Desktop\Projects (GIT)\XAMPP_ProjectSelector\XPS3\XPS3\bin\Release\x64\sqlite3.dll
+C:\Users\zivi\Desktop\Projects (GIT)\XAMPP_ProjectSelector\XPS3\XPS3\bin\Release\XPS3.exe.config
+C:\Users\zivi\Desktop\Projects (GIT)\XAMPP_ProjectSelector\XPS3\XPS3\bin\Release\XPS3.exe
+C:\Users\zivi\Desktop\Projects (GIT)\XAMPP_ProjectSelector\XPS3\XPS3\bin\Release\XPS3.pdb
+C:\Users\zivi\Desktop\Projects (GIT)\XAMPP_ProjectSelector\XPS3\XPS3\bin\Release\MetroSet UI.dll
+C:\Users\zivi\Desktop\Projects (GIT)\XAMPP_ProjectSelector\XPS3\XPS3\bin\Release\System.Data.SQLite.dll
+C:\Users\zivi\Desktop\Projects (GIT)\XAMPP_ProjectSelector\XPS3\XPS3\bin\Release\System.Data.SQLite.xml
+C:\Users\zivi\Desktop\Projects (GIT)\XAMPP_ProjectSelector\XPS3\XPS3\bin\Release\System.Data.SQLite.dll.config
+C:\Users\zivi\Desktop\Projects (GIT)\XAMPP_ProjectSelector\XPS3\XPS3\obj\Release\XPS3.XPSAddProject.resources
+C:\Users\zivi\Desktop\Projects (GIT)\XAMPP_ProjectSelector\XPS3\XPS3\obj\Release\XPS3.XPSMain.resources
+C:\Users\zivi\Desktop\Projects (GIT)\XAMPP_ProjectSelector\XPS3\XPS3\obj\Release\XPS3.Properties.Resources.resources
+C:\Users\zivi\Desktop\Projects (GIT)\XAMPP_ProjectSelector\XPS3\XPS3\obj\Release\XPS3.csproj.GenerateResource.cache
+C:\Users\zivi\Desktop\Projects (GIT)\XAMPP_ProjectSelector\XPS3\XPS3\obj\Release\XPS3.csproj.CopyComplete
+C:\Users\zivi\Desktop\Projects (GIT)\XAMPP_ProjectSelector\XPS3\XPS3\obj\Release\XPS3.exe
+C:\Users\zivi\Desktop\Projects (GIT)\XAMPP_ProjectSelector\XPS3\XPS3\obj\Release\XPS3.pdb
