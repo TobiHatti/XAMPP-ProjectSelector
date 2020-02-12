@@ -109,6 +109,10 @@ namespace XPS3
                 cmd.ExecuteNonQuery();
                 cmd.CommandText = @"CREATE TABLE 'Projects' ( 'ID' INTEGER PRIMARY KEY AUTOINCREMENT, 'Name' TEXT, 'Description' TEXT, 'RootDirectory' TEXT, 'Image' TEXT, 'ApacheEnabled' TEXT, 'MySQLEnabled' TEXT, 'FileZillaEnabled'  TEXT, 'MercuryEnabled' TEXT, 'TomcatEnabled' TEXT);";
                 cmd.ExecuteNonQuery();
+
+                cmd.CommandText = "INSERT INTO Projects (Name, Description, RootDirectory, Image, ApacheEnabled, MySQLEnabled, FileZillaEnabled, MercuryEnabled, TomcatEnabled) VALUES " +
+                        $"('Default Project','Default Project','C:\\xampp','','False','False','False','False','False')";
+                cmd.ExecuteNonQuery();
             }
 
             connection.Close();
@@ -363,10 +367,27 @@ namespace XPS3
 
         private void SelectRecentProject()
         {
+            int recentOption = 0;
+
             connection.Open();
-            cmd.CommandText = "SELECT ProjectID FROM Log ORDER BY SelectedDate DESC LIMIT 1";
-            int recentOption = Convert.ToInt32(cmd.ExecuteScalar());
+            cmd.CommandText = "SELECT COUNT(*) FROM Log";
+            int logCount = Convert.ToInt32(cmd.ExecuteScalar());
             connection.Close();
+
+            if(logCount != 0)
+            {
+                connection.Open();
+                cmd.CommandText = "SELECT ProjectID FROM Log ORDER BY SelectedDate DESC LIMIT 1";
+                recentOption = Convert.ToInt32(cmd.ExecuteScalar());
+                connection.Close();
+            }
+            else
+            {
+                connection.Open();
+                cmd.CommandText = "SELECT ID FROM Projects ORDER BY ID ASC LIMIT 1";
+                recentOption = Convert.ToInt32(cmd.ExecuteScalar());
+                connection.Close();
+            }
 
             SelectProjectOption(recentOption);
         }
@@ -923,7 +944,6 @@ namespace XPS3
                 SettingsPoke("AutostartAfterSwitch", rbnAutostartAfterSwitchTrue.Checked);
             }
         }
-
 
         #endregion
     }
