@@ -94,6 +94,8 @@
             this.metroSetDivider9 = new MetroSet_UI.Controls.MetroSetDivider();
             this.metroSetDivider3 = new MetroSet_UI.Controls.MetroSetDivider();
             this.tabSettings = new MetroSet_UI.Child.MetroSetTabPage();
+            this.rbnAutostartAfterSwitchFalse = new MetroSet_UI.Controls.MetroSetRadioButton();
+            this.rbnAutostartAfterSwitchTrue = new MetroSet_UI.Controls.MetroSetRadioButton();
             this.metroSetLabel19 = new MetroSet_UI.Controls.MetroSetLabel();
             this.chbAutostartTomcat = new MetroSet_UI.Controls.MetroSetCheckBox();
             this.chbAutostartMercury = new MetroSet_UI.Controls.MetroSetCheckBox();
@@ -104,6 +106,7 @@
             this.btnSelectXamppInstallPath = new MetroSet_UI.Controls.MetroSetButton();
             this.txbDefaultEditorPath = new MetroSet_UI.Controls.MetroSetTextBox();
             this.txbXamppInstallPath = new MetroSet_UI.Controls.MetroSetTextBox();
+            this.metroSetLabel11 = new MetroSet_UI.Controls.MetroSetLabel();
             this.metroSetLabel18 = new MetroSet_UI.Controls.MetroSetLabel();
             this.metroSetLabel17 = new MetroSet_UI.Controls.MetroSetLabel();
             this.metroSetLabel16 = new MetroSet_UI.Controls.MetroSetLabel();
@@ -167,9 +170,6 @@
             this.ofdFileSelector = new System.Windows.Forms.OpenFileDialog();
             this.fbdFolderSelector = new System.Windows.Forms.FolderBrowserDialog();
             this.tmrCheckServiceStatus = new System.Windows.Forms.Timer(this.components);
-            this.metroSetLabel11 = new MetroSet_UI.Controls.MetroSetLabel();
-            this.rbnAutostartAfterSwitchTrue = new MetroSet_UI.Controls.MetroSetRadioButton();
-            this.rbnAutostartAfterSwitchFalse = new MetroSet_UI.Controls.MetroSetRadioButton();
             this.tctTabMenu.SuspendLayout();
             this.tabProjects.SuspendLayout();
             this.tabServices.SuspendLayout();
@@ -257,7 +257,6 @@
             this.btnHotSwitchP6.DisabledBackColor = System.Drawing.Color.Gray;
             this.btnHotSwitchP6.DisabledBorderColor = System.Drawing.Color.Gray;
             this.btnHotSwitchP6.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnHotSwitchP6.Enabled = false;
             this.btnHotSwitchP6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.btnHotSwitchP6.HoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
             this.btnHotSwitchP6.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
@@ -286,7 +285,6 @@
             this.btnHotSwitchP5.DisabledBackColor = System.Drawing.Color.Gray;
             this.btnHotSwitchP5.DisabledBorderColor = System.Drawing.Color.Gray;
             this.btnHotSwitchP5.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnHotSwitchP5.Enabled = false;
             this.btnHotSwitchP5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.btnHotSwitchP5.HoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
             this.btnHotSwitchP5.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
@@ -315,7 +313,6 @@
             this.btnHotSwitchP4.DisabledBackColor = System.Drawing.Color.Gray;
             this.btnHotSwitchP4.DisabledBorderColor = System.Drawing.Color.Gray;
             this.btnHotSwitchP4.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnHotSwitchP4.Enabled = false;
             this.btnHotSwitchP4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.btnHotSwitchP4.HoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
             this.btnHotSwitchP4.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
@@ -344,7 +341,6 @@
             this.btnHotSwitchP1.DisabledBackColor = System.Drawing.Color.Gray;
             this.btnHotSwitchP1.DisabledBorderColor = System.Drawing.Color.Gray;
             this.btnHotSwitchP1.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnHotSwitchP1.Enabled = false;
             this.btnHotSwitchP1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.btnHotSwitchP1.HoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
             this.btnHotSwitchP1.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
@@ -373,7 +369,6 @@
             this.btnHotSwitchP3.DisabledBackColor = System.Drawing.Color.Gray;
             this.btnHotSwitchP3.DisabledBorderColor = System.Drawing.Color.Gray;
             this.btnHotSwitchP3.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnHotSwitchP3.Enabled = false;
             this.btnHotSwitchP3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.btnHotSwitchP3.HoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
             this.btnHotSwitchP3.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
@@ -417,7 +412,6 @@
             this.btnHotSwitchP2.DisabledBackColor = System.Drawing.Color.Gray;
             this.btnHotSwitchP2.DisabledBorderColor = System.Drawing.Color.Gray;
             this.btnHotSwitchP2.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnHotSwitchP2.Enabled = false;
             this.btnHotSwitchP2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.btnHotSwitchP2.HoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
             this.btnHotSwitchP2.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
@@ -1597,6 +1591,48 @@
             this.tabSettings.ThemeName = "MetroLite";
             this.tabSettings.ToolTipText = null;
             // 
+            // rbnAutostartAfterSwitchFalse
+            // 
+            this.rbnAutostartAfterSwitchFalse.BackgroundColor = System.Drawing.Color.White;
+            this.rbnAutostartAfterSwitchFalse.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(155)))), ((int)(((byte)(155)))));
+            this.rbnAutostartAfterSwitchFalse.Checked = false;
+            this.rbnAutostartAfterSwitchFalse.CheckSignColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.rbnAutostartAfterSwitchFalse.CheckState = MetroSet_UI.Enums.CheckState.Unchecked;
+            this.rbnAutostartAfterSwitchFalse.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(205)))), ((int)(((byte)(205)))));
+            this.rbnAutostartAfterSwitchFalse.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.rbnAutostartAfterSwitchFalse.Group = 1;
+            this.rbnAutostartAfterSwitchFalse.Location = new System.Drawing.Point(190, 283);
+            this.rbnAutostartAfterSwitchFalse.Name = "rbnAutostartAfterSwitchFalse";
+            this.rbnAutostartAfterSwitchFalse.Size = new System.Drawing.Size(75, 17);
+            this.rbnAutostartAfterSwitchFalse.Style = MetroSet_UI.Design.Style.Light;
+            this.rbnAutostartAfterSwitchFalse.StyleManager = null;
+            this.rbnAutostartAfterSwitchFalse.TabIndex = 16;
+            this.rbnAutostartAfterSwitchFalse.Text = "No";
+            this.rbnAutostartAfterSwitchFalse.ThemeAuthor = "Narwin";
+            this.rbnAutostartAfterSwitchFalse.ThemeName = "MetroLite";
+            this.rbnAutostartAfterSwitchFalse.CheckedChanged += new MetroSet_UI.Controls.MetroSetRadioButton.CheckedChangedEventHandler(this.UpdateAutostartAfterSwitch);
+            // 
+            // rbnAutostartAfterSwitchTrue
+            // 
+            this.rbnAutostartAfterSwitchTrue.BackgroundColor = System.Drawing.Color.White;
+            this.rbnAutostartAfterSwitchTrue.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(155)))), ((int)(((byte)(155)))));
+            this.rbnAutostartAfterSwitchTrue.Checked = true;
+            this.rbnAutostartAfterSwitchTrue.CheckSignColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.rbnAutostartAfterSwitchTrue.CheckState = MetroSet_UI.Enums.CheckState.Checked;
+            this.rbnAutostartAfterSwitchTrue.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(205)))), ((int)(((byte)(205)))));
+            this.rbnAutostartAfterSwitchTrue.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.rbnAutostartAfterSwitchTrue.Group = 1;
+            this.rbnAutostartAfterSwitchTrue.Location = new System.Drawing.Point(137, 283);
+            this.rbnAutostartAfterSwitchTrue.Name = "rbnAutostartAfterSwitchTrue";
+            this.rbnAutostartAfterSwitchTrue.Size = new System.Drawing.Size(75, 17);
+            this.rbnAutostartAfterSwitchTrue.Style = MetroSet_UI.Design.Style.Light;
+            this.rbnAutostartAfterSwitchTrue.StyleManager = null;
+            this.rbnAutostartAfterSwitchTrue.TabIndex = 16;
+            this.rbnAutostartAfterSwitchTrue.Text = "Yes";
+            this.rbnAutostartAfterSwitchTrue.ThemeAuthor = "Narwin";
+            this.rbnAutostartAfterSwitchTrue.ThemeName = "MetroLite";
+            this.rbnAutostartAfterSwitchTrue.CheckedChanged += new MetroSet_UI.Controls.MetroSetRadioButton.CheckedChangedEventHandler(this.UpdateAutostartAfterSwitch);
+            // 
             // metroSetLabel19
             // 
             this.metroSetLabel19.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1835,6 +1871,19 @@
             this.txbXamppInstallPath.ThemeName = "MetroLite";
             this.txbXamppInstallPath.UseSystemPasswordChar = false;
             this.txbXamppInstallPath.WatermarkText = "";
+            // 
+            // metroSetLabel11
+            // 
+            this.metroSetLabel11.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.metroSetLabel11.Location = new System.Drawing.Point(-4, 257);
+            this.metroSetLabel11.Name = "metroSetLabel11";
+            this.metroSetLabel11.Size = new System.Drawing.Size(315, 23);
+            this.metroSetLabel11.Style = MetroSet_UI.Design.Style.Light;
+            this.metroSetLabel11.StyleManager = null;
+            this.metroSetLabel11.TabIndex = 11;
+            this.metroSetLabel11.Text = "Auto-Start services after switching Projects:";
+            this.metroSetLabel11.ThemeAuthor = "Narwin";
+            this.metroSetLabel11.ThemeName = "MetroLite";
             // 
             // metroSetLabel18
             // 
@@ -2460,61 +2509,6 @@
             this.tmrCheckServiceStatus.Enabled = true;
             this.tmrCheckServiceStatus.Interval = 2000;
             this.tmrCheckServiceStatus.Tick += new System.EventHandler(this.tmrCheckServiceStatus_Tick);
-            // 
-            // metroSetLabel11
-            // 
-            this.metroSetLabel11.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.metroSetLabel11.Location = new System.Drawing.Point(-4, 257);
-            this.metroSetLabel11.Name = "metroSetLabel11";
-            this.metroSetLabel11.Size = new System.Drawing.Size(315, 23);
-            this.metroSetLabel11.Style = MetroSet_UI.Design.Style.Light;
-            this.metroSetLabel11.StyleManager = null;
-            this.metroSetLabel11.TabIndex = 11;
-            this.metroSetLabel11.Text = "Auto-Start services after switching Projects:";
-            this.metroSetLabel11.ThemeAuthor = "Narwin";
-            this.metroSetLabel11.ThemeName = "MetroLite";
-            // 
-            // rbnAutostartAfterSwitchTrue
-            // 
-            this.rbnAutostartAfterSwitchTrue.BackgroundColor = System.Drawing.Color.White;
-            this.rbnAutostartAfterSwitchTrue.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(155)))), ((int)(((byte)(155)))));
-            this.rbnAutostartAfterSwitchTrue.Checked = true;
-            this.rbnAutostartAfterSwitchTrue.CheckSignColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
-            this.rbnAutostartAfterSwitchTrue.CheckState = MetroSet_UI.Enums.CheckState.Checked;
-            this.rbnAutostartAfterSwitchTrue.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(205)))), ((int)(((byte)(205)))));
-            this.rbnAutostartAfterSwitchTrue.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.rbnAutostartAfterSwitchTrue.Group = 1;
-            this.rbnAutostartAfterSwitchTrue.Location = new System.Drawing.Point(137, 283);
-            this.rbnAutostartAfterSwitchTrue.Name = "rbnAutostartAfterSwitchTrue";
-            this.rbnAutostartAfterSwitchTrue.Size = new System.Drawing.Size(75, 17);
-            this.rbnAutostartAfterSwitchTrue.Style = MetroSet_UI.Design.Style.Light;
-            this.rbnAutostartAfterSwitchTrue.StyleManager = null;
-            this.rbnAutostartAfterSwitchTrue.TabIndex = 16;
-            this.rbnAutostartAfterSwitchTrue.Text = "Yes";
-            this.rbnAutostartAfterSwitchTrue.ThemeAuthor = "Narwin";
-            this.rbnAutostartAfterSwitchTrue.ThemeName = "MetroLite";
-            this.rbnAutostartAfterSwitchTrue.CheckedChanged += new MetroSet_UI.Controls.MetroSetRadioButton.CheckedChangedEventHandler(this.UpdateAutostartAfterSwitch);
-            // 
-            // rbnAutostartAfterSwitchFalse
-            // 
-            this.rbnAutostartAfterSwitchFalse.BackgroundColor = System.Drawing.Color.White;
-            this.rbnAutostartAfterSwitchFalse.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(155)))), ((int)(((byte)(155)))));
-            this.rbnAutostartAfterSwitchFalse.Checked = false;
-            this.rbnAutostartAfterSwitchFalse.CheckSignColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
-            this.rbnAutostartAfterSwitchFalse.CheckState = MetroSet_UI.Enums.CheckState.Unchecked;
-            this.rbnAutostartAfterSwitchFalse.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(205)))), ((int)(((byte)(205)))));
-            this.rbnAutostartAfterSwitchFalse.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.rbnAutostartAfterSwitchFalse.Group = 1;
-            this.rbnAutostartAfterSwitchFalse.Location = new System.Drawing.Point(190, 283);
-            this.rbnAutostartAfterSwitchFalse.Name = "rbnAutostartAfterSwitchFalse";
-            this.rbnAutostartAfterSwitchFalse.Size = new System.Drawing.Size(75, 17);
-            this.rbnAutostartAfterSwitchFalse.Style = MetroSet_UI.Design.Style.Light;
-            this.rbnAutostartAfterSwitchFalse.StyleManager = null;
-            this.rbnAutostartAfterSwitchFalse.TabIndex = 16;
-            this.rbnAutostartAfterSwitchFalse.Text = "No";
-            this.rbnAutostartAfterSwitchFalse.ThemeAuthor = "Narwin";
-            this.rbnAutostartAfterSwitchFalse.ThemeName = "MetroLite";
-            this.rbnAutostartAfterSwitchFalse.CheckedChanged += new MetroSet_UI.Controls.MetroSetRadioButton.CheckedChangedEventHandler(this.UpdateAutostartAfterSwitch);
             // 
             // XPSMain
             // 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MetroSet_UI.Forms;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,6 +15,7 @@ using System.Windows.Forms;
 
 namespace XPS3
 {
+   
     public partial class XPSMain : Form
     {
         private readonly string XPSDataFile = $@"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}\XPS3\xpsdat.db";
@@ -31,8 +33,6 @@ namespace XPS3
 
         private int[] projectHotswapIDs = new int[6];
         private int currentlyActiveProjectID = -1;
-
-        private bool startServicesAfterSwitch = false;
 
         private enum XPSProcess
         {
@@ -64,6 +64,7 @@ namespace XPS3
             RunAutostart();
             UpdateProjectLists();
             UpdateRecentList();
+            SelectRecentProject();
         }
 
         private void XPSMain_FormClosing(object sender, FormClosingEventArgs e)
@@ -314,29 +315,60 @@ namespace XPS3
             for (int i = 0; i < projectHotswapIDs.Length; i++) projectHotswapIDs[i] = -1;
 
             connection.Open();
-            cmd.CommandText = "SELECT * FROM Log GROUP BY ProjectID ORDER BY SelectedDate ASC LIMIT 6";
+            // Doesn't work because of the implementation in SQLite, cannot order by newest date.
+            // cmd.CommandText = "SELECT * FROM (SELECT * FROM Log ORDER BY SelectedDate DESC) GROUP BY ProjectID";
+            cmd.CommandText = "SELECT * FROM Log ORDER BY SelectedDate DESC";
             using (SQLiteDataReader reader = cmd.ExecuteReader())
             {
                 int i = 0;
                 while(reader.Read())
-                    projectHotswapIDs[i] = Convert.ToInt32(reader["ProjectID"]);
+                {
+                    bool idFound = false;
+
+                    for (int k = 0; k < projectHotswapIDs.Length; k++)
+                        if (projectHotswapIDs[k] == Convert.ToInt32(reader["ProjectID"]))
+                            idFound = true;
+
+                    if(!idFound)
+                        projectHotswapIDs[i++] = Convert.ToInt32(reader["ProjectID"]);
+                }
+                    
             }
             connection.Close();
 
             for(int i = 0; i < projectHotswapIDs.Length; i++)
             {
                 Control currentTile = this.Controls.Find($"btnHotSwitchP{i+1}", true)[0];
-                // TODO
                 if (projectHotswapIDs[i] != -1)
                 {
+                    currentTile.Font = new Font(currentTile.Font, FontStyle.Regular);
                     currentTile.Enabled = true;
+                    connection.Open();
+                    cmd.CommandText = $"SELECT Name FROM Projects WHERE ID = {projectHotswapIDs[i]}";
+                    currentTile.Text = Convert.ToString(cmd.ExecuteScalar());
+                    connection.Close();
                 }
                 else
                 {
-                    
+                    currentTile.Font = new Font(currentTile.Font, FontStyle.Italic);
+                    currentTile.Text = "No Recent Projects.";
                     currentTile.Enabled = false;
                 }
+
+                
+                currentTile.Refresh();
+                currentTile.Update();
             }
+        }
+
+        private void SelectRecentProject()
+        {
+            connection.Open();
+            cmd.CommandText = "SELECT ProjectID FROM Log ORDER BY SelectedDate DESC LIMIT 1";
+            int recentOption = Convert.ToInt32(cmd.ExecuteScalar());
+            connection.Close();
+
+            SelectProjectOption(recentOption);
         }
 
        private void UpdateProcessThreads()
@@ -422,6 +454,12 @@ namespace XPS3
 
         private void SelectProjectOption(int pProjectID)
         {
+       
+            foreach(DataRowView item in cbxSavedProjects.Items)
+            {
+                if (Convert.ToInt32(item.Row.ItemArray[0]) == pProjectID) cbxSavedProjects.SelectedValue = pProjectID;
+            }
+
             StopServiceRoutine(XPSProcess.Apache);
 
             currentlyActiveProjectID = pProjectID;
@@ -888,9 +926,5 @@ namespace XPS3
 
 
         #endregion
-
-
-
-
     }
 }
