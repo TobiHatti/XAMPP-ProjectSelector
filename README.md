@@ -1,3 +1,5 @@
+<img align="right" width="80" height="80" src="https://github.com/TobiHatti/XAMPP-ProjectSelector/blob/master/XPS1/content/xamppProjectSelector.png">
+
 # XAMPP-ProjectSelector
 
 [![GitHub](https://img.shields.io/github/license/TobiHatti/XAMPP-ProjectSelector)](https://opensource.org/licenses/GPL-3.0)
