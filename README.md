@@ -1,3 +1,5 @@
+<img align="right" width="80" height="80" src="https://github.com/TobiHatti/XAMPP-ProjectSelector/blob/master/XPS1/content/xamppProjectSelector.png">
+
 # XAMPP-ProjectSelector
 
 [![GitHub](https://img.shields.io/github/license/TobiHatti/XAMPP-ProjectSelector)](https://opensource.org/licenses/GPL-3.0)
@@ -7,4 +9,33 @@
 [![GitHub issues](https://img.shields.io/github/issues-raw/TobiHatti/XAMPP-ProjectSelector)](https://github.com/TobiHatti/XAMPP-ProjectSelector/issues)
 [![GitHub language count](https://img.shields.io/github/languages/count/TobiHatti/XAMPP-ProjectSelector)](https://github.com/TobiHatti/XAMPP-ProjectSelector)
 
-A Simple Tool to quickly switch root directories for XAMPP
+![image](https://github.com/TobiHatti/XAMPP-ProjectSelector/blob/master/ProductImages/MainTab.jpg)
+![image](https://github.com/TobiHatti/XAMPP-ProjectSelector/blob/master/ProductImages/ManagerTab.jpg)
+
+
+## What is it?
+The XAMPP Project-Selector (XPS) provides a simple yet powerful tool which extends the functionality of the default XAMPP Control Panel. It provides the functionality to switch between multiple Projects, e.g. Websites, APIs and so on, without having to manualy edit an apache config-file. In other words, it changes the root-path and therefor the project/website/... which gets called when you call http://localhost or http://127.0.0.1 in your browser.
+
+## Why do I need it?
+Imagine you are working on multiple websites at once. If you now want to switch from one project to another, you would have to:
+- Copy the entire project out of your default htdocs folder and copy the other project into it, or
+- Manually edit the Apache-Config to change the root-path.
+
+With the XPS, you can do all of this within a second by simply clicking a button.
+
+## How does it work?
+### General
+The XPS ___does not___ replace XAMPP itself, it meerly interfaces with all of XAMPP's functions and extends them. 
+
+### Services
+![image](https://github.com/TobiHatti/XAMPP-ProjectSelector/blob/master/ProductImages/ServicesTab.jpg)
+
+You can Start/Stop services just like in the default Control-Panel by clicking on "Start" or "Stop". 
+It is also possible to select services using the sliders on the left and start all of the selected services at once by clicking "Start Services" at the bottom.
+
+Additionally, you can set "default-services" for every project, so you just have to set it up once when adding the project to the XPS, and then just click on "Start Services" without selecting your services every time.
+
+![image](https://github.com/TobiHatti/XAMPP-ProjectSelector/blob/master/ProductImages/ProjectEditor.jpg)
+
+## Download
+Get the latest release [here](https://github.com/TobiHatti/XAMPP-ProjectSelector/releases)
