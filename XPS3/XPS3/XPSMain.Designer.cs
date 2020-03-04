@@ -170,6 +170,7 @@
             this.ofdFileSelector = new System.Windows.Forms.OpenFileDialog();
             this.fbdFolderSelector = new System.Windows.Forms.FolderBrowserDialog();
             this.tmrCheckServiceStatus = new System.Windows.Forms.Timer(this.components);
+            this.nicNotify = new System.Windows.Forms.NotifyIcon(this.components);
             this.tctTabMenu.SuspendLayout();
             this.tabProjects.SuspendLayout();
             this.tabServices.SuspendLayout();
@@ -2510,6 +2511,11 @@
             this.tmrCheckServiceStatus.Interval = 2000;
             this.tmrCheckServiceStatus.Tick += new System.EventHandler(this.tmrCheckServiceStatus_Tick);
             // 
+            // nicNotify
+            // 
+            this.nicNotify.Text = "XPS3";
+            this.nicNotify.Visible = true;
+            // 
             // XPSMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2693,6 +2699,7 @@
         private MetroSet_UI.Controls.MetroSetRadioButton rbnAutostartAfterSwitchFalse;
         private MetroSet_UI.Controls.MetroSetRadioButton rbnAutostartAfterSwitchTrue;
         private MetroSet_UI.Controls.MetroSetLabel metroSetLabel11;
+        private System.Windows.Forms.NotifyIcon nicNotify;
     }
 }
 

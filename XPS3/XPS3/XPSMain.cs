@@ -459,6 +459,22 @@ namespace XPS3
                         CreateNoWindow = true
                     };
                     batchProcess = Process.Start(processInfo);
+
+                    if(pForceShutdownMode)
+                    {
+                        nicNotify.BalloonTipTitle = "Services stopped";
+                        nicNotify.BalloonTipText = $"Successfully stopped {pProcessType.ToString()}.\r\nClick here to open the control-panel.";
+                    }
+                    else
+                    {
+                        nicNotify.BalloonTipTitle = "Services started";
+                        nicNotify.BalloonTipText = $"Successfully started {pProcessType.ToString()}.\r\nClick here to open the control-panel.";
+                    }
+
+                    nicNotify.Icon = Properties.Resources.xamppPS;
+                    nicNotify.BalloonTipIcon = ToolTipIcon.Info;
+                    nicNotify.Visible = true;
+                    nicNotify.ShowBalloonTip(100);
                 }
                 catch
                 {

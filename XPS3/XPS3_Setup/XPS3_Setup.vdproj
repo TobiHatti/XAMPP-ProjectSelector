@@ -88,12 +88,6 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_547FFD90EFB3FFFBD2880FB6E61C78D1"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_243BAB00A19D4C8BA3DB1424603087D6"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -107,6 +101,12 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_BAB1B23267F0035F380FDCCFBC591E89"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_547FFD90EFB3FFFBD2880FB6E61C78D1"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -127,6 +127,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
         "Release"
         {
@@ -143,6 +151,22 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
+            }
         }
     }
     "Deployable"
@@ -481,15 +505,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:XPS3 - XAMPP Project Selector"
-        "ProductCode" = "8:{22A20FE8-3618-47FC-BB4F-2CA8ADC999C5}"
-        "PackageCode" = "8:{49E77B96-5C58-44E0-815E-49EA6B449DBE}"
+        "ProductCode" = "8:{FBE06B29-F52C-4162-BB76-CB51B821A3C7}"
+        "PackageCode" = "8:{B1DCF65B-0AD2-445F-9044-5B8CE159B446}"
         "UpgradeCode" = "8:{75EEE9E5-79FA-42D2-9156-071A14504900}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:FALSE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:3.0.0"
+        "ProductVersion" = "8:3.1.0"
         "Manufacturer" = "8:Endix Development"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:https://endev.at/support"
