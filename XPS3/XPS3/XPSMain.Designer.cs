@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(XPSMain));
             this.tctTabMenu = new MetroSet_UI.Controls.MetroSetTabControl();
             this.tabProjects = new MetroSet_UI.Child.MetroSetTabPage();
@@ -171,6 +171,12 @@
             this.fbdFolderSelector = new System.Windows.Forms.FolderBrowserDialog();
             this.tmrCheckServiceStatus = new System.Windows.Forms.Timer(this.components);
             this.nicNotify = new System.Windows.Forms.NotifyIcon(this.components);
+            this.cmsNotifyMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.openXPS3ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator12 = new System.Windows.Forms.ToolStripSeparator();
+            this.closeXPS3ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.startServicesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.stopServicesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tctTabMenu.SuspendLayout();
             this.tabProjects.SuspendLayout();
             this.tabServices.SuspendLayout();
@@ -192,6 +198,7 @@
             this.cmsFileZillaConfig.SuspendLayout();
             this.cmsMercuryConfig.SuspendLayout();
             this.cmsTomcatConfig.SuspendLayout();
+            this.cmsNotifyMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // tctTabMenu
@@ -205,7 +212,7 @@
             this.tctTabMenu.Controls.Add(this.tabServices);
             this.tctTabMenu.Controls.Add(this.tabManager);
             this.tctTabMenu.Controls.Add(this.tabSettings);
-            this.tctTabMenu.Cursor = System.Windows.Forms.Cursors.Default;
+            this.tctTabMenu.Cursor = System.Windows.Forms.Cursors.Hand;
             this.tctTabMenu.ItemSize = new System.Drawing.Size(100, 38);
             this.tctTabMenu.Location = new System.Drawing.Point(12, 12);
             this.tctTabMenu.Name = "tctTabMenu";
@@ -1353,14 +1360,14 @@
             this.dgvProjectList.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvProjectList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dgvProjectList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvProjectList.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvProjectList.DefaultCellStyle = dataGridViewCellStyle8;
             this.dgvProjectList.GridColor = System.Drawing.Color.White;
             this.dgvProjectList.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.dgvProjectList.Location = new System.Drawing.Point(0, 92);
@@ -2513,8 +2520,54 @@
             // 
             // nicNotify
             // 
+            this.nicNotify.ContextMenuStrip = this.cmsNotifyMenu;
             this.nicNotify.Text = "XPS3";
             this.nicNotify.Visible = true;
+            this.nicNotify.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.nicNotify_MouseDoubleClick);
+            // 
+            // cmsNotifyMenu
+            // 
+            this.cmsNotifyMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.openXPS3ToolStripMenuItem,
+            this.startServicesToolStripMenuItem,
+            this.stopServicesToolStripMenuItem,
+            this.toolStripSeparator12,
+            this.closeXPS3ToolStripMenuItem});
+            this.cmsNotifyMenu.Name = "cmsNotifyMenu";
+            this.cmsNotifyMenu.Size = new System.Drawing.Size(181, 120);
+            // 
+            // openXPS3ToolStripMenuItem
+            // 
+            this.openXPS3ToolStripMenuItem.Name = "openXPS3ToolStripMenuItem";
+            this.openXPS3ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.openXPS3ToolStripMenuItem.Text = "Open XPS3";
+            this.openXPS3ToolStripMenuItem.Click += new System.EventHandler(this.openXPS3ToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator12
+            // 
+            this.toolStripSeparator12.Name = "toolStripSeparator12";
+            this.toolStripSeparator12.Size = new System.Drawing.Size(140, 6);
+            // 
+            // closeXPS3ToolStripMenuItem
+            // 
+            this.closeXPS3ToolStripMenuItem.Name = "closeXPS3ToolStripMenuItem";
+            this.closeXPS3ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.closeXPS3ToolStripMenuItem.Text = "Close XPS3";
+            this.closeXPS3ToolStripMenuItem.Click += new System.EventHandler(this.closeXPS3ToolStripMenuItem_Click);
+            // 
+            // startServicesToolStripMenuItem
+            // 
+            this.startServicesToolStripMenuItem.Name = "startServicesToolStripMenuItem";
+            this.startServicesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.startServicesToolStripMenuItem.Text = "Start Services";
+            this.startServicesToolStripMenuItem.Click += new System.EventHandler(this.startServicesToolStripMenuItem_Click);
+            // 
+            // stopServicesToolStripMenuItem
+            // 
+            this.stopServicesToolStripMenuItem.Name = "stopServicesToolStripMenuItem";
+            this.stopServicesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.stopServicesToolStripMenuItem.Text = "Stop Services";
+            this.stopServicesToolStripMenuItem.Click += new System.EventHandler(this.stopServicesToolStripMenuItem_Click);
             // 
             // XPSMain
             // 
@@ -2534,6 +2587,7 @@
             this.Text = "XAMPP Project Selector - XPS3";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.XPSMain_FormClosing);
             this.Load += new System.EventHandler(this.XPSMain_Load);
+            this.Resize += new System.EventHandler(this.XPSMain_Resize);
             this.tctTabMenu.ResumeLayout(false);
             this.tabProjects.ResumeLayout(false);
             this.tabServices.ResumeLayout(false);
@@ -2555,6 +2609,7 @@
             this.cmsFileZillaConfig.ResumeLayout(false);
             this.cmsMercuryConfig.ResumeLayout(false);
             this.cmsTomcatConfig.ResumeLayout(false);
+            this.cmsNotifyMenu.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -2700,6 +2755,12 @@
         private MetroSet_UI.Controls.MetroSetRadioButton rbnAutostartAfterSwitchTrue;
         private MetroSet_UI.Controls.MetroSetLabel metroSetLabel11;
         private System.Windows.Forms.NotifyIcon nicNotify;
+        private System.Windows.Forms.ContextMenuStrip cmsNotifyMenu;
+        private System.Windows.Forms.ToolStripMenuItem openXPS3ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem startServicesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem stopServicesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator12;
+        private System.Windows.Forms.ToolStripMenuItem closeXPS3ToolStripMenuItem;
     }
 }
 

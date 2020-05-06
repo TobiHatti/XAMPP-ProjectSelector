@@ -18,6 +18,8 @@ namespace XPS3
    
     public partial class XPSMain : Form
     {
+        private bool allowExit = false;
+
         private readonly string XPSDataFile = $@"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}\XPS3\xpsdat.db";
         private readonly string ConString = $@"URI=file:{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}\XPS3\xpsdat.db";
         private SQLiteConnection connection = null;
@@ -53,6 +55,7 @@ namespace XPS3
                 processThread = new Thread(UpdateProcessThreads);
                 processThread.Start();
 
+                nicNotify.Icon = Properties.Resources.xamppPS;
 
                 disableOnCheckChangeUpdate = true;
                 SetServiceImages();
@@ -83,9 +86,17 @@ namespace XPS3
 
         private void XPSMain_FormClosing(object sender, FormClosingEventArgs e)
         {
-            processThread.Abort();
+            if (!allowExit)
+            {
+                e.Cancel = true;
+                this.WindowState = FormWindowState.Minimized;
 
-            if (connection.State == ConnectionState.Open) connection.Close();
+                nicNotify.BalloonTipTitle = "XPS3 is still running!";
+                nicNotify.BalloonTipText = $"Right-click the XPS3-icon in your system-tray for more options.";
+                nicNotify.BalloonTipIcon = ToolTipIcon.Info;
+                nicNotify.ShowBalloonTip(100);
+            }
+
         }
 
         private void RunAutostart()
@@ -471,9 +482,8 @@ namespace XPS3
                         nicNotify.BalloonTipText = $"Successfully started {pProcessType.ToString()}.\r\nClick here to open the control-panel.";
                     }
 
-                    nicNotify.Icon = Properties.Resources.xamppPS;
+                    
                     nicNotify.BalloonTipIcon = ToolTipIcon.Info;
-                    nicNotify.Visible = true;
                     nicNotify.ShowBalloonTip(100);
                 }
                 catch
@@ -976,5 +986,54 @@ namespace XPS3
         }
 
         #endregion
+
+        private void XPSMain_Resize(object sender, EventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Minimized)
+            {
+                Hide();
+                nicNotify.Visible = true;
+            }
+        }
+
+        private void nicNotify_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            Show();
+            this.WindowState = FormWindowState.Normal;
+            nicNotify.Visible = false;
+        }
+
+        private void closeXPS3ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            allowExit = true;
+            processThread.Abort();
+            if (connection.State == ConnectionState.Open) connection.Close();
+            Application.Exit();
+        }
+
+        private void openXPS3ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Show();
+            this.WindowState = FormWindowState.Normal;
+            nicNotify.Visible = false;
+        }
+
+        private void startServicesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (chbServiceApache.Switched) StartServiceRoutine(XPSProcess.Apache);
+            if (chbServiceMySQL.Switched) StartServiceRoutine(XPSProcess.MySQL);
+            if (chbServiceFileZilla.Switched) StartServiceRoutine(XPSProcess.FileZilla);
+            if (chbServiceMercury.Switched) StartServiceRoutine(XPSProcess.Mercury);
+            if (chbServiceTomcat.Switched) StartServiceRoutine(XPSProcess.Tomcat);
+        }
+
+        private void stopServicesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            StopServiceRoutine(XPSProcess.Apache);
+            StopServiceRoutine(XPSProcess.MySQL);
+            StopServiceRoutine(XPSProcess.FileZilla);
+            StopServiceRoutine(XPSProcess.Mercury);
+            StopServiceRoutine(XPSProcess.Tomcat);
+        }
     }
 }
