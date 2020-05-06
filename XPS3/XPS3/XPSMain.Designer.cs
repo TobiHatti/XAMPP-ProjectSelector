@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(XPSMain));
             this.tctTabMenu = new MetroSet_UI.Controls.MetroSetTabControl();
             this.tabProjects = new MetroSet_UI.Child.MetroSetTabPage();
@@ -177,6 +177,7 @@
             this.closeXPS3ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.startServicesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.stopServicesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.bgwServiceMonitor = new System.ComponentModel.BackgroundWorker();
             this.tctTabMenu.SuspendLayout();
             this.tabProjects.SuspendLayout();
             this.tabServices.SuspendLayout();
@@ -1360,14 +1361,14 @@
             this.dgvProjectList.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvProjectList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dgvProjectList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvProjectList.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvProjectList.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvProjectList.GridColor = System.Drawing.Color.White;
             this.dgvProjectList.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.dgvProjectList.Location = new System.Drawing.Point(0, 92);
@@ -2534,12 +2535,12 @@
             this.toolStripSeparator12,
             this.closeXPS3ToolStripMenuItem});
             this.cmsNotifyMenu.Name = "cmsNotifyMenu";
-            this.cmsNotifyMenu.Size = new System.Drawing.Size(181, 120);
+            this.cmsNotifyMenu.Size = new System.Drawing.Size(144, 98);
             // 
             // openXPS3ToolStripMenuItem
             // 
             this.openXPS3ToolStripMenuItem.Name = "openXPS3ToolStripMenuItem";
-            this.openXPS3ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.openXPS3ToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
             this.openXPS3ToolStripMenuItem.Text = "Open XPS3";
             this.openXPS3ToolStripMenuItem.Click += new System.EventHandler(this.openXPS3ToolStripMenuItem_Click);
             // 
@@ -2551,23 +2552,29 @@
             // closeXPS3ToolStripMenuItem
             // 
             this.closeXPS3ToolStripMenuItem.Name = "closeXPS3ToolStripMenuItem";
-            this.closeXPS3ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.closeXPS3ToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
             this.closeXPS3ToolStripMenuItem.Text = "Close XPS3";
             this.closeXPS3ToolStripMenuItem.Click += new System.EventHandler(this.closeXPS3ToolStripMenuItem_Click);
             // 
             // startServicesToolStripMenuItem
             // 
             this.startServicesToolStripMenuItem.Name = "startServicesToolStripMenuItem";
-            this.startServicesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.startServicesToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
             this.startServicesToolStripMenuItem.Text = "Start Services";
             this.startServicesToolStripMenuItem.Click += new System.EventHandler(this.startServicesToolStripMenuItem_Click);
             // 
             // stopServicesToolStripMenuItem
             // 
             this.stopServicesToolStripMenuItem.Name = "stopServicesToolStripMenuItem";
-            this.stopServicesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.stopServicesToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
             this.stopServicesToolStripMenuItem.Text = "Stop Services";
             this.stopServicesToolStripMenuItem.Click += new System.EventHandler(this.stopServicesToolStripMenuItem_Click);
+            // 
+            // bgwServiceMonitor
+            // 
+            this.bgwServiceMonitor.WorkerReportsProgress = true;
+            this.bgwServiceMonitor.WorkerSupportsCancellation = true;
+            this.bgwServiceMonitor.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgwServiceMonitor_DoWork);
             // 
             // XPSMain
             // 
@@ -2761,6 +2768,7 @@
         private System.Windows.Forms.ToolStripMenuItem stopServicesToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator12;
         private System.Windows.Forms.ToolStripMenuItem closeXPS3ToolStripMenuItem;
+        private System.ComponentModel.BackgroundWorker bgwServiceMonitor;
     }
 }
 

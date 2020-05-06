@@ -1,4 +1,5 @@
-﻿using MetroSet_UI.Forms;
+﻿using MetroSet_UI.Controls;
+using MetroSet_UI.Forms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -31,7 +32,6 @@ namespace XPS3
         private bool disableOnCheckChangeUpdate = true;
 
         private volatile Process[] processes;
-        private Thread processThread = null;
 
         private int[] projectHotswapIDs = new int[6];
         private int currentlyActiveProjectID = -1;
@@ -52,8 +52,6 @@ namespace XPS3
                 InitializeComponent();
 
                 processes = Process.GetProcesses();
-                processThread = new Thread(UpdateProcessThreads);
-                processThread.Start();
 
                 nicNotify.Icon = Properties.Resources.xamppPS;
 
@@ -62,6 +60,8 @@ namespace XPS3
                 CreateDBCon();
                 LoadDBDataToForm();
                 disableOnCheckChangeUpdate = false;
+
+                
             }
             catch(Exception ex)
             {
@@ -73,10 +73,11 @@ namespace XPS3
         {
             try
             {
+                SelectRecentProject();
                 RunAutostart();
                 UpdateProjectLists();
                 UpdateRecentList();
-                SelectRecentProject();
+                bgwServiceMonitor.RunWorkerAsync();
             }
             catch (Exception ex)
             {
@@ -235,26 +236,31 @@ namespace XPS3
             switch(pProcess)
             {
                 case XPSProcess.Apache:
+                    startAtmptApache = true;
                     pbxApacheStatus.BackColor = Color.Orange;
                     pbxApacheStatus.Invalidate();
                     AttemptStartService("Apache", "apache_start.bat", XPSProcess.Apache);
                     break;
                 case XPSProcess.MySQL:
+                    startAtmptMySQL = true;
                     pbxMySQLStatus.BackColor = Color.Orange;
                     pbxMySQLStatus.Invalidate();
                     AttemptStartService("MySQL", "mysql_start.bat", XPSProcess.MySQL);
                     break;
                 case XPSProcess.FileZilla:
+                    startAtmptFileZilla = true;
                     pbxFileZillaStatus.BackColor = Color.Orange;
                     pbxFileZillaStatus.Invalidate();
                     AttemptStartService("FileZilla", "filezilla_start.bat", XPSProcess.FileZilla);
                     break;
                 case XPSProcess.Mercury:
+                    startAtmptMercury = true;
                     pbxMercuryStatus.BackColor = Color.Orange;
                     pbxMercuryStatus.Invalidate();
                     AttemptStartService("Mercury", "mercury_start.bat", XPSProcess.Mercury);
                     break;
                 case XPSProcess.Tomcat:
+                    startAtmptTomcat = true;
                     pbxTomcatStatus.BackColor = Color.Orange;
                     pbxTomcatStatus.Invalidate();
                     AttemptStartService("Tomcat", "tomcat_start.bat", XPSProcess.Tomcat);
@@ -267,26 +273,31 @@ namespace XPS3
             switch (pProcess)
             {
                 case XPSProcess.Apache:
+                    stopAtmptApache = true;
                     pbxApacheStatus.BackColor = Color.Orange;
                     pbxApacheStatus.Invalidate();
                     AttemptStartService("Apache", "apache_stop.bat", XPSProcess.Apache, true);
                     break;
                 case XPSProcess.MySQL:
+                    stopAtmptMySQL = true;
                     pbxMySQLStatus.BackColor = Color.Orange;
                     pbxMySQLStatus.Invalidate();
                     AttemptStartService("MySQL", "mysql_stop.bat", XPSProcess.MySQL, true);
                     break;
                 case XPSProcess.FileZilla:
+                    stopAtmptFileZilla = true;
                     pbxFileZillaStatus.BackColor = Color.Orange;
                     pbxFileZillaStatus.Invalidate();
                     AttemptStartService("FileZilla", "filezilla_stop.bat", XPSProcess.FileZilla, true);
                     break;
                 case XPSProcess.Mercury:
+                    stopAtmptMercury = true;
                     pbxMercuryStatus.BackColor = Color.Orange;
                     pbxMercuryStatus.Invalidate();
                     AttemptStartService("Mercury", "mercury_stop.bat", XPSProcess.Mercury, true);
                     break;
                 case XPSProcess.Tomcat:
+                    stopAtmptTomcat = true;
                     pbxTomcatStatus.BackColor = Color.Orange;
                     pbxTomcatStatus.Invalidate();
                     AttemptStartService("Tomcat", "tomcat_stop.bat", XPSProcess.Tomcat, true);
@@ -296,6 +307,7 @@ namespace XPS3
 
         private void btnStartServices_Click(object sender, EventArgs e)
         {
+            MessageBox.Show("Attempting to start services...", "Starting Services", MessageBoxButtons.OK, MessageBoxIcon.Information);
             if (chbServiceApache.Switched) StartServiceRoutine(XPSProcess.Apache);
             if (chbServiceMySQL.Switched) StartServiceRoutine(XPSProcess.MySQL);
             if (chbServiceFileZilla.Switched) StartServiceRoutine(XPSProcess.FileZilla);
@@ -305,6 +317,7 @@ namespace XPS3
 
         private void btnStopServices_Click(object sender, EventArgs e)
         {
+            MessageBox.Show("Attempting to stop services...", "Stop Services", MessageBoxButtons.OK, MessageBoxIcon.Information);
             StopServiceRoutine(XPSProcess.Apache);
             StopServiceRoutine(XPSProcess.MySQL);
             StopServiceRoutine(XPSProcess.FileZilla);
@@ -417,39 +430,15 @@ namespace XPS3
             SelectProjectOption(recentOption);
         }
 
-       private void UpdateProcessThreads()
-        {
-            while(true)
-            {
-                processes = Process.GetProcesses();
-                Thread.Sleep(1000);
-            }
-        }
+
 
         private void tmrCheckServiceStatus_Tick(object sender, EventArgs e)
         {
-            lock(processes)
-            {
-                // Status Indicators
-                pbxApacheStatus.BackColor = IsProcessOpen(XPSProcess.Apache) ? Color.Lime : Color.Red;
-                pbxMySQLStatus.BackColor = IsProcessOpen(XPSProcess.MySQL) ? Color.Lime : Color.Red;
-                pbxFileZillaStatus.BackColor = IsProcessOpen(XPSProcess.FileZilla) ? Color.Lime : Color.Red;
-                pbxMercuryStatus.BackColor = IsProcessOpen(XPSProcess.Mercury) ? Color.Lime : Color.Red;
-                pbxTomcatStatus.BackColor = IsProcessOpen(XPSProcess.Tomcat) ? Color.Lime : Color.Red;
-
-                // Button Texts
-                btnStartStopApache.Text = IsProcessOpen(XPSProcess.Apache) ? "Stop" : "Start";
-                btnStartStopMySQL.Text = IsProcessOpen(XPSProcess.MySQL) ? "Stop" : "Start";
-                btnStartStopFileZilla.Text = IsProcessOpen(XPSProcess.FileZilla) ? "Stop" : "Start";
-                btnStartStopMercury.Text = IsProcessOpen(XPSProcess.Mercury) ? "Stop" : "Start";
-                btnStartStopTomcat.Text = IsProcessOpen(XPSProcess.Tomcat) ? "Stop" : "Start";
-
-                pbxApacheStatus.Invalidate();
-                pbxMySQLStatus.Invalidate();
-                pbxFileZillaStatus.Invalidate();
-                pbxMercuryStatus.Invalidate();
-                pbxTomcatStatus.Invalidate();
-            }
+            pbxApacheStatus.Invalidate();
+            pbxMySQLStatus.Invalidate();
+            pbxFileZillaStatus.Invalidate();
+            pbxMercuryStatus.Invalidate();
+            pbxTomcatStatus.Invalidate();
         }
 
         private void AttemptStartService(string pProcessClearName, string pProcessFile, XPSProcess pProcessType, bool pForceShutdownMode = false)
@@ -471,20 +460,6 @@ namespace XPS3
                     };
                     batchProcess = Process.Start(processInfo);
 
-                    if(pForceShutdownMode)
-                    {
-                        nicNotify.BalloonTipTitle = "Services stopped";
-                        nicNotify.BalloonTipText = $"Successfully stopped {pProcessType.ToString()}.\r\nClick here to open the control-panel.";
-                    }
-                    else
-                    {
-                        nicNotify.BalloonTipTitle = "Services started";
-                        nicNotify.BalloonTipText = $"Successfully started {pProcessType.ToString()}.\r\nClick here to open the control-panel.";
-                    }
-
-                    
-                    nicNotify.BalloonTipIcon = ToolTipIcon.Info;
-                    nicNotify.ShowBalloonTip(100);
                 }
                 catch
                 {
@@ -521,7 +496,7 @@ namespace XPS3
                 if (Convert.ToInt32(item.Row.ItemArray[0]) == pProjectID) cbxSavedProjects.SelectedValue = pProjectID;
             }
 
-            StopServiceRoutine(XPSProcess.Apache);
+            //StopServiceRoutine(XPSProcess.Apache);
 
             currentlyActiveProjectID = pProjectID;
 
@@ -1006,8 +981,8 @@ namespace XPS3
         private void closeXPS3ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             allowExit = true;
-            processThread.Abort();
             if (connection.State == ConnectionState.Open) connection.Close();
+            if (bgwServiceMonitor.WorkerSupportsCancellation) bgwServiceMonitor.CancelAsync();
             Application.Exit();
         }
 
@@ -1034,6 +1009,164 @@ namespace XPS3
             StopServiceRoutine(XPSProcess.FileZilla);
             StopServiceRoutine(XPSProcess.Mercury);
             StopServiceRoutine(XPSProcess.Tomcat);
+        }
+
+        private const int maxStartAttempts = 50;
+        private const int continuousSuccesses = 10;
+
+        private int startTriesApache = 0;
+        private int startTriesMySQL = 0;
+        private int startTriesFileZilla = 0;
+        private int startTriesMercury = 0;
+        private int startTriesTomcat = 0;
+
+        private int startCSTriesApache = 0;
+        private int startCSTriesMySQL = 0;
+        private int startCSTriesFileZilla = 0;
+        private int startCSTriesMercury = 0;
+        private int startCSTriesTomcat = 0;
+
+        private bool startAtmptApache = false;
+        private bool startAtmptMySQL = false;
+        private bool startAtmptFileZilla = false;
+        private bool startAtmptMercury = false;
+        private bool startAtmptTomcat = false;
+
+        private int stopTriesApache = 0;
+        private int stopTriesMySQL = 0;
+        private int stopTriesFileZilla = 0;
+        private int stopTriesMercury = 0;
+        private int stopTriesTomcat = 0;
+
+        private int stopCSTriesApache = 0;
+        private int stopCSTriesMySQL = 0;
+        private int stopCSTriesFileZilla = 0;
+        private int stopCSTriesMercury = 0;
+        private int stopCSTriesTomcat = 0;
+
+        private bool stopAtmptApache = false;
+        private bool stopAtmptMySQL = false;
+        private bool stopAtmptFileZilla = false;
+        private bool stopAtmptMercury = false;
+        private bool stopAtmptTomcat = false;
+
+        private void bgwServiceMonitor_DoWork(object sender, DoWorkEventArgs e)
+        {
+            while(true)
+            {
+                processes = Process.GetProcesses();
+
+                if (bgwServiceMonitor.CancellationPending)
+                {
+                    e.Cancel = true;
+                    return;
+                }
+
+                    StartMonitor(ref startAtmptApache, ref startTriesApache, ref startCSTriesApache, XPSProcess.Apache, pbxApacheStatus, btnStartStopApache);
+                    StartMonitor(ref startAtmptMySQL, ref startTriesMySQL, ref startCSTriesMySQL, XPSProcess.MySQL, pbxMySQLStatus, btnStartStopMySQL);
+                    StartMonitor(ref startAtmptFileZilla, ref startTriesFileZilla, ref startCSTriesFileZilla, XPSProcess.FileZilla, pbxFileZillaStatus, btnStartStopFileZilla);
+                    StartMonitor(ref startAtmptMercury, ref startTriesMercury, ref startCSTriesMercury, XPSProcess.Mercury, pbxMercuryStatus, btnStartStopMercury);
+                    StartMonitor(ref startAtmptTomcat, ref startTriesTomcat, ref startCSTriesTomcat, XPSProcess.Tomcat, pbxTomcatStatus, btnStartStopTomcat);
+
+                processes = Process.GetProcesses();
+
+                if (bgwServiceMonitor.CancellationPending)
+                {
+                    e.Cancel = true;
+                    return;
+                }
+
+                    StopMonitor(ref stopAtmptApache, ref stopTriesApache, ref stopCSTriesApache, XPSProcess.Apache, pbxApacheStatus, btnStartStopApache);
+                    StopMonitor(ref stopAtmptMySQL, ref stopTriesMySQL, ref stopCSTriesMySQL, XPSProcess.MySQL, pbxMySQLStatus, btnStartStopMySQL);
+                    StopMonitor(ref stopAtmptFileZilla, ref stopTriesFileZilla, ref stopCSTriesFileZilla, XPSProcess.FileZilla, pbxFileZillaStatus, btnStartStopFileZilla);
+                    StopMonitor(ref stopAtmptMercury, ref stopTriesMercury, ref stopCSTriesMercury, XPSProcess.Mercury, pbxMercuryStatus, btnStartStopMercury);
+                    StopMonitor(ref stopAtmptTomcat, ref stopTriesTomcat, ref stopCSTriesTomcat, XPSProcess.Tomcat, pbxTomcatStatus, btnStartStopTomcat);
+
+                Thread.Sleep(100);
+            }
+        }
+
+
+        private void ShowBalloon(string title, string message, ToolTipIcon icon, int duration)
+        {
+            nicNotify.BalloonTipTitle = title;
+            nicNotify.BalloonTipText = message;
+            nicNotify.BalloonTipIcon = icon;
+            nicNotify.ShowBalloonTip(duration);
+        }
+
+        private void StartMonitor(ref bool startAtmpt, ref int startAttempts, ref int continuousSuccessAttempts, XPSProcess process, PictureBox statusBox, MetroSetButton statusButton)
+        {
+            if (startAtmpt)
+            {
+                if (startAttempts < maxStartAttempts)
+                {
+                    if (IsProcessOpen(process))
+                    {
+                        startAttempts = 0;
+                        continuousSuccessAttempts++;
+
+                        if (continuousSuccessAttempts >= continuousSuccesses)
+                        {
+                            ShowBalloon("Services started", $"Successfully started {process}.", ToolTipIcon.Info, 100);
+                            statusBox.BackColor = Color.Lime;
+                            statusBox.Invalidate();
+                            statusButton.Text = "Stop";
+                            startAtmpt = false;
+                            startAttempts = 0;
+                            continuousSuccessAttempts = 0;
+                        }
+                    }
+                    else continuousSuccessAttempts = 0;
+                    startAttempts++;
+                }
+                else
+                {
+                    ShowBalloon("Startup failed", $"{process} could not be started. \r\nReason: Timeout.\r\n\r\nOpen the XAMPP control-panel for more information.", ToolTipIcon.Error, 100);
+                    statusBox.BackColor = Color.Red;
+                    statusBox.Invalidate();
+                    statusButton.Text = "Start";
+                    startAtmpt = false;
+                    startAttempts = 0;
+                }
+            }
+        }
+
+        private void StopMonitor(ref bool stopAtmpt, ref int stopAttempts, ref int continuousSuccessAttempts, XPSProcess process, PictureBox statusBox, MetroSetButton statusButton)
+        {
+            if (stopAtmpt)
+            {
+                if (stopAttempts < maxStartAttempts)
+                {
+                    if (!IsProcessOpen(process))
+                    {
+                        stopAttempts = 0;
+                        continuousSuccessAttempts++;
+
+                        if (continuousSuccessAttempts >= continuousSuccesses)
+                        {
+                            ShowBalloon("Services stopped", $"Successfully stopped {process}.", ToolTipIcon.Info, 100);
+                            statusBox.BackColor = Color.Red;
+                            statusBox.Invalidate();
+                            statusButton.Text = "Start";
+                            stopAtmpt = false;
+                            stopAttempts = 0;
+                            continuousSuccessAttempts = 0;
+                        }
+                    }
+                    else continuousSuccessAttempts = 0;
+                    stopAttempts++;
+                }
+                else
+                {
+                    ShowBalloon("Stop failed", $"{process} could not be stopped. \r\nReason: Timeout.\r\n\r\nOpen the XAMPP control-panel for more information.", ToolTipIcon.Error, 100);
+                    statusBox.BackColor = Color.Lime;
+                    statusBox.Invalidate();
+                    statusButton.Text = "Stop";
+                    stopAtmpt = false;
+                    stopAttempts = 0;
+                }
+            }
         }
     }
 }
