@@ -23,7 +23,6 @@ H:\Git\XPS\XPS3\XPS3\bin\Release\MetroSet UI.dll
 H:\Git\XPS\XPS3\XPS3\bin\Release\System.Data.SQLite.dll
 H:\Git\XPS\XPS3\XPS3\bin\Release\System.Data.SQLite.xml
 H:\Git\XPS\XPS3\XPS3\bin\Release\System.Data.SQLite.dll.config
-H:\Git\XPS\XPS3\XPS3\obj\Release\XPS3.csprojAssemblyReference.cache
 H:\Git\XPS\XPS3\XPS3\obj\Release\XPS3.XPSAddProject.resources
 H:\Git\XPS\XPS3\XPS3\obj\Release\XPS3.XPSMain.resources
 H:\Git\XPS\XPS3\XPS3\obj\Release\XPS3.Properties.Resources.resources

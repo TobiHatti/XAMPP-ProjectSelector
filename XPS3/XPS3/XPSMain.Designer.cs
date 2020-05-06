@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(XPSMain));
             this.tctTabMenu = new MetroSet_UI.Controls.MetroSetTabControl();
             this.tabProjects = new MetroSet_UI.Child.MetroSetTabPage();
@@ -173,10 +173,10 @@
             this.nicNotify = new System.Windows.Forms.NotifyIcon(this.components);
             this.cmsNotifyMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.openXPS3ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator12 = new System.Windows.Forms.ToolStripSeparator();
-            this.closeXPS3ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.startServicesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.stopServicesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator12 = new System.Windows.Forms.ToolStripSeparator();
+            this.closeXPS3ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bgwServiceMonitor = new System.ComponentModel.BackgroundWorker();
             this.tctTabMenu.SuspendLayout();
             this.tabProjects.SuspendLayout();
@@ -1361,14 +1361,14 @@
             this.dgvProjectList.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvProjectList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dgvProjectList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvProjectList.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvProjectList.DefaultCellStyle = dataGridViewCellStyle1;
             this.dgvProjectList.GridColor = System.Drawing.Color.White;
             this.dgvProjectList.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.dgvProjectList.Location = new System.Drawing.Point(0, 92);
@@ -1644,15 +1644,15 @@
             // 
             // metroSetLabel19
             // 
-            this.metroSetLabel19.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.metroSetLabel19.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F);
             this.metroSetLabel19.Location = new System.Drawing.Point(0, 317);
             this.metroSetLabel19.Name = "metroSetLabel19";
             this.metroSetLabel19.Size = new System.Drawing.Size(307, 34);
             this.metroSetLabel19.Style = MetroSet_UI.Design.Style.Custom;
             this.metroSetLabel19.StyleManager = null;
             this.metroSetLabel19.TabIndex = 15;
-            this.metroSetLabel19.Text = "© 2020 Endix Development. All images used as well as XAMPP itself belong to their" +
-    " corresponding company or organisation.";
+            this.metroSetLabel19.Text = "© 2020 Endix Development MOST RIGHTS RESERVED.\r\nBuilt with MetroModernUI-Framewor" +
+    "k.\r\nAll images and xampp itself are copyrighted by their respectible companies.";
             this.metroSetLabel19.ThemeAuthor = "Narwin";
             this.metroSetLabel19.ThemeName = "MetroLite";
             // 
@@ -2544,18 +2544,6 @@
             this.openXPS3ToolStripMenuItem.Text = "Open XPS3";
             this.openXPS3ToolStripMenuItem.Click += new System.EventHandler(this.openXPS3ToolStripMenuItem_Click);
             // 
-            // toolStripSeparator12
-            // 
-            this.toolStripSeparator12.Name = "toolStripSeparator12";
-            this.toolStripSeparator12.Size = new System.Drawing.Size(140, 6);
-            // 
-            // closeXPS3ToolStripMenuItem
-            // 
-            this.closeXPS3ToolStripMenuItem.Name = "closeXPS3ToolStripMenuItem";
-            this.closeXPS3ToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
-            this.closeXPS3ToolStripMenuItem.Text = "Close XPS3";
-            this.closeXPS3ToolStripMenuItem.Click += new System.EventHandler(this.closeXPS3ToolStripMenuItem_Click);
-            // 
             // startServicesToolStripMenuItem
             // 
             this.startServicesToolStripMenuItem.Name = "startServicesToolStripMenuItem";
@@ -2569,6 +2557,18 @@
             this.stopServicesToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
             this.stopServicesToolStripMenuItem.Text = "Stop Services";
             this.stopServicesToolStripMenuItem.Click += new System.EventHandler(this.stopServicesToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator12
+            // 
+            this.toolStripSeparator12.Name = "toolStripSeparator12";
+            this.toolStripSeparator12.Size = new System.Drawing.Size(140, 6);
+            // 
+            // closeXPS3ToolStripMenuItem
+            // 
+            this.closeXPS3ToolStripMenuItem.Name = "closeXPS3ToolStripMenuItem";
+            this.closeXPS3ToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.closeXPS3ToolStripMenuItem.Text = "Close XPS3";
+            this.closeXPS3ToolStripMenuItem.Click += new System.EventHandler(this.closeXPS3ToolStripMenuItem_Click);
             // 
             // bgwServiceMonitor
             // 

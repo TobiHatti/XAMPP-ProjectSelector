@@ -35,6 +35,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>xamppPS.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="MetroSet UI, Version=1.0.5.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MetroSet_UI.1.0.5\lib\net45\MetroSet UI.dll</HintPath>
@@ -116,6 +119,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="mercury.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="xamppPS.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
