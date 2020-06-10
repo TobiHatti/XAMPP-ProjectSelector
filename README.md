@@ -9,7 +9,7 @@
 [![GitHub issues](https://img.shields.io/github/issues-raw/TobiHatti/XAMPP-ProjectSelector)](https://github.com/TobiHatti/XAMPP-ProjectSelector/issues)
 [![GitHub language count](https://img.shields.io/github/languages/count/TobiHatti/XAMPP-ProjectSelector)](https://github.com/TobiHatti/XAMPP-ProjectSelector)
 
-![image](https://endev.at/content/projects/XPS/XPS_Banner_1080.png)
+![image](https://endev.at/content/projects/XPS/XPS_Banner_300.png)
 
 ## What is it?
 The XAMPP Project-Selector (XPS) provides a simple yet powerful tool which extends the functionality of the default XAMPP Control Panel. It provides the functionality to switch between multiple Projects, e.g. Websites, APIs and so on, without having to manualy edit an apache config-file. In other words, it changes the root-path and therefor the project/website/... which gets called when you call http://localhost or http://127.0.0.1 in your browser.
