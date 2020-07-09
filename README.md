@@ -1,9 +1,9 @@
-<img align="right" width="80" height="80" data-rmimg src="https://endev.at/content/projects/XPS/XPS_Logo_128.png">
+<img align="right" width="80" height="80" data-rmimg src="https://endev.at/content/projects/XPS/XPS_Logo.svg">
 
 # XAMPP-ProjectSelector
 
 [![GitHub](https://img.shields.io/github/license/TobiHatti/XAMPP-ProjectSelector)](https://opensource.org/licenses/GPL-3.0)
-[![GitHub Release Date](https://img.shields.io/github/release-date/TobiHatti/XAMPP-ProjectSelector)](https://github.com/TobiHatti/XAMPP-ProjectSelector/releases)
+[![GitHub Release Date](https://img.shields.io/github/release-date-pre/TobiHatti/XAMPP-ProjectSelector)](https://github.com/TobiHatti/XAMPP-ProjectSelector/releases)
 [![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/TobiHatti/XAMPP-ProjectSelector?include_prereleases)](https://github.com/TobiHatti/XAMPP-ProjectSelector/releases)
 [![GitHub last commit](https://img.shields.io/github/last-commit/TobiHatti/XAMPP-ProjectSelector)](https://github.com/TobiHatti/XAMPP-ProjectSelector/commits/master)
 [![GitHub issues](https://img.shields.io/github/issues-raw/TobiHatti/XAMPP-ProjectSelector)](https://github.com/TobiHatti/XAMPP-ProjectSelector/issues)
